@@ -1,0 +1,17 @@
+.pt-slider {
+  position: fixed;
+  width: 50%;
+  top: 0;
+  background: red;
+  left: 0;
+  z-index: 999;
+
+  &:first-of-type {
+    left: 0;
+  }
+
+  &:nth-of-type(2) {
+    left: initial;
+    right: 0;
+  }
+}
