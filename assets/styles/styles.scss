@@ -1,4 +1,27 @@
+@use "cursor";
 @use "pt-sliders";
+
+:root {
+  --bg-color: #F4F2F1;
+  --text-color: #1A1A1A;
+  --text-light: #868686;
+
+  --logo-color1: #c96b60;
+  --logo-color2: #3a7778;
+  --logo-color3: #ccc5c0;
+  --logo-color4: #edb56d;
+
+  --accent-project1: #254f75;
+  --accent-project2: #be4a0e;
+  --accent-project3: #F27457;
+  --accent-project4: #2f8676;
+  --accent-project5: #7c0b0b;
+
+  --contact: #ccc5c0;
+  --about: #ccc5c0;
+
+  --default-letter-spacing: 0.1rem;
+}
 
 * {
   margin: 0;
@@ -8,4 +31,11 @@
 
 html {
   font-size: 14px;
+  min-height: 100%;
+  color: var(--text-color)
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-color);
 }

@@ -1,10 +1,13 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 
+import Cursor from "~/components/cursor.vue";
 </script>
 
 <template>
-  <div class="pt-slider" id="pt-slider-1"></div>
-  <div class="pt-slider" id="pt-slider-2"></div>
+  <div id="pt-slider-1" class="pt-slider"></div>
+  <div id="pt-slider-2" class="pt-slider"></div>
+
+  <cursor></cursor>
   <slot/>
 </template>
 

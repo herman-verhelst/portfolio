@@ -1,0 +1,46 @@
+:root {
+  --default-cursor-width: 10px;
+  --default-trailing-cursor-width: 20px;
+  --magnified-cursor-width: 100px;
+}
+
+.cursor {
+  border-radius: 999px;
+  width: var(--default-cursor-width);
+  aspect-ratio: 1;
+  position: fixed;
+  transition: width .2s ease-out;
+  will-change: transform;
+  user-select: none;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+
+  &--trailing {
+    width: var(--default-trailing-cursor-width);
+
+    .difference, .bw {
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-radius: 999px;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.difference {
+  background-color: white;
+  mix-blend-mode: difference;
+}
+
+.bw {
+  backdrop-filter: grayscale(1);
+}
+
+@media (hover: none) {
+  .cursor {
+    display: none;
+  }
+}
