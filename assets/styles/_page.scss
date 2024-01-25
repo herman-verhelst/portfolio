@@ -1,0 +1,176 @@
+@import "variables";
+
+.page {
+  &__top {
+    display: flex;
+    height: 60vh;
+  }
+
+  &__information, &__title {
+    width: 50%;
+    height: 100%;
+  }
+
+  &__information {
+    border-left: 1px solid var(--text-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 1rem;
+
+    p {
+      line-height: 160%;
+      font-size: 1.2rem;
+      font-weight: 200;
+
+      .source {
+        font-size: .8rem;
+        color: var(--text-light);
+      }
+    }
+  }
+
+  &__graphic {
+    display: flex;
+    justify-content: end;
+    overflow: hidden;
+
+    &--mobile {
+      display: none;
+    }
+
+    svg {
+      fill: var(--accent-project1);
+      width: 8rem;
+    }
+
+    .graphic {
+      @for $i from 1 through $number-of-projects {
+        &--project#{$i} {
+          fill: var(--accent-project#{$i});
+        }
+      }
+    }
+  }
+}
+
+.section {
+  &--padding {
+    padding: 1rem 2rem;
+  }
+
+  &--first {
+    margin-top: 4rem;
+    position: relative;
+    overflow: hidden;
+
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 1rem;
+      right: 1rem;
+      height: 1px;
+      background-color: var(--text-color);
+    }
+
+    .divider {
+      width: 1px;
+      position: absolute;
+      left: 50%;
+      top: 1rem;
+      bottom: 1rem;
+    }
+  }
+
+  &--divider {
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 1rem;
+      right: 1rem;
+      height: 1px;
+      background-color: var(--text-color);
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 1rem;
+      right: 1rem;
+      height: 1px;
+      background-color: var(--text-color);
+    }
+  }
+}
+
+@media (max-width: 600px) {
+
+  .page {
+    &__graphic {
+      svg {
+        width: 4rem;
+      }
+
+      &--mobile {
+        display: flex;
+      }
+
+      &--desktop {
+        display: none;
+      }
+    }
+
+    &__information, &__title {
+      width: 100%;
+      height: fit-content;
+    }
+
+    &__information {
+      border-left: none;
+      padding: 0;
+
+      p {
+        font-size: 1rem;
+      }
+    }
+
+    &__title {
+      flex-direction: row;
+      padding-bottom: 10rem;
+      align-items: start;
+      position: relative;
+
+      h1 {
+        line-height: 75%;
+      }
+
+      &:after {
+        @include wide-bottom-border;
+      }
+    }
+
+    &__top {
+      flex-direction: column;
+      height: fit-content;
+
+      &:after {
+        @include wide-bottom-border;
+      }
+    }
+  }
+
+  .section {
+    &--padding {
+      padding: 1rem 1.5rem;
+    }
+
+    &--first {
+      margin-top: 4rem;
+    }
+  }
+}

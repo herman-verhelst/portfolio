@@ -1,14 +1,18 @@
 <script lang="ts" setup>
 
 import Cursor from "~/components/cursor.vue";
+import PageTransition from "~/components/page-transition.vue";
+import Navigation from "~/components/navigation.vue";
 </script>
 
 <template>
-  <div id="pt-slider-1" class="pt-slider"></div>
-  <div id="pt-slider-2" class="pt-slider"></div>
-
+  <page-transition></page-transition>
   <cursor></cursor>
-  <slot/>
+  <navigation></navigation>
+
+  <main>
+    <slot/>
+  </main>
 </template>
 
 <style>

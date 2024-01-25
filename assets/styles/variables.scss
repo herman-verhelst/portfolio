@@ -1,0 +1,11 @@
+$number-of-projects: 5;
+
+@mixin wide-bottom-border {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -.5rem;
+  right: -.5rem;
+  height: 1px;
+  background-color: var(--text-color);
+}
