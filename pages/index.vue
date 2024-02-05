@@ -2,6 +2,7 @@
 
 import transitionConfig from "~/helpers/transitionConfig";
 import PixelImage from "~/components/pixel-image.vue";
+import FooterComp from "~/components/footer-comp.vue";
 
 definePageMeta({
   pageTransition: transitionConfig
@@ -9,39 +10,23 @@ definePageMeta({
 </script>
 
 <template>
+  <main>
+    <div class="home page page--large-top-padding">
+      <div class="hero">
+        <h1 class="title">
+          <span><b>Herman Verhelst</b></span>
+          <span><b>Web</b> <i class="proforma">&</i> <b>Information</b> <br/> designer.</span>
+          <span>{{$t('home.loves')}} <b>{{$t('home.wood')}}.</b></span>
+        </h1>
 
-  <section class="home section--first section--padding start-animation">
-    <div class="home__section home__section--title" id="title-section">
-      <h1 class="title" id="title">
-        <span class="start-animation">Denken. </span> <br/>
-        <span class="start-animation">Durven. </span> <br/>
-        <span class="start-animation">Maken. </span> <br/>
-      </h1>
-
-      <div class="home__text">
-        <p class="start-animation">
-          Durven denken. <br/>
-          Een idee. Een boodschap. <br/>
-          Materiaal. Kleur. Vorm. <br/>
-          Vormentaal.
-
-        </p>
-        <p class="start-animation">
-          Durven maken. <br/>
-          Potlood en papier. <br/>
-          Hout.<br/>
-          Ambacht en digitaal.
-        </p>
-        <p class="start-animation">
-          Gemaakt om te ontdekken.
+        <p class="text proforma">
+          {{$t('home.text')}}
         </p>
       </div>
     </div>
 
-    <div class="home__section home__section--pi" id="graphic">
-      <pixel-image></pixel-image>
-    </div>
-  </section>
+    <footer-comp></footer-comp>
+  </main>
 
 </template>
 

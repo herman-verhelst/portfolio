@@ -10,9 +10,8 @@ import Navigation from "~/components/navigation.vue";
   <cursor></cursor>
   <navigation></navigation>
 
-  <main>
-    <slot/>
-  </main>
+  <slot/>
+
 </template>
 
 <style>

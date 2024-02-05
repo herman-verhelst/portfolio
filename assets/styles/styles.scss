@@ -1,20 +1,30 @@
 @use "app";
+@use "button";
 @use "cursor";
+@use "footer";
 @use "nav";
 @use "page";
+@use "project";
 @use "pt-sliders";
-
-@import "variables";
+@use "tag";
+@use "text";
 
 :root {
-  --bg-color: #F4F2F1;
-  --text-color: #1A1A1A;
-  --text-light: #868686;
+  --bg-color: #F8F5F3;
+  --bg-dark: #D6CDC6;
+  --text-color: #151413;
+  --text-light: #99908A;
 
-  --logo-color1: #c96b60;
-  --logo-color2: #3a7778;
-  --logo-color3: #ccc5c0;
-  --logo-color4: #edb56d;
+  --logo-red: #BC4F43;
+  --logo-green: #2B6C6E;
+  --logo-grey: #C3B7AE;
+  --logo-yellow: #DA9F52;
+
+  --gradient-red: linear-gradient(175deg, #C96B60 3.85%, #BC4F43 96.14%);
+  --gradient-green: linear-gradient(171deg, #3A7778 10.97%, #2B6C6E 89.63%);
+  --gradient-grey: linear-gradient(173deg, #C8BEB6 7.09%, #C3B7AE 92.58%);
+  --gradient-yellow: linear-gradient(173deg, #EDB56D 6.75%, #DA9F52 92.94%);
+
 
   --accent-project1: #254f75;
   --accent-project2: #be4a0e;
@@ -32,164 +42,18 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  cursor: none;
-
+  /*cursor: none;*/
 }
 
 html {
-  font-size: 14px;
+  font-size: 16px;
   min-height: 100%;
   color: var(--text-color);
   font-family: 'IBM Plex Sans', sans-serif;
-}
-
-
-html, body, main {
-  height: 100%;
-  min-height: 100%;
-}
-
-html {
-  font-size: 14px;
-  font-weight: 400;
-  scroll-behavior: smooth;
 }
 
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
   font-family: 'IBM Plex Sans', sans-serif;
-  max-width: 1400px;
-  margin: auto;
-}
-
-a {
-  color: var(--text-color);
-}
-
-hr {
-  border-top: 1px solid var(--text-color);
-  border-bottom: transparent;
-}
-
-footer {
-  margin: 8rem 2rem 2rem;
-  padding: 1rem 0;
-  position: relative;
-
-  p, u {
-    color: var(--text-light);
-  }
-
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -.5rem;
-    right: -.5rem;
-    height: 1px;
-    background-color: var(--text-light);
-  }
-}
-
-button {
-  outline-color: transparent;
-  border: none;
-  background-color: transparent;
-  position: relative;
-
-  &:after {
-    content: '';
-    position: absolute;
-    bottom: -.2rem;
-    left: 0;
-    height: 1px;
-    width: 100%;
-    background-color: var(--text-color);
-    transform: scaleX(0%);
-    transform-origin: left;
-    transition: transform .2s ease-in-out;
-  }
-
-  &:focus-visible {
-    outline: transparent;
-
-    &:after {
-      transform: scaleX(100%);
-
-    }
-  }
-}
-
-p {
-  font-weight: 500;
-}
-
-a {
-  text-decoration: none;
-  font-weight: 500;
-}
-
-h1 {
-  font-size: 3rem;
-  font-weight: 700;
-  letter-spacing: var(--default-letter-spacing);
-  text-transform: uppercase;
-}
-
-h2 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: var(--default-letter-spacing);
-  text-transform: uppercase;
-}
-
-.subtitle {
-  font-size: 1.5rem;
-  font-weight: 300;
-  margin-top: .5rem;
-
-  @for $i from 1 through $number-of-projects {
-    &--project#{$i} {
-      color: var(--accent-project#{$i});
-    }
-  }
-}
-
-.divider {
-  background-color: var(--text-color);
-}
-
-.button {
-  &--submit {
-    display: block;
-    text-align: center;
-    padding: .5rem 1.5rem;
-    border-radius: 0;
-    border: 1px solid var(--text-color);
-    color: var(--text-color);
-    font-size: 1rem;
-    transition: border .2s ease-in-out;
-    background: transparent;
-    font-weight: 400;
-
-    &:focus-visible {
-      outline: transparent;
-      border-left-width: 3px;
-    }
-  }
-}
-
-@media (max-width: 600px) {
-  h1 {
-    font-size: 2.4rem;
-  }
-
-  h2 {
-    font-size: 1.2rem;
-  }
-
-  .subtitle {
-    font-size: 1.2rem;
-  }
 }

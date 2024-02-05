@@ -1,94 +1,25 @@
 .home {
   display: flex;
-  height: 75vh;
-  width: 100%;
+  flex-direction: column;
+  gap: 16rem;
 
-  &__section {
-    width: 50%;
-    height: 100%;
+  .hero {
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
+    align-items: center;
 
-    .home__text {
-      margin-bottom: 1rem;
-
-      p {
-        margin-bottom: 2rem;
-        line-height: 140%;
-
-        &:last-of-type {
-          margin-bottom: 0;
-        }
-      }
-    }
-  }
-
-  #graphic {
-    border-left: 1px solid var(--text-color);
-    position: relative;
-    padding: 1rem 0 1rem 2rem;
-  }
-}
-
-.title {
-  font-size: 4rem;
-  line-height: 120%;
-}
-
-@media (max-width: 600px) {
-  .home {
-    flex-direction: column;
-    min-height: 80vh;
-    height: auto;
-
-    &__section {
-      width: 100%;
-
-      &--title {
-        height: fit-content;
-        margin-bottom: 1.5rem;
-      }
-
-      &--pi {
-        display: block;
-        flex: 1;
-        position: relative;
-
-        & > a {
-          padding-top: 1rem;
-          position: absolute;
-          height: 100%;
-          width: 100%;
-          top: 0;
-          left: 0;
-        }
-      }
-
-      div {
-        margin-bottom: 0;
-
-        p {
-          margin-bottom: 1rem;
-          line-height: 140%;
-
-          &:last-of-type {
-            margin-bottom: 0;
-          }
-        }
-      }
+    .title, .text {
+      width: fit-content;
     }
 
-    #graphic {
-      border-left: none;
-      border-top: 1px solid var(--text-color);
-      padding: 1rem 0 0 0;
+    .title {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
     }
-  }
 
-  .title {
-    font-size: 2.5rem;
-    line-height: 100%;
-    margin-bottom: 1rem;
+    .text {
+      text-align: right;
+    }
   }
 }

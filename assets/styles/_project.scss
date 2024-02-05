@@ -1,0 +1,12 @@
+.project-card {
+  border-bottom: 1px solid var(--logo-grey);
+  padding: 2rem 0.5rem 1rem 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  &__subtitle {
+    color: var(--text-light)
+  }
+}

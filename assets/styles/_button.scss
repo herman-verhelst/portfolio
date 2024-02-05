@@ -1,0 +1,27 @@
+@import "variables";
+
+button {
+  outline-color: transparent;
+  border: none;
+  background-color: transparent;
+}
+
+.button {
+  border-radius: 0.5rem;
+
+  &--icon {
+    padding: 0.5rem;
+
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  @for $i from 1 through $number-of-projects {
+    &--color-#{$i} {
+      background-color: var(--accent-project#{$i});
+    }
+  }
+}
+

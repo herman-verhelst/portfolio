@@ -6,3 +6,31 @@
   box-sizing: border-box;
 }
 
+.lang-switcher {
+  color: var(--text-light);
+  font-weight: 500 !important;
+
+  &--active {
+    color: var(--text-color);
+  }
+
+  &__container {
+    display: flex;
+    gap: .5rem;
+
+    &--small {
+      font-size: .8rem;
+      letter-spacing: .08rem;
+      text-transform: uppercase;
+      gap: .25rem;
+
+      .lang-switcher {
+        color: var(--bg-dark);
+
+        &--active {
+          color: var(--bg-color);
+        }
+      }
+    }
+  }
+}

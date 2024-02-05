@@ -1,0 +1,17 @@
+.tag {
+  font-size: .75rem;
+  color: var(--text-light);
+  border: 1px solid var(--text-light);
+  border-radius: 0.25rem;
+  display: flex;
+  padding: 0.25rem 0.5rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: fit-content;
+
+  &__container {
+    display: flex;
+    gap: 0.5rem;
+  }
+}
