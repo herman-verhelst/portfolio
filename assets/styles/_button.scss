@@ -8,6 +8,20 @@ button {
 
 .button {
   border-radius: 0.5rem;
+  padding: .5rem 1rem;
+  width: fit-content;
+
+  &--primary {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+  }
+
+  &--l {
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: .1rem;
+  }
 
   &--icon {
     padding: 0.5rem;

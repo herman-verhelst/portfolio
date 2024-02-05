@@ -53,6 +53,11 @@ h2 {
   line-height: 160%;
 }
 
+.uppercase {
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+}
+
 @media (max-width: 600px) {
   h1 {
     font-size: 2.4rem;

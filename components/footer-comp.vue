@@ -1,5 +1,9 @@
 <script setup lang="ts">
-const switchLocalePath = useSwitchLocalePath()
+import {useLocalePath} from "#i18n";
+
+const switchLocalePath = useSwitchLocalePath();
+const localePath = useLocalePath();
+
 
 defineProps({
   footerColor: {
@@ -33,7 +37,7 @@ defineProps({
           </div>
           <div class="footer__contact">
             <h3 class="proforma">{{ $t('contact.title')}}</h3>
-            <nuxt-link to="">{{ $t('contact.question')}}</nuxt-link>
+            <nuxt-link :to="localePath('/contact')">{{ $t('contact.question')}}</nuxt-link>
           </div>
         </div>
       </div>

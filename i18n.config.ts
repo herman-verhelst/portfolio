@@ -25,7 +25,13 @@ export default defineI18nConfig(() => ({
             },
             contact: {
                 title: 'Contact',
-                question: 'Do you still have some questions?'
+                question: 'Do you still have some questions?',
+                title1: 'Do you still have some',
+                title2: 'questions',
+                name: 'Your name',
+                email: 'Your email',
+                message: 'Your message',
+                send: 'Send'
             },
             socials: 'Socials',
             footer: {
@@ -72,7 +78,13 @@ export default defineI18nConfig(() => ({
             },
             contact: {
                 title: 'Contact',
-                question: 'Heb je nog een vraag?'
+                question: 'Heb je nog een vraag?',
+                title1: 'Heb je nog een',
+                title2: 'vraag',
+                name: 'Jouw naam',
+                email: 'Jouw e-mail',
+                message: 'Jouw Bericht',
+                send: 'Verstuur'
             },
             socials: 'Socials',
             footer: {
