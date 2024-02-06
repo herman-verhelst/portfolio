@@ -1,24 +1,11 @@
 <script setup lang="ts">
 import transitionConfig from "~/helpers/transitionConfig";
 import FooterComp from "~/components/footer-comp.vue";
-import {Project} from "~/utils/models/project";
+import {useProjectsStore} from "~/stores/projects";
+import {storeToRefs} from "pinia";
 
-const projects: Project[] = [
-  new Project(
-      1,
-      'projects.woodenBoxes.title',
-      'projects.woodenBoxes.subtitle',
-      [{name: 'tags.mind'}, {name: 'tags.wood'}, {name: 'tags.dataVis'}],
-      'wooden-boxes'
-  ),
-  new Project(
-      2,
-      'projects.woodenBoxes.title',
-      'projects.woodenBoxes.subtitle',
-      [{name: 'tags.mind'}, {name: 'tags.wood'}, {name: 'tags.dataVis'}],
-      'wooden-boxes'
-  )
-]
+const projectsStore = useProjectsStore()
+const projects = storeToRefs(projectsStore).projects
 
 definePageMeta({
   pageTransition: transitionConfig

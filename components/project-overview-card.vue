@@ -1,14 +1,18 @@
 <script setup lang="ts">
-import {Project} from "~/utils/models/project";
 import ProjectTag from "~/components/project-tag.vue";
+import {useLocalePath} from "#i18n";
+
+const localePath = useLocalePath();
 
 defineProps({
-  project: Project
+  project: {
+    required: true
+  }
 })
 </script>
 
 <template>
-  <section class="project-card">
+  <nuxt-link :to="localePath(`/projects/${project.link}`)" class="project-card">
     <div class="w-full">
       <h2 class="project-card__title">{{ $t(project.title) }}</h2>
       <p class="project-card__subtitle proforma">{{ $t(project.subtitle) }}</p>
@@ -26,7 +30,7 @@ defineProps({
       </svg>
 
     </button>
-  </section>
+  </nuxt-link>
 </template>
 
 <style scoped lang="scss">

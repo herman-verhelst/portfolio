@@ -15,8 +15,8 @@ definePageMeta({
       <div class="hero">
         <h1 class="title">
           <span><b>Herman Verhelst</b></span>
-          <span><b>Web</b> <i class="proforma">&</i> <b>Information</b> <br/> designer.</span>
-          <span>{{$t('home.loves')}} <b>{{$t('home.wood')}}.</b></span>
+          <span><b>Web</b> <i class="proforma">&</i> <b>Information</b> <br/> designer</span>
+          <span>{{$t('home.loves')}} <b>{{$t('home.wood')}}</b></span>
         </h1>
 
         <p class="text proforma">

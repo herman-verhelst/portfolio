@@ -10,7 +10,7 @@ const localePath = useLocalePath();
   <nav id="nav" class="nav">
     <div>
       <div class="logo__container">
-        <nuxt-link :to="localePath('/')" aria-hidden="true" class="logo">
+        <nuxt-link :to="localePath('/')" class="logo">
           <img alt="Logo - Herman Verhelst" src="~/assets/icons/logo_color.svg">
         </nuxt-link>
       </div>
@@ -21,7 +21,7 @@ const localePath = useLocalePath();
             <nuxt-link class="nav__link" :to="localePath('/projects')">{{ $t('nav.projects') }}</nuxt-link>
           </li>
           <li>
-            <nuxt-link class="nav__link" to="/">{{ $t('nav.about') }}</nuxt-link>
+            <nuxt-link class="nav__link" to="#">{{ $t('nav.about') }}</nuxt-link>
           </li>
           <li>
             <nuxt-link class="nav__link" :to="localePath('/contact')">{{ $t('nav.contact') }}</nuxt-link>

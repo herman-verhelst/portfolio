@@ -4,6 +4,7 @@ export default defineNuxtConfig({
     modules: [
         '@nuxtjs/tailwindcss',
         '@nuxtjs/i18n',
+        '@pinia/nuxt',
     ],
     css: ['~/assets/styles/styles.scss'],
     app: {
