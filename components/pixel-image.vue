@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {Pixel} from "~/utils/models/pixel";
 import '~/assets/styles/components/pixel-image.scss'
+import {Shape} from "~/utils/models/shape";
 
 const props = defineProps({
   isFullPage: {
@@ -8,6 +9,8 @@ const props = defineProps({
     default: false,
   }
 });
+
+let streaming: boolean = true;
 
 onMounted(() => {
 
@@ -26,7 +29,6 @@ onMounted(() => {
   let pixels: Pixel[][] = [],
       previousValues: number[][] = [],
       colorLocations: string[][] = [],
-      streaming: boolean = true,
       startPixelX: number = 0,
       startPixelY: number = 0,
       width: number = getComputedStyle(document.body).getPropertyValue('--pi-width') ? parseInt(getComputedStyle(document.body).getPropertyValue('--pi-width') as string) : 32,
@@ -38,21 +40,27 @@ onMounted(() => {
       numberOfPixelsHeight: number = 0,
       numberOfPixelsWidth: number = 0,
       id: number,
-      valueUpdated: boolean = false;
+      valueUpdated: boolean = false,
+      shapes: Shape[] = [];
 
   function addEventListeners(): void {
-    video.addEventListener(
+    if (props.isFullPage) video.addEventListener(
         "canplay",
-        onVideoReady,
+        startAnimation,
         false
-    );
+    ); else startAnimation();
 
     window.addEventListener('resize', onWindowResize);
   }
 
-  function onVideoReady(): void {
-    console.log('video ready')
-    height = video.videoHeight / (video.videoWidth / width);
+  function startAnimation(): void {
+    if (props.isFullPage) height = video.videoHeight / (video.videoWidth / width);
+    else {
+      height = 24;
+    }
+
+    console.log(width, height)
+
 
     videoCanvas.setAttribute("width", `${width}`);
     videoCanvas.setAttribute("height", `${height}`);
@@ -68,9 +76,10 @@ onMounted(() => {
   }
 
   function calculatePixelWidth() {
-    if (props.isFullPage) defaultPixelGap = 45 * Math.exp(-0.057 * width) + 1;
+    defaultPixelGap = 45 * Math.exp(-0.057 * width) + 1;
 
     if (bgCanvas.offsetHeight / bgCanvas.offsetWidth > height / width) {
+      console.log('here')
       defaultPixelWidth = (bgCanvas.offsetHeight - (defaultPixelGap * (height - 1)) - 2 * canvasMargin) / height;
       numberOfPixelsHeight = height;
       numberOfPixelsWidth = Math.min(width, Math.round((bgCanvas.offsetWidth - 2 * canvasMargin) / (defaultPixelWidth + defaultPixelGap)));
@@ -79,7 +88,10 @@ onMounted(() => {
       startPixelY = 0;
       startPixelX = Math.floor((width - numberOfPixelsWidth) / 2);
     } else {
+      console.log('else')
+      console.log(bgCanvas.offsetWidth, defaultPixelGap, width, canvasMargin)
       defaultPixelWidth = (bgCanvas.offsetWidth - (defaultPixelGap * (width - 1)) - 2 * canvasMargin) / width;
+      console.log(defaultPixelWidth)
       numberOfPixelsWidth = width;
       numberOfPixelsHeight = Math.min(height, Math.round((bgCanvas.offsetHeight - 2 * canvasMargin) / (defaultPixelWidth + defaultPixelGap)));
       pixelGapWidth = defaultPixelGap;
@@ -87,6 +99,8 @@ onMounted(() => {
       startPixelX = 0;
       startPixelY = Math.floor((height - numberOfPixelsHeight) / 2);
     }
+
+    console.log(numberOfPixelsWidth, numberOfPixelsHeight)
 
     setupPreviousValuesAndColors();
   }
@@ -125,10 +139,31 @@ onMounted(() => {
     id = requestAnimationFrame(timerCallback);
   }
 
+  function drawShapes(): void {
+    videoContext.fillStyle = '#FFF';
+    videoContext.fillRect(0, 0, bgCanvas.height, bgCanvas.width);
+
+    if (shapes.length <= 0) {
+      const newShape: Shape = new Shape(2, 1, 1, 5, 3, .01);
+      shapes.push(newShape)
+    }
+
+    shapes.forEach(shape => {
+      shape.move();
+      videoContext.beginPath();
+      videoContext.ellipse(shape.posX, shape.posY, shape.size, shape.size, 0, 0, Math.PI * 2);
+
+      videoContext.fillStyle = '#000'
+      videoContext.fill();
+    })
+  }
+
   function computeFrame(): void {
     if (!streaming) return;
 
-    videoContext.drawImage(video, 0, 0, width, height);
+    if (props.isFullPage) videoContext.drawImage(video, 0, 0, width, height);
+    else drawShapes();
+
     let frame = videoContext.getImageData(0, 0, width, height);
 
     for (let i = 0; i < height; i++) {
@@ -139,15 +174,15 @@ onMounted(() => {
       }
     }
 
-    const XCoordinates: number[] = [];
+    const xCoordinates: number[] = [];
     for (let i = 0; i < numberOfPixelsWidth; i++) {
-      XCoordinates.push(i * defaultPixelWidth + i * pixelGapWidth + canvasMargin)
+      xCoordinates.push(i * defaultPixelWidth + i * pixelGapWidth + canvasMargin)
     }
 
     for (let i = 0; i < numberOfPixelsHeight; i++) {
       const yCoordinate: number = i * defaultPixelWidth + i * pixelGapHeight + canvasMargin;
       for (let j = 0; j < numberOfPixelsWidth; j++) {
-        createDisplayedPixel(pixels[i + startPixelY][j + startPixelX], XCoordinates[numberOfPixelsWidth - j - 1], yCoordinate, i, j);
+        createDisplayedPixel(pixels[i + startPixelY][j + startPixelX], xCoordinates[numberOfPixelsWidth - j - 1], yCoordinate, i, j);
       }
     }
 
@@ -186,6 +221,7 @@ onMounted(() => {
     bgContext.scale(window.devicePixelRatio, window.devicePixelRatio);
 
     bgContext.fillStyle = pixelColor;
+    videoContext.fillStyle = pixelColor;
   }
 
   function setupCamera(): void {
@@ -238,24 +274,32 @@ onMounted(() => {
   }
 
 
-  setupCamera();
-  addEventListeners();
   setupCanvas();
   setupPreviousValuesAndColors();
-  previousValues = [];
+  if (props.isFullPage) setupCamera();
+  addEventListeners();
+  //previousValues = [];
+
+
 })
+function stopAnimation() {
+  streaming = false;
+}
 
 </script>
 
 <template>
-  <video ref="video" id="video">Video stream not available.</video>
-  <canvas id="video-canvas"></canvas>
+  <section>
+    <button @click="stopAnimation()">Stop</button>
+    <video ref="video" id="video">Video stream not available.</video>
+    <canvas id="video-canvas" style="display: block;"></canvas>
 
-  <div class="bg-canvas__container">
-    <div id="bg-canvas-container">
-      <canvas class="bg-canvas" id="bg-canvas"></canvas>
+    <div class="bg-canvas__container">
+      <div id="bg-canvas-container">
+        <canvas class="bg-canvas" id="bg-canvas"></canvas>
+      </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped lang="scss">

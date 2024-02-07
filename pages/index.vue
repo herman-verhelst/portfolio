@@ -23,6 +23,8 @@ definePageMeta({
           {{$t('home.text')}}
         </p>
       </div>
+
+      <pixel-image></pixel-image>
     </div>
 
     <footer-comp></footer-comp>

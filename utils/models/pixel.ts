@@ -2,7 +2,6 @@ export class Pixel {
     private readonly r: number;
     private readonly g: number;
     private readonly b: number;
-    // @ts-ignore
     private readonly a: number;
 
     constructor(r: number, g: number, b: number, a: number) {
