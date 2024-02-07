@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ProjectTag from "~/components/project-tag.vue";
 import {useLocalePath} from "#i18n";
+import {toCamelCase} from "~/utils/string-utils";
 
 const localePath = useLocalePath();
 
@@ -14,8 +15,8 @@ defineProps({
 <template>
   <nuxt-link :to="localePath(`/projects/${project.link}`)" class="project-card">
     <div class="w-full">
-      <h2 class="project-card__title">{{ $t(project.title) }}</h2>
-      <p class="project-card__subtitle proforma">{{ $t(project.subtitle) }}</p>
+      <h2 class="project-card__title">{{ $t(`projects.${toCamelCase(project.link)}.title`) }}</h2>
+      <p class="project-card__subtitle proforma">{{ $t(`projects.${toCamelCase(project.link)}.subtitle`) }}</p>
     </div>
     <div class="tag__container w-full">
       <project-tag v-for="tag of project?.tags">
@@ -28,7 +29,6 @@ defineProps({
             d="M5.3335 17.1667H23.8668L19.7335 20.9667L20.6668 21.9667L26.5335 16.5L20.6668 11.0333L19.7335 12.0333L23.8668 15.8333H5.3335V17.1667Z"
             fill="#F6F2EF"/>
       </svg>
-
     </button>
   </nuxt-link>
 </template>

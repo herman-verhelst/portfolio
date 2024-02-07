@@ -1,16 +1,14 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 
 import transitionConfig from "~/helpers/transitionConfig";
 import {useProjectsStore} from "~/stores/projects";
 
-
 const projectsStore = useProjectsStore();
-const {filterProjects} = projectsStore;
+const {findProjectByLink} = projectsStore;
 
 const route = useRoute()
 
-const project = filterProjects(route.params.id as string)
-console.log(project)
+const project = findProjectByLink(route.params.id as string)
 
 definePageMeta({
   pageTransition: transitionConfig
@@ -21,12 +19,36 @@ definePageMeta({
   <main>
     <div class="page">
       <project-hero :project="project"></project-hero>
+
+      <div class="project__content">
+        <template v-for="component of project.components">
+          <project-images
+              v-if="component.type === 'images'"
+              :images="component.images"
+              :small="component.small"
+              :page="route.params.id">
+          </project-images>
+          <project-text
+              v-if="component.type === 'text'"
+              :title="component.title"
+              :text="component.text"
+              :page="route.params.id">
+          </project-text>
+          <project-image-full-screen
+              v-if="component.type === 'image-full-screen'"
+              :image="component.image"
+              :page="route.params.id">
+          </project-image-full-screen>
+        </template>
+      </div>
+
+      <project-discover></project-discover>
     </div>
 
-    <footer-comp></footer-comp>
+    <footer-comp :footer-color="`footer--bg-${project.id}`"></footer-comp>
   </main>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 
 </style>

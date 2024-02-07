@@ -6,6 +6,11 @@
   box-sizing: border-box;
 }
 
+img {
+  border-radius: .5rem;
+  object-fit: cover;
+}
+
 .lang-switcher {
   color: var(--text-light);
   font-weight: 500 !important;

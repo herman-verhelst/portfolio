@@ -8,7 +8,7 @@ const localePath = useLocalePath();
 defineProps({
   footerColor: {
     type: String,
-    default: 'footer--default-bg'
+    default: 'footer--bg-default'
   },
 })
 </script>

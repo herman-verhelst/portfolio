@@ -1,14 +1,22 @@
+@import "variables";
+
 .footer {
   margin: .5rem;
   border-radius: .5rem;
   height: calc(100vh - 1rem);
+  color: var(--bg-color);
 
-  &--default-bg {
-    background-color: var(--text-color);
+  a {
     color: var(--bg-color);
+  }
 
-    a {
-      color: var(--bg-color);
+  &--bg-default {
+    background-color: var(--text-color);
+  }
+
+  @for $i from 1 through $number-of-projects {
+    &--bg-#{$i} {
+      background-color: var(--accent-project#{$i});
     }
   }
 

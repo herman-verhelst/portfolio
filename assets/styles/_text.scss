@@ -9,6 +9,28 @@ a {
   text-decoration: none;
   font-weight: 500;
   color: var(--text-color);
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -.2rem;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background-color: var(--text-color);
+    transform: scaleX(0%);
+    transform-origin: left;
+    transition: transform .2s ease-in-out;
+  }
+
+  &:focus-visible {
+    outline: transparent;
+
+    &:after {
+      transform: scaleX(100%);
+    }
+  }
 }
 
 h1 {
