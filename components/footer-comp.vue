@@ -1,9 +1,8 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {useLocalePath} from "#i18n";
 
 const switchLocalePath = useSwitchLocalePath();
 const localePath = useLocalePath();
-
 
 defineProps({
   footerColor: {
@@ -36,28 +35,38 @@ defineProps({
             </ul>
           </div>
           <div class="footer__contact">
-            <h3 class="proforma">{{ $t('contact.title')}}</h3>
-            <nuxt-link :to="localePath('/contact')">{{ $t('contact.question')}}</nuxt-link>
+            <h3 class="proforma">{{ $t('contact.title') }}</h3>
+            <nuxt-link :to="localePath('/contact')">{{ $t('contact.question') }}</nuxt-link>
           </div>
         </div>
       </div>
-      <div class="footer__small">
-        <p>Herman Verhelst | 2024</p>
+      <div>
+        <div class="footer__small">
+          <p>Herman Verhelst | 2024</p>
 
-        <li class="lang-switcher__container lang-switcher__container--small">
-          <nuxt-link class="nav__link lang-switcher" :class="{'lang-switcher--active': $i18n.locale === 'nl'}"
-                     :to="switchLocalePath('nl')">Nl
-          </nuxt-link>
-          |
-          <nuxt-link class="nav__link lang-switcher" :class="{'lang-switcher--active': $i18n.locale === 'en'}"
-                     :to="switchLocalePath('en')">Eng
-          </nuxt-link>
-        </li>
+          <div class="lang-switcher__container lang-switcher__container--small">
+            <nuxt-link :class="{'lang-switcher--active': $i18n.locale === 'nl'}" :to="switchLocalePath('nl')"
+                       class="nav__link lang-switcher">Nl
+            </nuxt-link>
+            |
+            <nuxt-link :class="{'lang-switcher--active': $i18n.locale === 'en'}" :to="switchLocalePath('en')"
+                       class="nav__link lang-switcher">Eng
+            </nuxt-link>
+          </div>
+        </div>
+
+        <pixel-image
+            :is-full-page="false"
+            :number-of-rows="2"
+            :dark-bg="true"
+            canvas-id="footer"
+            class="pixel-image--footer">
+        </pixel-image>
       </div>
     </div>
   </footer>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 
 </style>

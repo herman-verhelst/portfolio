@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 
 import transitionConfig from "~/helpers/transitionConfig";
 import PixelImage from "~/components/pixel-image.vue";
@@ -16,15 +16,15 @@ definePageMeta({
         <h1 class="title">
           <span><b>Herman Verhelst</b></span>
           <span><b>Web</b> <i class="proforma">&</i> <b>Information</b> <br/> designer</span>
-          <span>{{$t('home.loves')}} <b>{{$t('home.wood')}}</b></span>
+          <span>{{ $t('home.loves') }} <b>{{ $t('home.wood') }}</b></span>
         </h1>
 
         <p class="text proforma">
-          {{$t('home.text')}}
+          {{ $t('home.text') }}
         </p>
       </div>
 
-      <pixel-image></pixel-image>
+      <pixel-image :number-of-rows="4" canvas-id="homepage" class="pixel-image--home"></pixel-image>
     </div>
 
     <footer-comp></footer-comp>
@@ -32,6 +32,6 @@ definePageMeta({
 
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @use "assets/styles/pages/home";
 </style>
