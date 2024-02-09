@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import {useLocalePath} from "#i18n";
 
 const switchLocalePath = useSwitchLocalePath()
@@ -10,7 +10,7 @@ const localePath = useLocalePath();
   <nav id="nav" class="nav">
     <div>
       <div class="logo__container">
-        <nuxt-link :to="localePath('/')" class="logo">
+        <nuxt-link v-cursor :to="localePath('/')" class="logo">
           <img alt="Logo - Herman Verhelst" src="~/assets/icons/logo_color.svg">
         </nuxt-link>
       </div>
@@ -18,22 +18,24 @@ const localePath = useLocalePath();
       <div class="links__container">
         <ul>
           <li>
-            <nuxt-link class="nav__link" :to="localePath('/projects')">{{ $t('nav.projects') }}</nuxt-link>
+            <nuxt-link v-cursor :to="localePath('/projects')" class="nav__link">{{ $t('nav.projects') }}</nuxt-link>
           </li>
           <li>
-            <nuxt-link class="nav__link" to="#">{{ $t('nav.about') }}</nuxt-link>
+            <nuxt-link v-cursor class="nav__link" to="#">{{ $t('nav.about') }}</nuxt-link>
           </li>
           <li>
-            <nuxt-link class="nav__link" :to="localePath('/contact')">{{ $t('nav.contact') }}</nuxt-link>
+            <nuxt-link v-cursor :to="localePath('/contact')" class="nav__link">{{ $t('nav.contact') }}</nuxt-link>
           </li>
 
           <li class="lang-switcher__container">
-            <nuxt-link class="nav__link lang-switcher" :class="{'lang-switcher--active': $i18n.locale === 'nl'}"
-                       :to="switchLocalePath('nl')">Nl
+            <nuxt-link v-cursor :class="{'lang-switcher--active': $i18n.locale === 'nl'}"
+                       :to="switchLocalePath('nl')"
+                       class="nav__link lang-switcher">Nl
             </nuxt-link>
             |
-            <nuxt-link class="nav__link lang-switcher" :class="{'lang-switcher--active': $i18n.locale === 'en'}"
-                       :to="switchLocalePath('en')">Eng
+            <nuxt-link v-cursor :class="{'lang-switcher--active': $i18n.locale === 'en'}"
+                       :to="switchLocalePath('en')"
+                       class="nav__link lang-switcher">Eng
             </nuxt-link>
           </li>
         </ul>
@@ -42,6 +44,6 @@ const localePath = useLocalePath();
   </nav>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 
 </style>

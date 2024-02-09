@@ -11,7 +11,7 @@
   }
 
   &--bg-default {
-    background-color: var(--text-color);
+    background-color: var(--bg-footer);
   }
 
   @for $i from 1 through $number-of-projects {

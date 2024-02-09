@@ -1,5 +1,12 @@
 <script lang="ts" setup>
 import {useLocalePath} from "#i18n";
+import gsap from "gsap";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
+import {useTransitionComposable} from "~/composables/transition-composable";
+import {Power1} from "gsap/gsap-core";
+import Context = gsap.Context;
+
+gsap.registerPlugin(ScrollTrigger);
 
 const switchLocalePath = useSwitchLocalePath();
 const localePath = useLocalePath();
@@ -10,10 +17,52 @@ defineProps({
     default: 'footer--bg-default'
   },
 })
+
+const {transitionState} = useTransitionComposable();
+let context: Context;
+watch(
+    () => transitionState.transitionComplete,
+    (newValue) => {
+      if (!newValue) return;
+
+      context = gsap.context(() => {
+        gsap.to('#nav', {
+          y: -100,
+          duration: .2,
+          ease: Power1.easeInOut,
+          scrollTrigger: {
+            trigger: '#footer',
+            start: "top 65px",
+            toggleActions: "play reverse restart reverse",
+          }
+        })
+
+        gsap.to('.footer', {
+          margin: 0,
+          padding: '0.5rem',
+          borderRadius: 0,
+          duration: .2,
+          height: '100vh',
+          ease: Power1.easeInOut,
+          scrollTrigger: {
+            trigger: '#footer',
+            start: "top 5%",
+            toggleActions: "play reverse restart reverse",
+          }
+        })
+      })
+    }
+)
+
+onUnmounted(() => {
+  context.revert();
+  ScrollTrigger.killAll();
+})
+
 </script>
 
 <template>
-  <footer :class="footerColor" class="footer">
+  <footer id="footer" :class="footerColor" class="footer">
     <div class="footer__container">
       <div class="footer__main">
         <h2 class="footer__title">
@@ -27,16 +76,16 @@ defineProps({
           <div class="footer__socials">
             <h3 class="proforma">{{ $t('socials') }}</h3>
             <ul>
-              <li><a href="#">Dribbble.</a></li>
-              <li><a href="#">Behance.</a></li>
-              <li><a href="#">LinkedIn.</a></li>
-              <li><a href="#">GitHub.</a></li>
-              <li><a href="#">Instagram.</a></li>
+              <li><a v-cursor href="#">Dribbble.</a></li>
+              <li><a v-cursor href="#">Behance.</a></li>
+              <li><a v-cursor href="#">LinkedIn.</a></li>
+              <li><a v-cursor href="#">GitHub.</a></li>
+              <li><a v-cursor href="#">Instagram.</a></li>
             </ul>
           </div>
           <div class="footer__contact">
             <h3 class="proforma">{{ $t('contact.title') }}</h3>
-            <nuxt-link :to="localePath('/contact')">{{ $t('contact.question') }}</nuxt-link>
+            <nuxt-link v-cursor :to="localePath('/contact')">{{ $t('contact.question') }}</nuxt-link>
           </div>
         </div>
       </div>
@@ -45,11 +94,11 @@ defineProps({
           <p>Herman Verhelst | 2024</p>
 
           <div class="lang-switcher__container lang-switcher__container--small">
-            <nuxt-link :class="{'lang-switcher--active': $i18n.locale === 'nl'}" :to="switchLocalePath('nl')"
+            <nuxt-link v-cursor :class="{'lang-switcher--active': $i18n.locale === 'nl'}" :to="switchLocalePath('nl')"
                        class="nav__link lang-switcher">Nl
             </nuxt-link>
             |
-            <nuxt-link :class="{'lang-switcher--active': $i18n.locale === 'en'}" :to="switchLocalePath('en')"
+            <nuxt-link v-cursor :class="{'lang-switcher--active': $i18n.locale === 'en'}" :to="switchLocalePath('en')"
                        class="nav__link lang-switcher">Eng
             </nuxt-link>
           </div>

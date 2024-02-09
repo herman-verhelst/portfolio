@@ -11,7 +11,7 @@ defineProps({
 
 <template>
   <section class="project__hero">
-    <img class="project__thumbnail" :src="`/images/projects/${project.link}/${project.thumbnail}`" alt="">
+    <img v-scroll-animation class="project__thumbnail" :src="`/images/projects/${project.link}/${project.thumbnail}`" alt="">
     <div class="project__hero-text">
       <div class="project__title-container">
         <h1 class="project__title">{{ $t(`projects.${toCamelCase(project.link)}.title`) }}</h1>

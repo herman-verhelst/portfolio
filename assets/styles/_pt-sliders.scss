@@ -1,3 +1,5 @@
+@import "variables";
+
 .pt-slider {
   position: fixed;
   width: 50%;
@@ -5,6 +7,12 @@
   background: var(--text-color);
   left: 0;
   z-index: 999;
+
+  @for $i from 1 through $number-of-projects {
+    &--bg-#{$i} {
+      background-color: var(--accent-project#{$i});
+    }
+  }
 
   &:first-of-type {
     left: 0;

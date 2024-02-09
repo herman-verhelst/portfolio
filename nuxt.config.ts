@@ -6,6 +6,9 @@ export default defineNuxtConfig({
         '@nuxtjs/i18n',
         '@pinia/nuxt',
     ],
+    plugins: [
+        '~/plugins/directives.ts'
+    ],
     css: ['~/assets/styles/styles.scss'],
     app: {
         head: {

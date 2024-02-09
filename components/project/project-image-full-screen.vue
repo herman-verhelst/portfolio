@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 defineProps({
   image: {
     required: true
@@ -11,9 +11,10 @@ defineProps({
 </script>
 
 <template>
-  <img class="project__image-full-screen" :src="`/images/projects/${page}/${image.src}`" :alt="image.alt">
+  <img v-scroll-animation :alt="image.alt" :src="`/images/projects/${page}/${image.src}`"
+       class="project__image-full-screen">
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 
 </style>

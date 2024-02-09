@@ -18,10 +18,10 @@ defineProps({
 </script>
 
 <template>
-  <nuxt-link v-if="project" :to="localePath(`/projects/${project.link}`)" class="project__home">
+  <div v-if="project" class="project__home">
     <img :style="{gridColumn: thumbnailGrid}" :src="`/images/projects/${project.link}/${project.thumbnail}`" alt="">
     <div :style="{gridColumn: textGrid}" class="project__home__text">
-      <div class="project__home__title">
+      <nuxt-link v-cursor :to="localePath(`/projects/${project.link}?id=${project.id}`)"  class="project__home__title">
         <h2>{{ $t(`projects.${toCamelCase(project.link)}.title`) }}</h2>
         <button class="button button--icon-small" :class="`button--color-${project?.id}`">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
@@ -30,7 +30,7 @@ defineProps({
                 fill="#F6F2EF"/>
           </svg>
         </button>
-      </div>
+      </nuxt-link>
       <p class="proforma">
         {{ $t(`projects.${toCamelCase(project.link)}.subtitle`) }}</p>
 
@@ -38,7 +38,7 @@ defineProps({
 
     </div>
 
-  </nuxt-link>
+  </div>
 </template>
 
 <style scoped lang="scss">

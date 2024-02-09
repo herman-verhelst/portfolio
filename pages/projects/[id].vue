@@ -2,6 +2,10 @@
 
 import transitionConfig from "~/helpers/transition-config";
 import {useProjectsStore} from "~/stores/projects";
+import middleware from "~/helpers/middleware";
+import {toCamelCase} from "~/utils/string-utils";
+
+const {t} = useI18n();
 
 const projectsStore = useProjectsStore();
 const {findProjectByLink} = projectsStore;
@@ -11,7 +15,12 @@ const route = useRoute()
 const project = findProjectByLink(route.params.id as string)
 
 definePageMeta({
-  pageTransition: transitionConfig
+  pageTransition: transitionConfig,
+  middleware: middleware,
+})
+
+if (project) useHead({
+  title: `${t(`projects.${toCamelCase(project.link)}.title`)}`
 })
 </script>
 

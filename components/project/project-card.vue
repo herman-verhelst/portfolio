@@ -12,7 +12,7 @@ defineProps({
 </script>
 
 <template>
-  <nuxt-link v-if="project" :to="localePath(`/projects/${project.link}`)" class="project__discover-card">
+  <nuxt-link v-cursor v-if="project" :to="localePath(`/projects/${project.link}?id=${project.id}`)" class="project__discover-card">
     <img :src="`/images/projects/${project.link}/${project.thumbnail}`" alt="">
     <div class="project__discover-text">
       <p>{{ $t(`projects.${toCamelCase(project.link)}.title`) }}</p>

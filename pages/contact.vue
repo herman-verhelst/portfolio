@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import transitionConfig from "~/helpers/transition-config";
+import middleware from "~/helpers/middleware";
 
 definePageMeta({
-  pageTransition: transitionConfig
+  pageTransition: transitionConfig,
+  middleware: middleware
 })
 </script>
 

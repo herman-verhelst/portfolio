@@ -4,6 +4,7 @@ import transitionConfig from "~/helpers/transition-config";
 import PixelImage from "~/components/pixel-image.vue";
 import FooterComp from "~/components/footer-comp.vue";
 import {useProjectsStore} from "~/stores/projects";
+import middleware from "~/helpers/middleware";
 
 const projectsStore = useProjectsStore();
 const {findProjectById} = projectsStore;
@@ -14,7 +15,8 @@ const discoverProject3 = findProjectById(1)
 const discoverProject4 = findProjectById(1)
 
 definePageMeta({
-  pageTransition: transitionConfig
+  pageTransition: transitionConfig,
+  middleware: middleware
 })
 </script>
 

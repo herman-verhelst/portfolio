@@ -5,7 +5,6 @@ import {useTransitionComposable} from "~/composables/transition-composable";
 
 gsap.registerPlugin(ScrollTrigger);
 
-
 const props = defineProps({
   id: {
     type: String,

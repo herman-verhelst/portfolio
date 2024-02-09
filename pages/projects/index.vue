@@ -3,13 +3,36 @@ import transitionConfig from "~/helpers/transition-config";
 import FooterComp from "~/components/footer-comp.vue";
 import {useProjectsStore} from "~/stores/projects";
 import {storeToRefs} from "pinia";
+import gsap from "gsap";
+import middleware from "~/helpers/middleware";
 
 const projectsStore = useProjectsStore()
 const projects = storeToRefs(projectsStore).projects
 
 definePageMeta({
-  pageTransition: transitionConfig
+  pageTransition: transitionConfig,
+  middleware: middleware
 })
+
+onMounted(() => {
+  const projectList = document.getElementById(`projects`)
+
+  projectList?.addEventListener('mouseleave', () => {
+    gsap.set('#cursor-t1', {
+      backgroundImage: '',
+      backgroundSize: 'cover',
+      mixBlendMode: 'difference'
+
+    })
+    gsap.to('#cursor-t1', {
+      width: '20px',
+      borderRadius: '999px',
+      duration: .2,
+    })
+  })
+
+})
+
 </script>
 
 <template>
@@ -19,7 +42,7 @@ definePageMeta({
         {{ $t('projects.title1') }}<br/>
         <b>{{ $t('projects.title2') }}</b>.
       </h1>
-      <ul>
+      <ul id="projects">
         <li v-for="project of projects">
           <project-overview-card :project="project"></project-overview-card>
         </li>
