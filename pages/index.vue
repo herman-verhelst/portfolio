@@ -1,8 +1,17 @@
 <script lang="ts" setup>
 
-import transitionConfig from "~/helpers/transitionConfig";
+import transitionConfig from "~/helpers/transition-config";
 import PixelImage from "~/components/pixel-image.vue";
 import FooterComp from "~/components/footer-comp.vue";
+import {useProjectsStore} from "~/stores/projects";
+
+const projectsStore = useProjectsStore();
+const {findProjectById} = projectsStore;
+
+const discoverProject1 = findProjectById(1)
+const discoverProject2 = findProjectById(1)
+const discoverProject3 = findProjectById(1)
+const discoverProject4 = findProjectById(1)
 
 definePageMeta({
   pageTransition: transitionConfig
@@ -27,6 +36,40 @@ definePageMeta({
       <pixel-image :number-of-rows="4" canvas-id="homepage" class="pixel-image--home"></pixel-image>
     </div>
 
+    <section class="section">
+      <project-home
+          :project="discoverProject1"
+          thumbnail-grid="1 / span 8"
+          text-grid="span 4"
+      ></project-home>
+    </section>
+
+    <horizontal-scroll id="home">
+      <div class="horizontal-scroll__panel">
+        <project-home
+            class="section"
+            :project="discoverProject1"
+            thumbnail-grid="1 / span 8"
+            text-grid="span 4"
+        ></project-home>
+      </div>
+      <div class="horizontal-scroll__panel">
+        <project-home
+            class="section"
+            :project="discoverProject1"
+            thumbnail-grid="1 / span 8"
+            text-grid="span 4"
+        ></project-home>
+      </div>
+    </horizontal-scroll>
+
+    <section class="section section--last">
+      <project-home
+          :project="discoverProject1"
+          thumbnail-grid="1 / span 8"
+          text-grid="span 4"
+      ></project-home>
+    </section>
     <footer-comp></footer-comp>
   </main>
 

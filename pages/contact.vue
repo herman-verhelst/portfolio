@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import transitionConfig from "~/helpers/transitionConfig";
+import transitionConfig from "~/helpers/transition-config";
 
 definePageMeta({
   pageTransition: transitionConfig

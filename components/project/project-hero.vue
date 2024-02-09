@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ProjectTag from "~/components/project-tag.vue";
+import ProjectTag from "~/components/project/project-tag.vue";
 import {toCamelCase} from "~/utils/string-utils";
 
 defineProps({
@@ -19,11 +19,7 @@ defineProps({
       </div>
       <p class="project__subtitle" :class="'project__subtitle--color-' + project.id">
         {{ $t(`projects.${toCamelCase(project.link)}.subtitle`) }}</p>
-      <div class="tag__container w-full">
-        <project-tag v-for="tag of project?.tags">
-          {{ $t(tag.name) }}
-        </project-tag>
-      </div>
+      <project-tag-container :tags="project.tags"></project-tag-container>
     </div>
   </section>
 </template>

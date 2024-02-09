@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import transitionConfig from "~/helpers/transitionConfig";
+import transitionConfig from "~/helpers/transition-config";
 import FooterComp from "~/components/footer-comp.vue";
 import {useProjectsStore} from "~/stores/projects";
 import {storeToRefs} from "pinia";

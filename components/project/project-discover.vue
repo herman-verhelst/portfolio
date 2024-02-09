@@ -9,7 +9,6 @@ const {findProjectById} = projectsStore;
 
 const discoverProject1 = findProjectById(1)
 const discoverProject2 = findProjectById(1)
-console.log(discoverProject1)
 
 </script>
 

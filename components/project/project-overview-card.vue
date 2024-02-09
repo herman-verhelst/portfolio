@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ProjectTag from "~/components/project-tag.vue";
+import ProjectTag from "~/components/project/project-tag.vue";
 import {useLocalePath} from "#i18n";
 import {toCamelCase} from "~/utils/string-utils";
 
@@ -18,11 +18,7 @@ defineProps({
       <h2 class="project-card__title">{{ $t(`projects.${toCamelCase(project.link)}.title`) }}</h2>
       <p class="project-card__subtitle proforma">{{ $t(`projects.${toCamelCase(project.link)}.subtitle`) }}</p>
     </div>
-    <div class="tag__container w-full">
-      <project-tag v-for="tag of project?.tags">
-        {{ $t(tag.name) }}
-      </project-tag>
-    </div>
+    <project-tag-container :tags="project.tags"></project-tag-container>
     <button class="button button--icon" :class="`button--color-${project?.id}`">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
         <path

@@ -11,3 +11,13 @@
     padding-top: 12rem !important;
   }
 }
+
+.section {
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+
+  &--last {
+    margin-bottom: 30vh;
+  }
+}

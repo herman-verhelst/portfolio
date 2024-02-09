@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 
-import transitionConfig from "~/helpers/transitionConfig";
+import transitionConfig from "~/helpers/transition-config";
 import {useProjectsStore} from "~/stores/projects";
 
 const projectsStore = useProjectsStore();

@@ -144,4 +144,24 @@
       }
     }
   }
+
+  &__home {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(12, 1fr);
+    width: 100%;
+    grid-gap: 2rem;
+
+    &__text {
+      grid-column: span 4;
+      margin-top: 1rem;
+    }
+
+    &__title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: .5rem;
+    }
+  }
 }
