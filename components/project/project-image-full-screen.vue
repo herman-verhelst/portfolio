@@ -11,7 +11,7 @@ defineProps({
 </script>
 
 <template>
-  <img v-scroll-animation :alt="image.alt" :src="`/images/projects/${page}/${image.src}`"
+  <img data-scrolltrigger :alt="image.alt" :src="`/images/projects/${page}/${image.src}`"
        class="project__image-full-screen">
 </template>
 

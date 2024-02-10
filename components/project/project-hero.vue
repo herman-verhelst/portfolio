@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import ProjectTag from "~/components/project/project-tag.vue";
 import {toCamelCase} from "~/utils/string-utils";
 
 defineProps({
@@ -11,7 +10,7 @@ defineProps({
 
 <template>
   <section class="project__hero">
-    <img v-scroll-animation class="project__thumbnail" :src="`/images/projects/${project.link}/${project.thumbnail}`" alt="">
+    <img class="project__thumbnail" :src="`/images/projects/${project.link}/${project.thumbnail}`" alt="">
     <div class="project__hero-text">
       <div class="project__title-container">
         <h1 class="project__title">{{ $t(`projects.${toCamelCase(project.link)}.title`) }}</h1>

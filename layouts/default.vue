@@ -3,12 +3,55 @@ import Cursor from "~/components/cursor.vue";
 import PageTransition from "~/components/page-transition.vue";
 import Navigation from "~/components/navigation.vue";
 import {useTransitionComposable} from "~/composables/transition-composable";
+import gsap from "gsap";
+import {Power1} from "gsap/gsap-core";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
 
 const {toggleTransitionComplete} = useTransitionComposable();
+const {transitionState} = useTransitionComposable();
 
 onMounted(() => {
-  toggleTransitionComplete(true)
+  toggleTransitionComplete(true);
+  gsap.registerPlugin(ScrollTrigger);
+
+  setupScrollTriggers();
+
+  watch(
+      () => transitionState.transitionComplete,
+      (newValue) => {
+        console.log(newValue)
+        if (!newValue) return;
+        setupScrollTriggers();
+      }
+  )
 })
+
+
+function setupScrollTriggers() {
+  const elements: any = document.querySelectorAll('[data-scrolltrigger]');
+  for (let i = 0; i < elements.length; i++) {
+    const index: number = elements[i].dataset.scrolltrigger;
+
+    gsap.fromTo(elements[i], {
+      opacity: 0,
+      y: 16
+    }, {
+      opacity: 1,
+      y: 0,
+      duration: .2,
+      delay: index ? index * .1 : 0,
+      ease: Power1.easeInOut,
+      scrollTrigger: {
+        trigger: elements[i],
+        markers: true,
+        start: '-16 90%',
+        end: 'bottom-=16 top',
+        toggleActions: "play reverse play reset",
+      },
+    })
+  }
+
+}
 
 </script>
 

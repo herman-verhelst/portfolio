@@ -7,7 +7,7 @@ export default defineNuxtConfig({
         '@pinia/nuxt',
     ],
     plugins: [
-        '~/plugins/directives.ts'
+        '~/plugins/directives.ts',
     ],
     css: ['~/assets/styles/styles.scss'],
     app: {

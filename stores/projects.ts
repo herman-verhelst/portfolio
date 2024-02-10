@@ -66,11 +66,6 @@ export const useProjectsStore = defineStore('projects', () => {
                 }
             ]
         },
-        {
-            id: 2,
-            tags: [{name: 'tags.wood'}, {name: 'tags.dataVis'}],
-            link: 'haha'
-        },
     ])
 
     function findProjectByLink(link: string) {

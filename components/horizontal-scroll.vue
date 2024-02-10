@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import gsap from "gsap";
-import {ScrollTrigger} from "gsap/ScrollTrigger";
 import {useTransitionComposable} from "~/composables/transition-composable";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const props = defineProps({
   id: {

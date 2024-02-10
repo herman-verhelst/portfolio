@@ -1,12 +1,11 @@
 <script lang="ts" setup>
 import {useLocalePath} from "#i18n";
-import gsap from "gsap";
+import {gsap} from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 import {useTransitionComposable} from "~/composables/transition-composable";
 import {Power1} from "gsap/gsap-core";
 import Context = gsap.Context;
 
-gsap.registerPlugin(ScrollTrigger);
 
 const switchLocalePath = useSwitchLocalePath();
 const localePath = useLocalePath();

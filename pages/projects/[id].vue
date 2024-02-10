@@ -22,6 +22,7 @@ definePageMeta({
 if (project) useHead({
   title: `${t(`projects.${toCamelCase(project.link)}.title`)}`
 })
+
 </script>
 
 <template>

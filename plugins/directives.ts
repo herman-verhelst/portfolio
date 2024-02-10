@@ -1,5 +1,4 @@
-import gsap from "gsap";
-import {Power1} from "gsap/gsap-core";
+import {defineNuxtPlugin} from "nuxt/app";
 
 export default defineNuxtPlugin((app) => {
     app.vueApp.directive('cursor', {
@@ -20,24 +19,4 @@ export default defineNuxtPlugin((app) => {
         }
     });
 
-    app.vueApp.directive('scroll-animation', {
-        mounted (element) {
-            gsap.fromTo(element, {
-                opacity: 0,
-                y: 50,
-            }, {
-                opacity: 1,
-                y: 0,
-                duration: .2,
-                ease: Power1.easeInOut,
-                scrollTrigger: {
-                    trigger: element,
-                    markers: true,
-                    start: 'top bottom',
-                    end: 'bottom top',
-                    toggleActions: "play reverse restart reverse",
-                },
-            })
-        }
-    })
 })

@@ -19,8 +19,8 @@ defineProps({
 <template>
   <section class="project__text">
     <div>
-      <h2 v-if="title">{{ $t(`projects.${toCamelCase(page)}.titles.${title}`) }}</h2>
-      <p class="proforma">{{ $t(`projects.${toCamelCase(page)}.text.${text}`) }}</p>
+      <h2 data-scrolltrigger v-if="title">{{ $t(`projects.${toCamelCase(page)}.titles.${title}`) }}</h2>
+      <p data-scrolltrigger class="proforma">{{ $t(`projects.${toCamelCase(page)}.text.${text}`) }}</p>
     </div>
   </section>
 </template>
