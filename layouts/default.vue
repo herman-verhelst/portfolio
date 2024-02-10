@@ -15,17 +15,36 @@ onMounted(() => {
   gsap.registerPlugin(ScrollTrigger);
 
   setupScrollTriggers();
+  setupStartAnimations();
 
   watch(
       () => transitionState.transitionComplete,
       (newValue) => {
-        console.log(newValue)
         if (!newValue) return;
         setupScrollTriggers();
+        setupStartAnimations();
       }
   )
 })
 
+function setupStartAnimations() {
+  console.log('haha')
+  const elements: any = document.querySelectorAll('[data-startanimation]');
+  console.log(elements.length)
+  for (let i = 0; i < elements.length; i++) {
+    const index: number = elements[i].dataset.startanimation;
+    gsap.fromTo(elements[i], {
+      opacity: 0,
+      y: 16
+    }, {
+      opacity: 1,
+      y: 0,
+      duration: .2,
+      delay: index ? index * .1 : 0,
+      ease: Power1.easeInOut,
+    })
+  }
+}
 
 function setupScrollTriggers() {
   const elements: any = document.querySelectorAll('[data-scrolltrigger]');

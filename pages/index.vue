@@ -25,17 +25,17 @@ definePageMeta({
     <div class="home page page--large-top-padding">
       <div class="hero">
         <h1 class="title">
-          <span><b>Herman Verhelst</b></span>
-          <span><b>Web</b> <i class="proforma">&</i> <b>Information</b> <br/> designer</span>
-          <span>{{ $t('home.loves') }} <b>{{ $t('home.wood') }}</b></span>
+          <span data-startanimation><b>Herman Verhelst</b></span>
+          <span data-startanimation="1"><b>Web</b> <i class="proforma">&</i> <b>Information</b> <br/> designer</span>
+          <span data-startanimation="2">{{ $t('home.loves') }} <b>{{ $t('home.wood') }}</b></span>
         </h1>
 
-        <p class="text proforma">
+        <p data-startanimation="3" class="text proforma">
           {{ $t('home.text') }}
         </p>
       </div>
 
-      <pixel-image :number-of-rows="4" canvas-id="homepage" class="pixel-image--home"></pixel-image>
+      <pixel-image data-scrolltrigger :number-of-rows="4" canvas-id="homepage" class="pixel-image--home"></pixel-image>
     </div>
 
     <section class="section">
@@ -49,6 +49,7 @@ definePageMeta({
     <horizontal-scroll id="home">
       <div class="horizontal-scroll__panel">
         <project-home
+
             class="section"
             :project="discoverProject1"
             thumbnail-grid="1 / span 8"
@@ -57,6 +58,7 @@ definePageMeta({
       </div>
       <div class="horizontal-scroll__panel">
         <project-home
+
             class="section"
             :project="discoverProject1"
             thumbnail-grid="1 / span 8"
