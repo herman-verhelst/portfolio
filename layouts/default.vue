@@ -6,6 +6,7 @@ import {useTransitionComposable} from "~/composables/transition-composable";
 import gsap from "gsap";
 import {Power1} from "gsap/gsap-core";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
+import {SymbolKind} from "vscode-languageserver-types";
 
 const {toggleTransitionComplete} = useTransitionComposable();
 const {transitionState} = useTransitionComposable();
@@ -24,13 +25,28 @@ onMounted(() => {
         setupScrollTriggers();
         setupStartAnimations();
       }
+  );
+  watch(
+      () => transitionState.startSecondTransition,
+      (newValue) => {
+        if (!newValue) return;
+        hideElements();
+      }
   )
 })
 
+function hideElements() {
+  const elements: any = document.querySelectorAll('[data-startanimation], [data-scrolltrigger]');
+  for (let i = 0; i < elements.length; i++) {
+    gsap.set(elements[i], {
+      opacity: 0,
+      y: 16
+    })
+  }
+}
+
 function setupStartAnimations() {
-  console.log('haha')
   const elements: any = document.querySelectorAll('[data-startanimation]');
-  console.log(elements.length)
   for (let i = 0; i < elements.length; i++) {
     const index: number = elements[i].dataset.startanimation;
     gsap.fromTo(elements[i], {
@@ -62,8 +78,7 @@ function setupScrollTriggers() {
       ease: Power1.easeInOut,
       scrollTrigger: {
         trigger: elements[i],
-        markers: true,
-        start: '-16 90%',
+        start: 'top 90%',
         end: 'bottom-=16 top',
         toggleActions: "play reverse play reset",
       },

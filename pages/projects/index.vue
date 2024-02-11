@@ -38,12 +38,12 @@ onMounted(() => {
 <template>
   <main>
     <div class="page page--large-top-padding">
-      <h1 class="title">
+      <h1 data-startanimation="0" class="title">
         {{ $t('projects.title1') }}<br/>
         <b>{{ $t('projects.title2') }}</b>.
       </h1>
       <ul id="projects">
-        <li v-for="project of projects">
+        <li :data-startanimation="index" v-for="(project, index) of projects">
           <project-overview-card :project="project"></project-overview-card>
         </li>
       </ul>

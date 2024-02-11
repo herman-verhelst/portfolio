@@ -6,6 +6,7 @@ import {useTransitionComposable} from "~/composables/transition-composable";
 const {
     toggleTransitionComplete,
     toggleFirstTransitionComplete,
+    toggleStartSecondTransition,
     transitionState
 } = useTransitionComposable();
 
@@ -23,6 +24,9 @@ const pageTransition: NuxtAppConfig['pageTransition'] = {
                     onComplete() {
                         toggleTransitionComplete(true);
                         done();
+                    },
+                    onStart() {
+                        toggleStartSecondTransition(true)
                     }
                 })
                     .to(el, {
@@ -47,6 +51,7 @@ const pageTransition: NuxtAppConfig['pageTransition'] = {
     onLeave: (el, done) => {
         toggleTransitionComplete(false);
         toggleFirstTransitionComplete(false);
+        toggleStartSecondTransition(false);
         gsap.set('#pt-slider-1', {height: 0, top: 0});
         gsap.set('#pt-slider-2', {height: 0, top: 0});
 

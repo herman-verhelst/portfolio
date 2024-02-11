@@ -1,6 +1,7 @@
 const transitionState = reactive({
     transitionComplete: false,
     firstTransitionComplete: false,
+    startSecondTransition: true,
 })
 
 export const useTransitionComposable = () => {
@@ -12,9 +13,14 @@ export const useTransitionComposable = () => {
         transitionState.firstTransitionComplete = value;
     }
 
+    const toggleStartSecondTransition = (value: boolean) => {
+        transitionState.startSecondTransition = value;
+    }
+
     return {
         transitionState,
         toggleTransitionComplete,
-        toggleFirstTransitionComplete
+        toggleFirstTransitionComplete,
+        toggleStartSecondTransition
     }
 }

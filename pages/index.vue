@@ -46,10 +46,9 @@ definePageMeta({
       ></project-home>
     </section>
 
-    <horizontal-scroll id="home">
+    <horizontal-scroll class="section--last" id="home">
       <div class="horizontal-scroll__panel">
         <project-home
-
             class="section"
             :project="discoverProject1"
             thumbnail-grid="1 / span 8"
@@ -58,7 +57,6 @@ definePageMeta({
       </div>
       <div class="horizontal-scroll__panel">
         <project-home
-
             class="section"
             :project="discoverProject1"
             thumbnail-grid="1 / span 8"
@@ -66,14 +64,6 @@ definePageMeta({
         ></project-home>
       </div>
     </horizontal-scroll>
-
-    <section class="section section--last">
-      <project-home
-          :project="discoverProject1"
-          thumbnail-grid="1 / span 8"
-          text-grid="span 4"
-      ></project-home>
-    </section>
     <footer-comp></footer-comp>
   </main>
 

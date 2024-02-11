@@ -21,8 +21,8 @@ const discoverProject2 = findProjectById(1)
     </h2>
 
     <div class="project__discover-projects">
-      <project-card :project="discoverProject1"></project-card>
-      <project-card :project="discoverProject2"></project-card>
+      <project-card data-scrolltrigger="0" :project="discoverProject1"></project-card>
+      <project-card data-scrolltrigger="1" :project="discoverProject2"></project-card>
     </div>
   </section>
 </template>

@@ -32,7 +32,7 @@ watch(
           scrollTrigger: {
             trigger: '#footer',
             start: "top 65px",
-            toggleActions: "play reverse restart reverse",
+            toggleActions: "play reverse play reset",
           }
         })
 
@@ -46,9 +46,30 @@ watch(
           scrollTrigger: {
             trigger: '#footer',
             start: "top 5%",
-            toggleActions: "play reverse restart reverse",
+            toggleActions: "play reverse play reset",
           }
         })
+
+        const elements: any = document.querySelectorAll('[data-footertrigger]');
+        for (let i = 0; i < elements.length; i++) {
+          const index: number = elements[i].dataset.footertrigger;
+
+          gsap.fromTo(elements[i], {
+            opacity: 0,
+            y: 16
+          }, {
+            opacity: 1,
+            y: 0,
+            duration: .2,
+            delay: index ? index * .1 : 0,
+            ease: Power1.easeInOut,
+            scrollTrigger: {
+              trigger: '#footer',
+              start: "top 50%",
+              toggleActions: "play reverse play reset",
+            }
+          })
+        }
       })
     }
 )
@@ -66,13 +87,13 @@ onUnmounted(() => {
       <div class="footer__main">
         <h2 class="footer__title">
 
-          <span>{{ $t('footer.think') }}.</span>
-          <span>{{ $t('footer.dare') }}.</span>
-          <span>{{ $t('footer.create') }}.</span>
+          <span data-footertrigger="0">{{ $t('footer.think') }}.</span>
+          <span data-footertrigger="1">{{ $t('footer.dare') }}.</span>
+          <span data-footertrigger="2">{{ $t('footer.create') }}.</span>
         </h2>
         <div class="footer__links">
 
-          <div class="footer__socials">
+          <div data-footertrigger="3" class="footer__socials">
             <h3 class="proforma">{{ $t('socials') }}</h3>
             <ul>
               <li><a v-cursor href="#">Dribbble.</a></li>
@@ -82,14 +103,14 @@ onUnmounted(() => {
               <li><a v-cursor href="#">Instagram.</a></li>
             </ul>
           </div>
-          <div class="footer__contact">
+          <div data-footertrigger="4" class="footer__contact">
             <h3 class="proforma">{{ $t('contact.title') }}</h3>
             <nuxt-link v-cursor :to="localePath('/contact')">{{ $t('contact.question') }}</nuxt-link>
           </div>
         </div>
       </div>
       <div>
-        <div class="footer__small">
+        <div data-footertrigger="5" class="footer__small">
           <p>Herman Verhelst | 2024</p>
 
           <div class="lang-switcher__container lang-switcher__container--small">
@@ -104,6 +125,7 @@ onUnmounted(() => {
         </div>
 
         <pixel-image
+            data-footertrigger="6"
             :is-full-page="false"
             :number-of-rows="2"
             :dark-bg="true"
