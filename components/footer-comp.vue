@@ -75,7 +75,7 @@ watch(
 )
 
 onUnmounted(() => {
-  context.revert();
+  if (context) context.revert();
   ScrollTrigger.killAll();
 })
 

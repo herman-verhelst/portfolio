@@ -6,23 +6,21 @@ import {useTransitionComposable} from "~/composables/transition-composable";
 import gsap from "gsap";
 import {Power1} from "gsap/gsap-core";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
-import {SymbolKind} from "vscode-languageserver-types";
 
 const {toggleTransitionComplete} = useTransitionComposable();
 const {transitionState} = useTransitionComposable();
 
+let firstLoad: boolean = true;
+
 onMounted(() => {
   toggleTransitionComplete(true);
   gsap.registerPlugin(ScrollTrigger);
-
-  setupScrollTriggers();
-  setupStartAnimations();
+  hideElements();
 
   watch(
       () => transitionState.transitionComplete,
       (newValue) => {
         if (!newValue) return;
-        setupScrollTriggers();
         setupStartAnimations();
       }
   );
@@ -33,6 +31,32 @@ onMounted(() => {
         hideElements();
       }
   )
+})
+
+const nuxt = useNuxtApp()
+
+nuxt.hook('page:loading:end', () => {
+  if (!firstLoad) return;
+  firstLoad = false;
+
+  gsap.timeline({
+    onComplete: () => {
+      setupStartAnimations();
+    }
+  })
+      .to('#pt-slider-1', {
+        height: 0,
+        top: '100vh',
+        duration: .2,
+        ease: Power1.easeInOut
+      })
+      .to('#pt-slider-2', {
+        height: 0,
+        top: '100vh',
+        duration: .2,
+        ease: Power1.easeInOut,
+      }, '<.1')
+      .play()
 })
 
 function hideElements() {
@@ -47,19 +71,23 @@ function hideElements() {
 
 function setupStartAnimations() {
   const elements: any = document.querySelectorAll('[data-startanimation]');
-  for (let i = 0; i < elements.length; i++) {
-    const index: number = elements[i].dataset.startanimation;
-    gsap.fromTo(elements[i], {
-      opacity: 0,
-      y: 16
-    }, {
-      opacity: 1,
-      y: 0,
-      duration: .2,
-      delay: index ? index * .1 : 0,
-      ease: Power1.easeInOut,
+  if (elements.length > 0) {
+    let tl: GSAPTimeline = gsap.timeline({
+      onComplete: () => {
+        setupScrollTriggers()
+      }
     })
-  }
+    for (let i = 0; i < elements.length; i++) {
+      tl.to(elements[i], {
+        opacity: 1,
+        y: 0,
+        duration: .2,
+        ease: Power1.easeInOut,
+      }, '-=.1')
+    }
+
+    tl.play();
+  } else setupScrollTriggers();
 }
 
 function setupScrollTriggers() {
