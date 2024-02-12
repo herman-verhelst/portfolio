@@ -7,6 +7,10 @@ const props = defineProps({
     type: String,
     required: true
   },
+  width: {
+    type: Number,
+    required: true,
+  }
 })
 
 const {transitionState} = useTransitionComposable();
@@ -19,15 +23,19 @@ watch(
       let sections = gsap.utils.toArray(".horizontal-scroll__panel");
       let container = document.getElementById(`hs-${props.id}`);
 
+      console.log(-100 * (sections.length))
+      console.log(document.querySelector(".horizontal-scroll__container")?.offsetWidth)
+      console.log(-100 + (100 / props.width))
       gsap.to(sections, {
-        xPercent: -100 * (sections.length - 1),
+        xPercent: -100 + (100 / props.width),
         ease: "none",
         scrollTrigger: {
           id: `st-${props.id}`,
           trigger: container,
           pin: true,
           scrub: .1,
-          end: `+=${document.querySelector(".horizontal-scroll__container")?.offsetWidth}`
+          end: `+=${document.querySelector(".horizontal-scroll__co" +
+              "ntainer")?.offsetWidth}`
         }
       })
     }
@@ -37,9 +45,9 @@ watch(
 
 <template>
   <div class="horizontal-scroll__section">
-    <div :id="`hs-${id}`" class="horizontal-scroll__container">
+
       <slot></slot>
-    </div>
+
   </div>
 </template>
 

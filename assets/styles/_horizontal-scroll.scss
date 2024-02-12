@@ -6,13 +6,16 @@
   &__container {
     height: 100vh;
     display: flex;
-    width: 200%;
+    width: fit-content;
   }
 
   &__panel {
-    width: 100vw;
-    min-width: 100vw;
     height: 100%;
-    display: flex;
+    min-height: 100%;
+    padding: 0 calc(((100vw - 75rem) / 2) + 2rem);
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-gap: 2rem;
   }
 }
