@@ -40,6 +40,9 @@ const localePath = useLocalePath();
           </li>
         </ul>
       </div>
+      <div class="nav__hamburger">
+
+      </div>
     </div>
   </nav>
 </template>

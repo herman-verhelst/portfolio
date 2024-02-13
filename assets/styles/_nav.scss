@@ -20,6 +20,10 @@
     z-index: -1;
   }
 
+  &__hamburger {
+    display: none;
+  }
+
   & > div {
     height: 4rem;
     max-width: 75rem;
@@ -96,16 +100,14 @@
 }
 
 @media (max-width: 600px) {
-  nav {
+  .nav {
     height: fit-content;
     padding: 0 1rem;
 
-    #back-button {
-      padding-right: 0;
-    }
-
     & > div {
       padding: 0;
+      width: 100vw;
+      max-width: initial;
 
       &:after {
         left: 0;
@@ -114,12 +116,7 @@
     }
 
     .links__container {
-      ul {
-        li {
-          font-size: .8rem;
-          margin-left: 1rem;
-        }
-      }
+      display: none;
     }
   }
 }

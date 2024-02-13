@@ -60,3 +60,13 @@ body {
   color: var(--text-color);
   font-family: 'IBM Plex Sans', sans-serif;
 }
+
+@media (max-width: 600px) {
+  html {
+    font-size: 14px;
+  }
+
+  #__nuxt {
+    overflow: hidden;
+  }
+}

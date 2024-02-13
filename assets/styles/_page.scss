@@ -21,3 +21,9 @@
     margin-bottom: 30vh;
   }
 }
+
+@media (max-width: 600px) {
+  .page {
+    gap: 6rem;
+  }
+}

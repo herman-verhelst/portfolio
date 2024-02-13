@@ -51,9 +51,9 @@ watch(
         })
 
         const elements: any = document.querySelectorAll('[data-footertrigger]');
+        console.log(elements.length)
         for (let i = 0; i < elements.length; i++) {
           const index: number = elements[i].dataset.footertrigger;
-
           gsap.fromTo(elements[i], {
             opacity: 0,
             y: 16

@@ -23,9 +23,6 @@ watch(
       let sections = gsap.utils.toArray(".horizontal-scroll__panel");
       let container = document.getElementById(`hs-${props.id}`);
 
-      console.log(-100 * (sections.length))
-      console.log(document.querySelector(".horizontal-scroll__container")?.offsetWidth)
-      console.log(-100 + (100 / props.width))
       gsap.to(sections, {
         xPercent: -100 + (100 / props.width),
         ease: "none",
@@ -34,8 +31,7 @@ watch(
           trigger: container,
           pin: true,
           scrub: .1,
-          end: `+=${document.querySelector(".horizontal-scroll__co" +
-              "ntainer")?.offsetWidth}`
+          end: `+=${document.querySelector(".horizontal-scroll__container")?.offsetWidth}`
         }
       })
     }

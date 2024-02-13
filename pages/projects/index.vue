@@ -37,7 +37,7 @@ onMounted(() => {
 
 <template>
   <main>
-    <div class="page page--large-top-padding">
+    <div class="page page--large-top-padding min-h-lvh">
       <h1 data-startanimation="0" class="title">
         {{ $t('projects.title1') }}<br/>
         <b>{{ $t('projects.title2') }}</b>.

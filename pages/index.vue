@@ -22,7 +22,7 @@ definePageMeta({
 
 <template>
   <main>
-    <div class="home page page--large-top-padding">
+    <div class="home">
       <div class="hero">
         <h1 class="title">
           <span data-startanimation><b>Herman Verhelst</b></span>
@@ -40,6 +40,7 @@ definePageMeta({
 
     <section class="section">
       <project-home
+          data-scrolltrigger
           :project="discoverProject1"
           thumbnail-grid="1 / span 8"
           text-grid="span 4"
@@ -64,7 +65,7 @@ definePageMeta({
           ></project-home>
 
           <project-home
-              class="col-span-5 col-start-9 row-span-6 row-start-1"
+              class="col-span-5 col-start-9 row-span-6 row-start-1 mb-8"
               :project="discoverProject1"
               thumbnail-grid="1 / span 8"
               text-grid="span 4"
@@ -76,6 +77,7 @@ definePageMeta({
     <section class="section section--last">
 
       <project-home
+          data-scrolltrigger
           :project="discoverProject1"
           thumbnail-grid="1 / span 8"
           text-grid="span 4"
