@@ -25,5 +25,10 @@
 @media (max-width: 600px) {
   .page {
     gap: 6rem;
+
+    &--large-top-padding {
+      padding-top: 8rem !important;
+
+    }
   }
 }

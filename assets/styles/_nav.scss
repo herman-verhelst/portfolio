@@ -22,6 +22,50 @@
 
   &__hamburger {
     display: none;
+    position: relative;
+    width: 2.25rem;
+    height: 2.25rem;
+
+    &[aria-expanded='true'] {
+      .nav__hamburger__line {
+        background-color: var(--bg-color);
+
+        &:first-of-type {
+          top: 17.25px;
+          transform: rotate(45deg);
+        }
+
+        &:nth-of-type(2) {
+          transform: scaleX(0);
+        }
+
+        &:last-of-type {
+          top: 17.25px;
+          transform: rotate(-45deg);
+        }
+      }
+    }
+
+    &__line {
+      height: 1.5px;
+      width: 18px;
+      background-color: var(--text-color);
+      position: absolute;
+      left: 9px;
+      transition: .2s ease-in-out all;
+
+      &:first-of-type {
+        top: 12.75px
+      }
+
+      &:nth-of-type(2) {
+        top: 17.25px
+      }
+
+      &:last-of-type {
+        top: 21.75px
+      }
+    }
   }
 
   & > div {
@@ -33,23 +77,6 @@
     align-items: center;
     padding: 0 2rem;
     position: relative;
-  }
-
-  #back-button {
-    position: relative;
-    overflow: hidden;
-    padding-right: 1rem;
-
-    &[aria-hidden='true'] {
-      transform: translateX(-100%);
-      width: 0;
-      padding-right: 0;
-    }
-
-    svg {
-      width: 2.5rem;
-      vertical-align: middle;
-    }
   }
 
   .logo__container {
@@ -75,7 +102,7 @@
     }
   }
 
-  .links__container {
+  &__links {
     ul {
       list-style: none;
       display: flex;
@@ -102,12 +129,22 @@
 @media (max-width: 600px) {
   .nav {
     height: fit-content;
-    padding: 0 1rem;
+    padding: 0;
+    border-bottom: none;
+
+    &:after {
+      display: none;
+    }
 
     & > div {
-      padding: 0;
-      width: 100vw;
+      padding: 0 1rem;
+      border-bottom: 1px solid var(--logo-grey);
       max-width: initial;
+      transition: .2s ease-in-out border-color;
+
+      &[aria-expanded='true'] {
+        border-color: var(--text-light);
+      }
 
       &:after {
         left: 0;
@@ -115,8 +152,33 @@
       }
     }
 
-    .links__container {
-      display: none;
+    &__hamburger {
+      display: block;
+    }
+
+    &__links {
+      position: fixed;
+      padding: 8rem 2rem 2rem;
+      top: 0;
+      height: 100vh;
+      left: 0;
+      right: 0;
+      background-color: var(--bg-footer);
+      z-index: -1;
+
+      ul {
+        flex-direction: column;
+        align-items: flex-start;
+
+        li {
+          font-size: 2rem;
+          letter-spacing: .2rem;
+
+          a {
+            color: var(--bg-color)
+          }
+        }
+      }
     }
   }
 }

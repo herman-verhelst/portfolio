@@ -65,7 +65,7 @@
 
     &-graphic {
       width: 2.5rem;
-      height: 2.5rem;
+      aspect-ratio: 1/1;
       border-radius: .5rem;
 
       @for $i from 1 through $number-of-projects {
@@ -121,7 +121,7 @@
     gap: 2rem;
 
     h2 {
-      font-weight: 500;
+      font-weight: 400;
 
       a {
         font-weight: 700
@@ -198,6 +198,10 @@
 
       &-text {
         margin: 0 .5rem;
+      }
+
+      &-graphic {
+        width: 1.5rem;
       }
     }
 
