@@ -64,6 +64,11 @@ export default defineI18nConfig(() => ({
                 dataVis: 'Data visualisation',
                 wood: 'Wood',
                 creativeCoding: 'Creative coding'
+            },
+            title: {
+                index: "Herman Verhelst {'|'} Portfolio",
+                contact: "Herman Verhelst {'|'} Contact",
+                projects: "Herman Verhelst {'|'} Projects"
             }
         },
         nl: {
@@ -129,6 +134,11 @@ export default defineI18nConfig(() => ({
                 dataVis: 'Data visualisatie',
                 wood: 'Hout',
                 creativeCoding: 'Creative coding'
+            },
+            title: {
+                index: "Herman Verhelst {'|'} Portfolio",
+                contact: "Herman Verhelst {'|'} Contact",
+                projects: "Herman Verhelst {'|'} Projecten"
             }
         }
     }

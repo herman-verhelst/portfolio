@@ -33,6 +33,12 @@ onMounted(() => {
 
 })
 
+const {t} = useI18n();
+
+useHead({
+  title: `${t(`title.projects`)}`
+})
+
 </script>
 
 <template>
