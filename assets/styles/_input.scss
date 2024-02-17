@@ -16,6 +16,7 @@ label {
   height: 100%;
   display: flex;
   width: 35rem;
+  max-width: 100%;
   padding: 0.375rem;
   align-items: center;
   gap: 1rem;
@@ -24,7 +25,7 @@ label {
 
   span {
     display: flex;
-    width: 8rem;
+    width: fit-content;
     padding: 0.5rem 1rem;
     align-items: center;
     gap: 1rem;
@@ -42,4 +43,8 @@ label {
 textarea {
   padding-top: .5rem;
   height: 30vh;
+}
+
+@media (max-width: 600px) {
+
 }

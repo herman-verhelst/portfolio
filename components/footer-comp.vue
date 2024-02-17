@@ -26,7 +26,7 @@ watch(
 
       context = gsap.context(() => {
         gsap.to('#nav', {
-          y: -100,
+          y: '-100%',
           duration: .2,
           ease: Power1.easeInOut,
           scrollTrigger: {
@@ -53,7 +53,6 @@ watch(
         const elements: any = document.querySelectorAll('[data-footertrigger]');
         for (let i = 0; i < elements.length; i++) {
           const index: number = elements[i].dataset.footertrigger;
-
           gsap.fromTo(elements[i], {
             opacity: 0,
             y: 16

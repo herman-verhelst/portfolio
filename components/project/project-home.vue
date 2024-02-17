@@ -33,10 +33,10 @@ defineProps({
           </svg>
         </button>
       </nuxt-link>
-      <p class="proforma">
+      <p class="proforma mr-8">
         {{ $t(`projects.${toCamelCase(project.link)}.subtitle`) }}</p>
 
-      <project-tag-container class="mt-8" :tags="project.tags"></project-tag-container>
+      <project-tag-container class="mt-8 mobile:mt-4" :tags="project.tags"></project-tag-container>
 
     </div>
 

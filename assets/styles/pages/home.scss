@@ -2,6 +2,9 @@
   display: flex;
   flex-direction: column;
   gap: 16rem;
+  max-width: 75rem;
+  margin: 0 auto 16rem;
+  padding: 12rem 2rem 0;
 
   .hero {
     display: flex;
@@ -20,6 +23,24 @@
 
     .text {
       text-align: right;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .home {
+    padding: 8rem 2rem 0;
+    gap: 8rem;
+    margin-bottom: 8rem;
+
+    .hero {
+      flex-direction: column;
+      gap: 2rem;
+      align-items: flex-start;
+
+      .text {
+        text-align: initial;
+      }
     }
   }
 }

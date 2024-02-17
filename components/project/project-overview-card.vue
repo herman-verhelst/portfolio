@@ -33,11 +33,13 @@ onMounted(() => {
 
 <template>
   <nuxt-link :id="`project-card-${project.id}`" :to="localePath(`/projects/${project.link}?id=${project.id}`)" class="project-card">
-    <div class="w-full">
-      <h2 class="project-card__title">{{ $t(`projects.${toCamelCase(project.link)}.title`) }}</h2>
-      <p class="project-card__subtitle proforma">{{ $t(`projects.${toCamelCase(project.link)}.subtitle`) }}</p>
+    <div class="project-card__information">
+      <div class="w-full">
+        <h2 class="project-card__title">{{ $t(`projects.${toCamelCase(project.link)}.title`) }}</h2>
+        <p class="project-card__subtitle proforma">{{ $t(`projects.${toCamelCase(project.link)}.subtitle`) }}</p>
+      </div>
+      <project-tag-container class="h-fit" :tags="project.tags"></project-tag-container>
     </div>
-    <project-tag-container :tags="project.tags"></project-tag-container>
     <button :class="`button--color-${project?.id}`" class="button button--icon">
       <svg fill="none" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
         <path

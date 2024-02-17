@@ -16,7 +16,7 @@
   --bg-dark: #D6CDC6;
   --bg-footer: #454240;
   --text-color: #151413;
-  --text-light: #99908A;
+  --text-light: #5B5855;
 
   --logo-red: #BC4F43;
   --logo-green: #2B6C6E;
@@ -59,4 +59,14 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   font-family: 'IBM Plex Sans', sans-serif;
+}
+
+@media (max-width: 600px) {
+  html {
+    font-size: 14px;
+  }
+
+  #__nuxt {
+    overflow: hidden;
+  }
 }

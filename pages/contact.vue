@@ -10,7 +10,7 @@ definePageMeta({
 
 <template>
   <main>
-    <div class="page page--large-top-padding">
+    <div class="page page--large-top-padding min-h-lvh">
       <h1 class="title">
         {{ $t('contact.title1') }}<br/>
         <b>{{ $t('contact.title2') }}?</b>

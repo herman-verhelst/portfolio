@@ -92,3 +92,21 @@
     }
   }
 }
+
+@media (max-width: 600px) {
+  .footer {
+    &__main {
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    &__links {
+      width: 100%;
+      justify-content: flex-start;
+    }
+
+    &__socials, &__contact {
+      width: 100%;
+    }
+  }
+}
