@@ -63,7 +63,13 @@ export default defineI18nConfig(() => ({
                 mind: 'Media & Information Design',
                 dataVis: 'Data visualisation',
                 wood: 'Wood',
-                creativeCoding: 'Creative coding'
+                creativeCoding: 'Creative coding',
+                personal: 'Personal'
+            },
+            title: {
+                index: "Herman Verhelst {'|'} Portfolio",
+                contact: "Herman Verhelst {'|'} Contact",
+                projects: "Herman Verhelst {'|'} Projects"
             }
         },
         nl: {
@@ -123,12 +129,104 @@ export default defineI18nConfig(() => ({
                         assignment: 'Opdracht'
                     }
                 },
+                woodwork: {
+                    title: 'Eenvoud in hout',
+                    subtitle: 'Handgemaakte creaties van hout.',
+                    text: {
+                        description: 'Een oude draaibank van een grootvader.\n' +
+                            'Technisch advies van familie.\n' +
+                            'Hout vol kleur, geur en nerven.\n' +
+                            'Een idee wordt een schets, krijgt vorm.\n' +
+                            'Speelse vormentaal.\n' +
+                            'De kracht van eenvoud.\n' +
+                            'Proberen, durven, maken.\n' +
+                            'Houten voorwerpen in beweging.'
+                    }
+                },
+                tShirts: {
+                    title: 'De bovenste plank',
+                    subtitle: 'Een dataverhaal over groot zijn.',
+                    text: {
+                        description: 'Een oude draaibank van een grootvader.\n' +
+                            'Technisch advies van familie.\n' +
+                            'Hout vol kleur, geur en nerven.\n' +
+                            'Een idee wordt een schets, krijgt vorm.\n' +
+                            'Speelse vormentaal.\n' +
+                            'De kracht van eenvoud.\n' +
+                            'Proberen, durven, maken.\n' +
+                            'Houten voorwerpen in beweging.'
+                    }
+                },
+                summitingSuccess: {
+                    title: 'Summiting success',
+                    subtitle: 'De dominantie van een Tour de France winnaar op een overzichtelijke manier bekijken.',
+                    text: {
+                        description: 'Een oude draaibank van een grootvader.\n' +
+                            'Technisch advies van familie.\n' +
+                            'Hout vol kleur, geur en nerven.\n' +
+                            'Een idee wordt een schets, krijgt vorm.\n' +
+                            'Speelse vormentaal.\n' +
+                            'De kracht van eenvoud.\n' +
+                            'Proberen, durven, maken.\n' +
+                            'Houten voorwerpen in beweging.'
+                    }
+                },
+                network: {
+                    title: 'Bedraad',
+                    subtitle: 'Een netwerk geplaatst op een houten plaat.',
+                    text: {
+                        description: 'Een oude draaibank van een grootvader.\n' +
+                            'Technisch advies van familie.\n' +
+                            'Hout vol kleur, geur en nerven.\n' +
+                            'Een idee wordt een schets, krijgt vorm.\n' +
+                            'Speelse vormentaal.\n' +
+                            'De kracht van eenvoud.\n' +
+                            'Proberen, durven, maken.\n' +
+                            'Houten voorwerpen in beweging.'
+                    }
+                },
+                cycling: {
+                    title: 'Het is koers!',
+                    subtitle: 'Een webplatform om mee te zijn met de laatste ontwikkelingen in het wielerlandschap.',
+                    text: {
+                        description: 'Een oude draaibank van een grootvader.\n' +
+                            'Technisch advies van familie.\n' +
+                            'Hout vol kleur, geur en nerven.\n' +
+                            'Een idee wordt een schets, krijgt vorm.\n' +
+                            'Speelse vormentaal.\n' +
+                            'De kracht van eenvoud.\n' +
+                            'Proberen, durven, maken.\n' +
+                            'Houten voorwerpen in beweging.'
+                    }
+                },
+                twiceBurnedLibrary: {
+                    title: 'The Twice-Burned Library',
+                    subtitle: 'Boekontwerp voor tekst over de universiteitsbibliotheek van Leuven.',
+                    text: {
+                        description: 'Een oude draaibank van een grootvader.\n' +
+                            'Technisch advies van familie.\n' +
+                            'Hout vol kleur, geur en nerven.\n' +
+                            'Een idee wordt een schets, krijgt vorm.\n' +
+                            'Speelse vormentaal.\n' +
+                            'De kracht van eenvoud.\n' +
+                            'Proberen, durven, maken.\n' +
+                            'Houten voorwerpen in beweging.'
+                    }
+                }
             },
             tags: {
                 mind: 'Media & Information Design',
                 dataVis: 'Data visualisatie',
                 wood: 'Hout',
-                creativeCoding: 'Creative coding'
+                creativeCoding: 'Creative coding',
+                personal: 'Persoonlijk',
+                web: 'Web design',
+                print: 'Print',
+            },
+            title: {
+                index: "Herman Verhelst {'|'} Portfolio",
+                contact: "Herman Verhelst {'|'} Contact",
+                projects: "Herman Verhelst {'|'} Projecten"
             }
         }
     }

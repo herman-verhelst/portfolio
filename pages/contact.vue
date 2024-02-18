@@ -6,6 +6,17 @@ definePageMeta({
   pageTransition: transitionConfig,
   middleware: middleware
 })
+
+const {t} = useI18n();
+
+onMounted(() => {
+  console.log('haha')
+  console.log(t(`title.contact`))
+})
+
+useHead({
+  title: `${t(`title.contact`)}`
+})
 </script>
 
 <template>

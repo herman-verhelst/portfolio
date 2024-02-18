@@ -128,6 +128,7 @@ onUnmounted(() => {
             :is-full-page="false"
             :number-of-rows="2"
             :dark-bg="true"
+            :is-playing="false"
             canvas-id="footer"
             class="pixel-image--footer">
         </pixel-image>

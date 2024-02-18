@@ -10,7 +10,7 @@ const projectsStore = useProjectsStore();
 const {findProjectById} = projectsStore;
 
 const discoverProject1 = findProjectById(1)
-const discoverProject2 = findProjectById(1)
+const discoverProject2 = findProjectById(2)
 
 </script>
 
