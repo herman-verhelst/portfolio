@@ -4,7 +4,7 @@ export const useProjectsStore = defineStore('projects', () => {
     const projects = ref([
         {
             id: 1,
-            tags: [{name: 'tags.wood'}, {name: 'tags.dataVis'}],
+            tags: [{name: 'tags.wood'}, {name: 'tags.dataVis'}, {name: 'tags.mind'}],
             link: 'wooden-boxes',
             thumbnail: 'IMG_0062.jpeg',
             components: [
@@ -66,6 +66,48 @@ export const useProjectsStore = defineStore('projects', () => {
                 }
             ]
         },
+        {
+            id: 2,
+            tags: [{name: 'tags.wood'}, {name: 'tags.personal'}],
+            link: 'woodwork',
+            thumbnail: 'IMG_3130.jpeg',
+            components: []
+        },
+        {
+            id: 3,
+            tags: [{name: 'tags.wood'}, {name: 'tags.dataVis'}, {name: 'tags.mind'}],
+            link: 't-shirts',
+            thumbnail: 'PXL_20240122_094658383_1.jpg',
+            components: []
+        },
+        {
+            id: 4,
+            tags: [{name: 'tags.dataVis'}, {name: 'tags.creativeCoding'}, {name: 'tags.mind'}],
+            link: 'summiting-success',
+            thumbnail: 'PXL_20240122_094658383_1.jpg',
+            components: []
+        },
+        {
+            id: 5,
+            tags: [{name: 'tags.wood'}, {name: 'tags.dataVis'}, {name: 'tags.mind'}],
+            link: 'network',
+            thumbnail: 'PXL_20240122_092227937_1.jpg',
+            components: []
+        },
+        {
+            id: 6,
+            tags: [{name: 'tags.web'}, {name: 'tags.creativeCoding'}, {name: 'tags.mind'}],
+            link: 'cycling',
+            thumbnail: 'PXL_20240122_092227937_1.jpg',
+            components: []
+        },
+        {
+            id: 7,
+            tags: [{name: 'tags.print'}, {name: 'tags.mind'}],
+            link: 'twice-burned-library',
+            thumbnail: 'PXL_20240122_092939181_1.jpg',
+            components: []
+        }
     ])
 
     function findProjectByLink(link: string) {

@@ -17,6 +17,7 @@
       display: flex;
       width: 100%;
       align-items: center;
+      gap: 1rem;
     }
   }
 
@@ -184,7 +185,7 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .project {
     &-card {
       &__information {
@@ -192,6 +193,11 @@
         gap: 1rem;
       }
     }
+  }
+}
+
+@media (max-width: 600px) {
+  .project {
 
     &__hero {
       gap: 1rem;

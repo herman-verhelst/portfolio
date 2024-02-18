@@ -11,9 +11,9 @@ const projectsStore = useProjectsStore();
 const {findProjectById} = projectsStore;
 
 const discoverProject1 = findProjectById(1)
-const discoverProject2 = findProjectById(1)
-const discoverProject3 = findProjectById(1)
-const discoverProject4 = findProjectById(1)
+const discoverProject2 = findProjectById(2)
+const discoverProject3 = findProjectById(3)
+const discoverProject4 = findProjectById(4)
 
 definePageMeta({
   pageTransition: transitionConfig,
@@ -43,7 +43,7 @@ useHead({
         </p>
       </div>
 
-      <pixel-image data-scrolltrigger :number-of-rows="4" canvas-id="homepage" class="pixel-image--home"></pixel-image>
+      <pixel-image data-startanimation="4" :number-of-rows="4" canvas-id="homepage" class="pixel-image--home"></pixel-image>
     </div>
 
     <section class="section">
@@ -60,14 +60,14 @@ useHead({
         <div class="horizontal-scroll__panel w-[250vw] !pt-32">
           <project-home
               class="col-span-7 row-span-3"
-              :project="discoverProject1"
+              :project="discoverProject2"
               thumbnail-grid="1 / span 8"
               text-grid="span 4"
           ></project-home>
 
           <project-home
               class="col-span-6 col-start-3 row-span-2 row-start-4"
-              :project="discoverProject1"
+              :project="discoverProject3"
               thumbnail-grid="5 / span 8"
               text-grid="1 / span 4"
           ></project-home>
