@@ -20,6 +20,10 @@ const props = defineProps({
   darkBg: {
     type: Boolean,
     default: false
+  },
+  isPlaying: {
+    type: Boolean,
+    default: true,
   }
 });
 
@@ -156,19 +160,22 @@ watch(
         }
 
         computeFrame();
-        id = requestAnimationFrame(timerCallback);
+        if (props.isPlaying) id = requestAnimationFrame(timerCallback);
       }
 
       function drawShapes(): void {
         videoContext.fillStyle = '#FFF';
         videoContext.fillRect(0, 0, bgCanvas.height, bgCanvas.width);
 
-        if (shapes.length <= 0) {
-          shapes.push(new Shape(videoCanvas.offsetWidth, videoCanvas.offsetHeight));
+        if (!props.isPlaying) {
+          shapes.push(new Shape(videoCanvas.width, videoCanvas.height, true));
+          shapes.push(new Shape(videoCanvas.width, videoCanvas.height, true));
+        } else if (shapes.length <= 0) {
+          shapes.push(new Shape(videoCanvas.width, videoCanvas.height));
         } else if (shapes.length <= 2) {
           const generatedNumber = Math.random();
           if (generatedNumber < .01) {
-            shapes.push(new Shape(videoCanvas.offsetWidth, videoCanvas.offsetHeight));
+            shapes.push(new Shape(videoCanvas.width, videoCanvas.height));
           }
         }
 
@@ -179,7 +186,7 @@ watch(
           videoContext.ellipse(shape.posX, shape.posY, shape.size, shape.size, 0, 0, Math.PI * 2);
           videoContext.fillStyle = '#000'
           videoContext.fill();
-          if (shape.isOutsideCanvas(videoCanvas.offsetWidth, videoCanvas.offsetHeight)) {
+          if (shape.isOutsideCanvas(videoCanvas.width, videoCanvas.height)) {
             shapes.splice(i, 1)
           }
         }
