@@ -39,3 +39,17 @@ img {
     }
   }
 }
+
+@media (max-width: 900px) {
+  .lang-switcher {
+    color: var(--bg-dark) !important;
+
+    &--active {
+      color: var(--bg-color) !important;
+    }
+
+    &__container {
+      color: var(--bg-dark)
+    }
+  }
+}

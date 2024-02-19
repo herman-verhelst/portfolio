@@ -42,6 +42,7 @@ export default defineI18nConfig(() => ({
             projects: {
                 title1: 'Discover all my',
                 title2: 'projects',
+                link: 'Discover the website on yourself.',
                 woodenBoxes: {
                     title: 'Kleur ontdekt',
                     subtitle: 'Houten ontdekkingsdoosjes boordevol kleur.',
@@ -113,6 +114,7 @@ export default defineI18nConfig(() => ({
             projects: {
                 title1: 'Ontdek al mijn',
                 title2: 'projecten',
+                link: 'Ga zelf op ontdekkingstocht doorheen de website.',
                 woodenBoxes: {
                     title: 'Kleur ontdekt',
                     subtitle: 'Houten ontdekkingsdoosjes boordevol kleur.',

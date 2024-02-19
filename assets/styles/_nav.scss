@@ -126,7 +126,7 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .nav {
     height: fit-content;
     padding: 0;
@@ -169,6 +169,7 @@
       ul {
         flex-direction: column;
         align-items: flex-start;
+        height: 100%;
 
         li {
           font-size: 2rem;

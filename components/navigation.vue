@@ -3,13 +3,11 @@ import {useLocalePath} from "#i18n";
 import {gsap} from "gsap";
 import {Power1} from "gsap/gsap-core";
 import type {Ref} from "vue";
-import Context = gsap.Context;
 
 const switchLocalePath = useSwitchLocalePath()
 const localePath = useLocalePath();
 
 let navigationOpen: Ref<boolean> = ref(false);
-let context: Context;
 let tl: GSAPTimeline;
 
 onMounted(() => {
@@ -18,18 +16,17 @@ onMounted(() => {
 })
 
 function createNavDrawer() {
-  if (window.innerWidth > 600) {
+  if (window.innerWidth > 900) {
     if (tl) {
-      context.revert();
+      gsap.set('#nav-drawer', {
+        y: 0
+      })
       tl.revert();
     }
     return;
   }
-
-  context = gsap.context(() => {
-    gsap.set('#nav-drawer', {
-      y: '-100%'
-    })
+  gsap.set('#nav-drawer', {
+    y: '-100%'
   })
   tl = gsap.timeline()
       .to('#nav-drawer', {
@@ -80,7 +77,7 @@ function hideNavigation() {
             </nuxt-link>
           </li>
 
-          <li class="lang-switcher__container">
+          <li class="lang-switcher__container tablet:mt-auto">
             <nuxt-link v-cursor :class="{'lang-switcher--active': $i18n.locale === 'nl'}" :to="switchLocalePath('nl')"
                        class="nav__link lang-switcher"
                        @click="hideNavigation">Nl

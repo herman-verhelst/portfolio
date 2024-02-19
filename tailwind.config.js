@@ -5,6 +5,9 @@ export default {
     screens: {
       'mobile': {
         'raw': '(max-width: 600px)'
+      },
+      'tablet': {
+        'raw': '(max-width: 900px)'
       }
     },
     extend: {},

@@ -84,8 +84,17 @@ export const useProjectsStore = defineStore('projects', () => {
             id: 4,
             tags: [{name: 'tags.dataVis'}, {name: 'tags.creativeCoding'}, {name: 'tags.mind'}],
             link: 'summiting-success',
-            thumbnail: 'PXL_20240122_094658383_1.jpg',
-            components: []
+            thumbnail: 'thumbnail.png',
+            components: [
+                {
+                    type: 'link',
+                    link: 'https://summiting-success.herman-verhelst.be',
+                    image: {
+                        src: 'frontpage.png',
+                        alt: ''
+                    }
+                }
+            ]
         },
         {
             id: 5,
