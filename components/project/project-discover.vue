@@ -1,16 +1,30 @@
 <script lang="ts" setup>
 import {useLocalePath} from "#i18n";
 import {useProjectsStore} from "~/stores/projects";
-import gsap from "gsap";
-import {useTransitionComposable} from "~/composables/transition-composable";
 
 const localePath = useLocalePath();
 
 const projectsStore = useProjectsStore();
 const {findProjectById} = projectsStore;
 
-const discoverProject1 = findProjectById(1)
-const discoverProject2 = findProjectById(2)
+const props = defineProps({
+  currentProject: {
+    required: true,
+  },
+})
+
+const project: any = props.currentProject;
+let discoverProject1, discoverProject2;
+if (project.id !== 1 && project.id !== 2) {
+  discoverProject1 = findProjectById(1)
+  discoverProject2 = findProjectById(2)
+} else if (project.id === 1) {
+  discoverProject1 = findProjectById(2)
+  discoverProject2 = findProjectById(3)
+} else {
+  discoverProject1 = findProjectById(1)
+  discoverProject2 = findProjectById(3)
+}
 
 </script>
 

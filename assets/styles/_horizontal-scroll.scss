@@ -20,6 +20,15 @@
   }
 }
 
+@media (max-width: 1200px) {
+  .horizontal-scroll {
+    &__panel {
+      padding-right: 2rem;
+      padding-left: 2rem;
+    }
+  }
+}
+
 @media (max-width: 600px) {
   .horizontal-scroll {
     &__panel {

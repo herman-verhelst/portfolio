@@ -13,7 +13,9 @@ defineProps({
 
 <template>
   <nuxt-link v-cursor v-if="project" :to="localePath(`/projects/${project.link}?id=${project.id}`)" class="project__discover-card">
-    <img :src="`/images/projects/${project.link}/${project.thumbnail}`" alt="">
+    <div class="project__discover-img-container">
+      <img class="project__discover-img" :src="`/images/projects/${project.link}/${project.thumbnail}`" alt="">
+    </div>
     <div class="project__discover-text">
       <p>{{ $t(`projects.${toCamelCase(project.link)}.title`) }}</p>
       <button class="button button--icon-small" :class="`button--color-${project?.id}`">

@@ -74,7 +74,7 @@ useHead({
 
           <project-home
               class="col-span-5 col-start-9 row-span-6 row-start-1 mb-8"
-              :project="discoverProject1"
+              :project="discoverProject4"
               thumbnail-grid="1 / span 8"
               text-grid="span 4"
           ></project-home>

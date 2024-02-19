@@ -11,8 +11,11 @@ defineProps({
 </script>
 
 <template>
-  <img data-scrolltrigger :alt="image.alt" :src="`/images/projects/${page}/${image.src}`"
-       class="project__image-full-screen">
+  <img
+      data-scrolltrigger
+      :alt="image.alt"
+      :src="`/images/projects/${page}/${image.src}`"
+      class="project__image-full-screen">
 </template>
 
 <style lang="scss" scoped>

@@ -49,10 +49,17 @@ if (project) useHead({
               :image="component.image"
               :page="route.params.id">
           </project-image-full-screen>
+          <project-link
+              v-if="component.type === 'link'"
+              :image="component.image"
+              :link="component.link"
+              :project-id="project.id"
+              :page="route.params.id">
+          </project-link>
         </template>
       </div>
 
-      <project-discover></project-discover>
+      <project-discover :current-project="project"></project-discover>
     </div>
 
     <footer-comp :footer-color="`footer--bg-${project.id}`"></footer-comp>
