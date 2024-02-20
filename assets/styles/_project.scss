@@ -137,6 +137,10 @@
 
       &--full-height {
         height: fit-content;
+
+        .project__discover-img-container {
+          height: 100%;
+        }
       }
     }
 
