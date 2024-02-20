@@ -107,7 +107,7 @@ export const useProjectsStore = defineStore('projects', () => {
             id: 6,
             tags: [{name: 'tags.web'}, {name: 'tags.creativeCoding'}, {name: 'tags.mind'}],
             link: 'cycling',
-            thumbnail: 'PXL_20240122_092227937_1.jpg',
+            thumbnail: 'thumbnail.png',
             components: []
         },
         {
