@@ -95,16 +95,16 @@ onUnmounted(() => {
           <div data-footertrigger="3" class="footer__socials">
             <h3 class="proforma">{{ $t('socials') }}</h3>
             <ul>
-              <li><a v-cursor href="#">Dribbble.</a></li>
-              <li><a v-cursor href="#">Behance.</a></li>
-              <li><a v-cursor href="#">LinkedIn.</a></li>
-              <li><a v-cursor href="#">GitHub.</a></li>
-              <li><a v-cursor href="#">Instagram.</a></li>
+              <li><a class="link" v-cursor href="#">Dribbble.</a></li>
+              <li><a class="link" v-cursor href="#">Behance.</a></li>
+              <li><a class="link" v-cursor href="#">LinkedIn.</a></li>
+              <li><a class="link" v-cursor href="#">GitHub.</a></li>
+              <li><a class="link" v-cursor href="#">Instagram.</a></li>
             </ul>
           </div>
           <div data-footertrigger="4" class="footer__contact">
             <h3 class="proforma">{{ $t('contact.title') }}</h3>
-            <nuxt-link v-cursor :to="localePath('/contact')">{{ $t('contact.question') }}</nuxt-link>
+            <nuxt-link class="link" v-cursor :to="localePath('/contact')">{{ $t('contact.question') }}</nuxt-link>
           </div>
         </div>
       </div>
@@ -114,11 +114,11 @@ onUnmounted(() => {
 
           <div class="lang-switcher__container lang-switcher__container--small">
             <nuxt-link v-cursor :class="{'lang-switcher--active': $i18n.locale === 'nl'}" :to="switchLocalePath('nl')"
-                       class="nav__link lang-switcher">Nl
+                       class="link nav__link lang-switcher">Nl
             </nuxt-link>
             |
             <nuxt-link v-cursor :class="{'lang-switcher--active': $i18n.locale === 'en'}" :to="switchLocalePath('en')"
-                       class="nav__link lang-switcher">Eng
+                       class="link nav__link lang-switcher">Eng
             </nuxt-link>
           </div>
         </div>

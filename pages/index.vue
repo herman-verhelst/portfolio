@@ -5,7 +5,7 @@ import PixelImage from "~/components/pixel-image.vue";
 import FooterComp from "~/components/footer-comp.vue";
 import {useProjectsStore} from "~/stores/projects";
 import middleware from "~/helpers/middleware";
-import {toCamelCase} from "~/utils/string-utils";
+
 
 const projectsStore = useProjectsStore();
 const {findProjectById} = projectsStore;

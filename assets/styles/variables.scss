@@ -1,11 +1,16 @@
 $number-of-projects: 7;
 
-@mixin wide-bottom-border {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: -.5rem;
-  right: -.5rem;
-  height: 1px;
-  background-color: var(--text-color);
+@mixin focus-visible {
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background-color: var(--text-color);
+    transform: scaleX(0%);
+    transform-origin: left;
+    transition: transform .2s ease-in-out;
+  }
 }

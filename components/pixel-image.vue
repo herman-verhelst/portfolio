@@ -3,8 +3,11 @@ import {Pixel} from "~/utils/models/pixel";
 import '~/assets/styles/components/pixel-image.scss'
 import {Shape} from "~/utils/models/shape";
 import {useTransitionComposable} from "~/composables/transition-composable";
+import {computed} from "vue";
+import {usePixelsStore} from "~/stores/pixels";
 
 const {transitionState} = useTransitionComposable();
+const pixelsStore = usePixelsStore();
 
 const props = defineProps({
   isFullPage: {
@@ -24,7 +27,7 @@ const props = defineProps({
   isPlaying: {
     type: Boolean,
     default: true,
-  }
+  },
 });
 
 let streaming: boolean = true;
@@ -32,8 +35,9 @@ let streaming: boolean = true;
 watch(
     () => transitionState.transitionComplete,
     (newValue) => {
+
       if (!newValue) return;
-      const detail = getComputedStyle(document.body).getPropertyValue('--pi-detail') ? parseInt(getComputedStyle(document.body).getPropertyValue('--pi-detail') as string) : 3,
+      const
           differentColorThreshold = getComputedStyle(document.body).getPropertyValue('--pi-different-color-treshold') ? parseInt(getComputedStyle(document.body).getPropertyValue('--pi-different-color-treshold') as string) : .05,
           video: HTMLVideoElement = document.getElementById(`video-${props.canvasId}`) as HTMLVideoElement,
           videoCanvas = document.getElementById(`video-canvas-${props.canvasId}`) as HTMLCanvasElement,
@@ -43,7 +47,9 @@ watch(
           bgContext = bgCanvas.getContext('2d') as CanvasRenderingContext2D,
           accentColors = getAllAccentColors();
 
-      let pixelColor = getComputedStyle(document.body).getPropertyValue('--text-color') as string ?? '#1a1a1a',
+      let
+          detail = getComputedStyle(document.body).getPropertyValue('--pi-detail') ? parseInt(getComputedStyle(document.body).getPropertyValue('--pi-detail') as string) : 3,
+          pixelColor = getComputedStyle(document.body).getPropertyValue('--text-color') as string ?? '#1a1a1a',
           canvasMargin = getComputedStyle(document.body).getPropertyValue('--pi-canvas-margin') ? parseInt(getComputedStyle(document.body).getPropertyValue('--pi-canvas-margin') as string) : 100,
           pixels: Pixel[][] = [],
           previousValues: number[][] = [],
@@ -60,16 +66,40 @@ watch(
           numberOfPixelsWidth: number = 0,
           id: number,
           valueUpdated: boolean = false,
-          shapes: Shape[] = [];
+          shapes: Shape[] = [],
+          cameraAllowed: boolean = false;
 
       if (props.darkBg) pixelColor = getComputedStyle(document.body).getPropertyValue('--bg-color') as string ?? '#1a1a1a'
+
+      watch(() => pixelsStore.detail, (value) => {
+        detail = value
+      })
+
+      watch(() => pixelsStore.resolution, (value) => {
+        width = Math.round(mapNumRange(Math.pow(parseFloat(`${value}`), 2), 8, 256))
+        height = bgCanvas.height / (bgCanvas.width / width);
+
+        bgContext.clearRect(0, 0, bgCanvas.offsetWidth, bgCanvas.offsetHeight);
+        videoCanvas.setAttribute("width", `${width}`);
+        videoCanvas.setAttribute("height", `${height}`);
+
+        calculatePixelWidth();
+      })
+
+      function mapNumRange(number: number, min: number, max: number): number {
+        return number * (max - min) + min;
+      }
 
       function addEventListeners(): void {
         if (props.isFullPage) video.addEventListener(
             "canplay",
-            startAnimation,
+            () => {
+              cameraAllowed = true
+            },
             false
-        ); else startAnimation();
+        );
+
+        startAnimation();
 
         window.addEventListener('resize', onWindowResize);
       }
@@ -79,7 +109,9 @@ watch(
           canvasMargin = 0;
           height = props.numberOfRows;
           width = bgCanvas.offsetWidth / (bgCanvas.offsetHeight / height)
-        } else height = video.videoHeight / (video.videoWidth / width);
+        }  else {
+          height = bgCanvas.height / (bgCanvas.width / width);
+        }
 
 
         videoCanvas.setAttribute("width", `${width}`);
@@ -195,9 +227,8 @@ watch(
       function computeFrame(): void {
         if (!streaming) return;
 
-        if (props.isFullPage) videoContext.drawImage(video, 0, 0, width, height);
+        if (cameraAllowed) videoContext.drawImage(video, 0, 0, width, height);
         else drawShapes();
-
         let frame = videoContext.getImageData(0, 0, width, height);
 
         for (let i = 0; i < height; i++) {
@@ -260,7 +291,7 @@ watch(
       }
 
       function setupCamera(): void {
-
+        console.log('here')
         navigator.mediaDevices
             .getUserMedia({video: {width: {max: 16}, height: {max: 12}}, audio: false})
             .then((stream) => {

@@ -10,6 +10,12 @@
     color: var(--bg-color);
   }
 
+  .link {
+    &:after {
+      background-color: var(--bg-color);
+    }
+  }
+
   &--bg-default {
     background-color: var(--bg-footer);
   }
@@ -93,7 +99,7 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .footer {
     &__main {
       flex-direction: column;

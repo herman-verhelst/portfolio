@@ -11,25 +11,8 @@ a {
   color: var(--text-color);
   position: relative;
 
-  &:after {
-    content: '';
-    position: absolute;
-    bottom: -.2rem;
-    left: 0;
-    height: 1px;
-    width: 100%;
-    background-color: var(--text-color);
-    transform: scaleX(0%);
-    transform-origin: left;
-    transition: transform .2s ease-in-out;
-  }
-
   &:focus-visible {
     outline: transparent;
-
-    &:after {
-      transform: scaleX(100%);
-    }
   }
 }
 
@@ -48,6 +31,13 @@ h2 {
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: .15rem;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: .1rem;
   text-transform: uppercase;
 }
 
@@ -78,6 +68,16 @@ h2 {
 .uppercase {
   text-transform: uppercase;
   letter-spacing: .1rem;
+}
+
+.link {
+  @include focus-visible;
+
+  &:focus-visible {
+    &:after {
+      transform: scaleX(100%);
+    }
+  }
 }
 
 @media (max-width: 600px) {
