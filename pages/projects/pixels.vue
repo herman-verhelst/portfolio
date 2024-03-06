@@ -15,10 +15,39 @@ function handleDetailChange(value: number) {
 function handleResolutionChange(value: number) {
   pixelsStore.setResolution(value);
 }
+
+let isDragging: boolean = false;
+const hue = ref<HTMLDivElement | null>(null)
+const huePicker = ref<HTMLDivElement | null>(null)
+let hueStartingPosition = {left: 0}
+
+function startDrag(event: MouseEvent) {
+  if (!hue.value) return;
+
+  isDragging = true;
+  const rect = hue.value?.getBoundingClientRect();
+  hueStartingPosition = {
+    left: event.clientY - rect.top,
+  };
+}
+
+function onDrag(event: MouseEvent) {
+  if (!isDragging || !huePicker.value || !hue.value) return;
+
+  const rect = hue.value.getBoundingClientRect();
+  const x = Math.max(0.1, Math.min(event.clientX - rect.left, rect.width - .1));
+  const y = 0; // Lock the y-axis movement
+  huePicker.value.style.left = `${x - hueStartingPosition.left}px`;
+
+}
+
+function stopDrag() {
+  isDragging = false;
+}
 </script>
 
 <template>
-  <main>
+  <main @mousemove="onDrag" @mouseup="stopDrag">
     <div class="page pixels">
       <pixel-image
           :is-full-page="true"
@@ -30,7 +59,14 @@ function handleResolutionChange(value: number) {
           <h3>Kleur</h3>
           <toggle label="Synchroniseer kleur"></toggle>
           <div class="color__container">
-            <div id="foreground"></div>
+            <div class="color-picker">
+              <div ref="hue" class="hue" @mousedown="startDrag">
+                <div ref="huePicker" class="picker"></div>
+              </div>
+              <div class="value-brightness">
+                <div class="picker"></div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="pixels__controls__group">
