@@ -35,11 +35,6 @@ export const useProjectsStore = defineStore('projects', () => {
                     }
                 },
                 {
-                    type: 'text',
-                    text: 'assignment',
-                    title: 'assignment',
-                },
-                {
                     type: 'images',
                     small: true,
                     images: [
@@ -71,14 +66,26 @@ export const useProjectsStore = defineStore('projects', () => {
             tags: [{name: 'tags.wood'}, {name: 'tags.personal'}],
             link: 'woodwork',
             thumbnail: 'IMG_3130.jpeg',
-            components: []
+            components: [
+                {
+                    type: 'text',
+                    text: 'description',
+                    title: false,
+                },
+            ]
         },
         {
             id: 3,
             tags: [{name: 'tags.wood'}, {name: 'tags.dataVis'}, {name: 'tags.mind'}],
             link: 't-shirts',
             thumbnail: 'PXL_20240122_094658383_1.jpg',
-            components: []
+            components: [
+                {
+                    type: 'text',
+                    text: 'description',
+                    title: false,
+                },
+            ]
         },
         {
             id: 4,

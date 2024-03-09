@@ -45,8 +45,7 @@ useHead({
   <main>
     <div class="page page--large-top-padding min-h-lvh">
       <h1 data-startanimation="0" class="title">
-        {{ $t('projects.title1') }}<br/>
-        <b>{{ $t('projects.title2') }}</b>.
+        <b>{{ $t('projects.title') }}</b>
       </h1>
       <ul id="projects">
         <li :data-startanimation="index" v-for="(project, index) of projects">

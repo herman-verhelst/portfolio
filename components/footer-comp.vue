@@ -102,10 +102,6 @@ onUnmounted(() => {
               <li><a class="link" v-cursor href="#">Instagram.</a></li>
             </ul>
           </div>
-          <div data-footertrigger="4" class="footer__contact">
-            <h3 class="proforma">{{ $t('contact.title') }}</h3>
-            <nuxt-link class="link" v-cursor :to="localePath('/contact')">{{ $t('contact.question') }}</nuxt-link>
-          </div>
         </div>
       </div>
       <div>
