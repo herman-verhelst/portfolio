@@ -6,3 +6,7 @@ export function mapNumber(current: number, out_min: number, out_max: number, in_
     const mapped: number = ((current - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min;
     return clamp(mapped, out_min, out_max);
 }
+
+export function convertRemToPixels(rem: number): number {
+    return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
+}

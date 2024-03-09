@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import PixelImage from "~/components/pixel-image.vue";
 import {usePixelsStore} from "~/stores/pixels";
+import {convertRemToPixels} from "~/utils/number-utils";
 
 const pixelsStore = usePixelsStore();
 
@@ -16,33 +17,60 @@ function handleResolutionChange(value: number) {
   pixelsStore.setResolution(value);
 }
 
-let isDragging: boolean = false;
+let isHueDragging: boolean = false;
+let isSBDragging: boolean = false;
 const hue = ref<HTMLDivElement | null>(null)
 const huePicker = ref<HTMLDivElement | null>(null)
-let hueStartingPosition = {left: 0}
+const sb = ref<HTMLDivElement | null>(null)
+const sbPicker = ref<HTMLDivElement | null>(null)
 
-function startDrag(event: MouseEvent) {
-  if (!hue.value) return;
+let color = {
+  h: 0,
+  s: 100,
+  b: 100,
+}
 
-  isDragging = true;
-  const rect = hue.value?.getBoundingClientRect();
-  hueStartingPosition = {
-    left: event.clientY - rect.top,
-  };
+function startHueDrag(event: MouseEvent) {
+  isHueDragging = true;
+  onDrag(event);
+}
+
+function startSBDrag(event: MouseEvent) {
+  isSBDragging = true;
+  onDrag(event);
 }
 
 function onDrag(event: MouseEvent) {
-  if (!isDragging || !huePicker.value || !hue.value) return;
+  if (!huePicker.value || !hue.value || !sb.value || !sbPicker.value) return;
 
-  const rect = hue.value.getBoundingClientRect();
-  const x = Math.max(0.1, Math.min(event.clientX - rect.left, rect.width - .1));
-  const y = 0; // Lock the y-axis movement
-  huePicker.value.style.left = `${x - hueStartingPosition.left}px`;
+  if (isHueDragging) {
+    const hueRect = hue.value.getBoundingClientRect();
+    const huePickerRect = huePicker.value.getBoundingClientRect();
+    const x = Math.max(huePickerRect.width / 2, Math.min(event.clientX - hueRect.left, hueRect.width - huePickerRect.width / 2 - convertRemToPixels(.25)));
+    const percentage = Math.floor(Math.max(0, Math.min((event.clientX - hueRect.left) / hueRect.width * 360, 360)));
+    huePicker.value.style.left = `${x - huePickerRect.width / 2}px`;
+    color.h = percentage;
+    sb.value.style.background =
+        `linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%), linear-gradient(to right, rgba(0, 0, 0, 0) 0%,  hsl(${percentage}, 100%, 50%) 100%)`
+    sbPicker.value.style.background = `${convertHSBToRGB(color.h, color.s, color.b)}`
 
+  } else if (isSBDragging) {
+    const sbRect = sb.value.getBoundingClientRect();
+    const sbPickerRect = sbPicker.value.getBoundingClientRect();
+    const x = Math.max(0, Math.min(event.clientX - sbRect.left, sbRect.width));
+    const y = Math.max(0, Math.min(event.clientY - sbRect.top, sbRect.height));
+    color.s = x / sbRect.width * 100
+    color.b = 100 - (y / sbRect.height * 100)
+
+    sbPicker.value.style.left = `${x - sbPickerRect.width / 2}px`;
+    sbPicker.value.style.top = `${y - sbPickerRect.height / 2}px`;
+    sbPicker.value.style.background = `${convertHSBToRGB(color.h, color.s, color.b)}`
+  }
 }
 
 function stopDrag() {
-  isDragging = false;
+  isHueDragging = false;
+  isSBDragging = false;
 }
 </script>
 
@@ -60,11 +88,11 @@ function stopDrag() {
           <toggle label="Synchroniseer kleur"></toggle>
           <div class="color__container">
             <div class="color-picker">
-              <div ref="hue" class="hue" @mousedown="startDrag">
+              <div ref="hue" class="hue" @mousedown="startHueDrag">
                 <div ref="huePicker" class="picker"></div>
               </div>
-              <div class="value-brightness">
-                <div class="picker"></div>
+              <div ref="sb" class="saturation-brightness" @mousedown="startSBDrag">
+                <div ref="sbPicker" class="picker"></div>
               </div>
             </div>
           </div>
