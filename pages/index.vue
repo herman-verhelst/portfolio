@@ -5,7 +5,7 @@ import PixelImage from "~/components/pixel-image.vue";
 import FooterComp from "~/components/footer-comp.vue";
 import {useProjectsStore} from "~/stores/projects";
 import middleware from "~/helpers/middleware";
-import {toCamelCase} from "~/utils/string-utils";
+
 
 const projectsStore = useProjectsStore();
 const {findProjectById} = projectsStore;
@@ -33,9 +33,10 @@ useHead({
     <div class="home">
       <div class="hero">
         <h1 class="title">
-          <span data-startanimation><b>Herman Verhelst</b></span>
-          <span data-startanimation="1"><b>Web</b> <i class="proforma">&</i> <b>Information</b> <br/> designer</span>
-          <span data-startanimation="2">{{ $t('home.loves') }} <b>{{ $t('home.wood') }}</b></span>
+          <span data-startanimation>Herman Verhelst</span>
+          <span data-startanimation>{{ $t('home.designer') }}</span>
+          <span data-startanimation="1"><b>Web</b> <i class="proforma">&</i> <b>{{ $t('home.information') }}</b></span>
+          <span data-startanimation="2"><b>{{ $t('home.wood') }}</b></span>
         </h1>
 
         <p data-startanimation="3" class="text proforma">

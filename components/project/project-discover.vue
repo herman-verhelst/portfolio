@@ -30,8 +30,8 @@ if (project.id !== 1 && project.id !== 2) {
 
 <template>
   <section class="project__discover">
-    <h2>Ontdek zeker ook <br/>
-      <nuxt-link v-cursor :to="localePath('/projects')">mijn andere projecten.</nuxt-link>
+    <h2>{{$t('projects.other1')}}<br/>
+      <nuxt-link class="project__discover__link" v-cursor :to="localePath('/projects')">{{$t('projects.other2')}}</nuxt-link>
     </h2>
 
     <div class="project__discover-projects">

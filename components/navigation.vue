@@ -15,6 +15,7 @@ onMounted(() => {
   createNavDrawer();
 })
 
+
 function createNavDrawer() {
   if (window.innerWidth > 900) {
     if (tl) {
@@ -64,27 +65,27 @@ function hideNavigation() {
       <div id="nav-drawer" class="nav__links">
         <ul>
           <li>
-            <nuxt-link v-cursor :to="localePath('/projects')" class="nav__link" @click="hideNavigation">
+            <nuxt-link v-cursor :to="localePath('/projects')" class="nav__link link" @click="hideNavigation">
               {{ $t('nav.projects') }}
             </nuxt-link>
           </li>
-          <li>
-            <nuxt-link v-cursor class="nav__link" to="#" @click="hideNavigation">{{ $t('nav.about') }}</nuxt-link>
+<!--          <li>
+            <nuxt-link v-cursor class="nav__link link" to="#" @click="hideNavigation">{{ $t('nav.about') }}</nuxt-link>
           </li>
           <li>
-            <nuxt-link v-cursor :to="localePath('/contact')" class="nav__link" @click="hideNavigation">
+            <nuxt-link v-cursor :to="localePath('/contact')" class="nav__link link" @click="hideNavigation">
               {{ $t('nav.contact') }}
             </nuxt-link>
-          </li>
+          </li>-->
 
           <li class="lang-switcher__container tablet:mt-auto">
             <nuxt-link v-cursor :class="{'lang-switcher--active': $i18n.locale === 'nl'}" :to="switchLocalePath('nl')"
-                       class="nav__link lang-switcher"
+                       class="nav__link lang-switcher link"
                        @click="hideNavigation">Nl
             </nuxt-link>
             |
             <nuxt-link v-cursor :class="{'lang-switcher--active': $i18n.locale === 'en'}" :to="switchLocalePath('en')"
-                       class="nav__link lang-switcher"
+                       class="nav__link lang-switcher link"
                        @click="hideNavigation">Eng
             </nuxt-link>
           </li>
