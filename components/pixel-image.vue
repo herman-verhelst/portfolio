@@ -5,6 +5,8 @@ import {Shape} from "~/utils/models/shape";
 import {useTransitionComposable} from "~/composables/transition-composable";
 import {computed} from "vue";
 import {usePixelsStore} from "~/stores/pixels";
+import {convertHSBToHex} from "~/utils/color-utils";
+import {storeToRefs} from "pinia";
 
 const {transitionState} = useTransitionComposable();
 const pixelsStore = usePixelsStore();
@@ -35,6 +37,7 @@ let streaming: boolean = true;
 watch(
     () => transitionState.transitionComplete,
     (newValue) => {
+      const {resolution, detail, pixelColor: statePixelColor} = storeToRefs(pixelsStore)
 
       if (!newValue) return;
       const
@@ -48,8 +51,8 @@ watch(
           accentColors = getAllAccentColors();
 
       let
-          detail = getComputedStyle(document.body).getPropertyValue('--pi-detail') ? parseInt(getComputedStyle(document.body).getPropertyValue('--pi-detail') as string) : 3,
           pixelColor = getComputedStyle(document.body).getPropertyValue('--text-color') as string ?? '#1a1a1a',
+          pixelDetail = getComputedStyle(document.body).getPropertyValue('--pi-pixelDetail') ? parseInt(getComputedStyle(document.body).getPropertyValue('--pi-pixelDetail') as string) : 3,
           canvasMargin = getComputedStyle(document.body).getPropertyValue('--pi-canvas-margin') ? parseInt(getComputedStyle(document.body).getPropertyValue('--pi-canvas-margin') as string) : 100,
           pixels: Pixel[][] = [],
           previousValues: number[][] = [],
@@ -69,14 +72,22 @@ watch(
           shapes: Shape[] = [],
           cameraAllowed: boolean = false;
 
+      console.log(canvasMargin)
+
       if (props.darkBg) pixelColor = getComputedStyle(document.body).getPropertyValue('--bg-color') as string ?? '#1a1a1a'
 
-      watch(() => pixelsStore.detail, (value) => {
-        detail = value
-      })
+      watch(() => detail, (value) => {
+        pixelDetail = value.value
+      }, {deep: true});
 
-      watch(() => pixelsStore.resolution, (value) => {
-        width = Math.round(mapNumRange(Math.pow(parseFloat(`${value}`), 2), 8, 256))
+      watch(() => statePixelColor, (value) => {
+        pixelColor = value.value;
+        bgContext.clearRect(0, 0, bgCanvas.offsetWidth, bgCanvas.offsetHeight);
+        setupPreviousValuesAndColors();
+      }, {deep: true})
+
+      watch(() => resolution, (value) => {
+        width = Math.round(mapNumRange(Math.pow(parseFloat(`${value.value}`), 2), 8, 256))
         height = bgCanvas.height / (bgCanvas.width / width);
 
         bgContext.clearRect(0, 0, bgCanvas.offsetWidth, bgCanvas.offsetHeight);
@@ -84,7 +95,7 @@ watch(
         videoCanvas.setAttribute("height", `${height}`);
 
         calculatePixelWidth();
-      })
+      }, {deep: true});
 
       function mapNumRange(number: number, min: number, max: number): number {
         return number * (max - min) + min;
@@ -256,7 +267,7 @@ watch(
       }
 
       function createDisplayedPixel(pixel: Pixel, x: number, y: number, i: number, j: number): void {
-        const index: number = Math.round(pixel.getNormalizedGreyValue() * detail);
+        const index: number = Math.round(pixel.getNormalizedGreyValue() * pixelDetail);
 
         if (valueUpdated || !previousValues[i] || !previousValues[i][j] || previousValues[i][j] !== index) {
           const pixelWidth: number = defaultPixelWidth / ((index * 2) + 1);
@@ -291,7 +302,6 @@ watch(
       }
 
       function setupCamera(): void {
-        console.log('here')
         navigator.mediaDevices
             .getUserMedia({video: {width: {max: 16}, height: {max: 12}}, audio: false})
             .then((stream) => {

@@ -86,20 +86,20 @@ onUnmounted(() => {
       <div class="footer__main">
         <h2 class="footer__title">
 
-          <span data-footertrigger="0">{{ $t('footer.think') }}.</span>
-          <span data-footertrigger="1">{{ $t('footer.dare') }}.</span>
-          <span data-footertrigger="2">{{ $t('footer.create') }}.</span>
+          <span data-footertrigger="0">{{ $t('footer.think') }}</span>
+          <span data-footertrigger="1">{{ $t('footer.dare') }}</span>
+          <span data-footertrigger="2">{{ $t('footer.create') }}</span>
         </h2>
         <div class="footer__links">
 
           <div data-footertrigger="3" class="footer__socials">
             <h3 class="proforma">{{ $t('socials') }}</h3>
             <ul>
-              <li><a class="link" v-cursor href="#">Dribbble.</a></li>
-              <li><a class="link" v-cursor href="#">Behance.</a></li>
-              <li><a class="link" v-cursor href="#">LinkedIn.</a></li>
-              <li><a class="link" v-cursor href="#">GitHub.</a></li>
-              <li><a class="link" v-cursor href="#">Instagram.</a></li>
+              <li><a class="link" v-cursor href="#">Dribbble</a></li>
+              <li><a class="link" v-cursor href="#">Behance</a></li>
+              <li><a class="link" v-cursor href="#">LinkedIn</a></li>
+              <li><a class="link" v-cursor href="#">GitHub</a></li>
+              <li><a class="link" v-cursor href="#">Instagram</a></li>
             </ul>
           </div>
         </div>

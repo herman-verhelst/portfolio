@@ -1,14 +1,12 @@
 export const twiceBurnedLibrary = {
-    title: 'The Twice-Burned Library',
-    subtitle: 'Boekontwerp voor tekst over de universiteitsbibliotheek van Leuven.',
+    title: 'Blijvend ge-boek-staafd',
+    subtitle: 'Woord en beeld in balans',
     text: {
-        description: 'Een oude draaibank van een grootvader.\n' +
-            'Technisch advies van familie.\n' +
-            'Hout vol kleur, geur en nerven.\n' +
-            'Een idee wordt een schets, krijgt vorm.\n' +
-            'Speelse vormentaal.\n' +
-            'De kracht van eenvoud.\n' +
-            'Proberen, durven, maken.\n' +
-            'Houten voorwerpen in beweging.'
+        description:
+            'Bladeren - kijken - lezen - herlezen - koesteren \n' +
+            'Passende letters lezen beter\n' +
+            'Passende beelden eisen hun plek\n' +
+            'Letters - woorden - beelden in harmonie\n\n' +
+            'Ook in digitale wereld verdient mooi boek-werk aandacht'
     }
 }

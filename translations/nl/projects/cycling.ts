@@ -1,14 +1,16 @@
 export const cycling = {
     title: 'Het is koers!',
-    subtitle: 'Een webplatform om mee te zijn met de laatste ontwikkelingen in het wielerlandschap.',
+    subtitle: 'Een muisklik verwijderd van de finish',
     text: {
-        description: 'Een oude draaibank van een grootvader.\n' +
-            'Technisch advies van familie.\n' +
-            'Hout vol kleur, geur en nerven.\n' +
-            'Een idee wordt een schets, krijgt vorm.\n' +
-            'Speelse vormentaal.\n' +
-            'De kracht van eenvoud.\n' +
-            'Proberen, durven, maken.\n' +
-            'Houten voorwerpen in beweging.'
+        description:
+            'Koers is\n' +
+            'renners volgen\n' +
+            'koersen volgen\n' +
+            'ploegen volgen\n\n' +
+            'Koers is\n' +
+            'dromen - hopen - weten\n' +
+            'dat jouw favoriet wint\n\n' +
+            'Behoud het overzicht: \n' +
+            'zoek - kijk - vergelijk'
     }
 }

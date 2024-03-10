@@ -5,10 +5,6 @@ import {convertRemToPixels} from "~/utils/number-utils";
 
 const pixelsStore = usePixelsStore();
 
-onMounted(() => {
-
-})
-
 function handleDetailChange(value: number) {
   pixelsStore.setDetail(value);
 }
@@ -24,7 +20,13 @@ const huePicker = ref<HTMLDivElement | null>(null)
 const sb = ref<HTMLDivElement | null>(null)
 const sbPicker = ref<HTMLDivElement | null>(null)
 
-let color = {
+let pixelC = {
+  h: 0,
+  s: 100,
+  b: 100,
+}
+
+let backgroundC = {
   h: 0,
   s: 100,
   b: 100,
@@ -49,22 +51,24 @@ function onDrag(event: MouseEvent) {
     const x = Math.max(huePickerRect.width / 2, Math.min(event.clientX - hueRect.left, hueRect.width - huePickerRect.width / 2 - convertRemToPixels(.25)));
     const percentage = Math.floor(Math.max(0, Math.min((event.clientX - hueRect.left) / hueRect.width * 360, 360)));
     huePicker.value.style.left = `${x - huePickerRect.width / 2}px`;
-    color.h = percentage;
+    pixelC.h = percentage;
     sb.value.style.background =
         `linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%), linear-gradient(to right, rgba(0, 0, 0, 0) 0%,  hsl(${percentage}, 100%, 50%) 100%)`
-    sbPicker.value.style.background = `${convertHSBToRGB(color.h, color.s, color.b)}`
+    pixelsStore.setPixelColor(pixelC);
+    sbPicker.value.style.background = `${convertHSBToRGB(pixelC.h, pixelC.s, pixelC.b)}`
 
   } else if (isSBDragging) {
     const sbRect = sb.value.getBoundingClientRect();
     const sbPickerRect = sbPicker.value.getBoundingClientRect();
     const x = Math.max(0, Math.min(event.clientX - sbRect.left, sbRect.width));
     const y = Math.max(0, Math.min(event.clientY - sbRect.top, sbRect.height));
-    color.s = x / sbRect.width * 100
-    color.b = 100 - (y / sbRect.height * 100)
+    pixelC.s = x / sbRect.width * 100
+    pixelC.b = 100 - (y / sbRect.height * 100)
 
     sbPicker.value.style.left = `${x - sbPickerRect.width / 2}px`;
     sbPicker.value.style.top = `${y - sbPickerRect.height / 2}px`;
-    sbPicker.value.style.background = `${convertHSBToRGB(color.h, color.s, color.b)}`
+    pixelsStore.setPixelColor(pixelC);
+    sbPicker.value.style.background = `${convertHSBToRGB(pixelC.h, pixelC.s, pixelC.b)}`
   }
 }
 

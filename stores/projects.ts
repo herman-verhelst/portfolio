@@ -100,7 +100,12 @@ export const useProjectsStore = defineStore('projects', () => {
                         src: 'frontpage.png',
                         alt: ''
                     }
-                }
+                },
+                {
+                    type: 'text',
+                    text: 'description',
+                    title: false,
+                },
             ]
         },
         {
@@ -108,21 +113,52 @@ export const useProjectsStore = defineStore('projects', () => {
             tags: [{name: 'tags.wood'}, {name: 'tags.dataVis'}, {name: 'tags.mind'}],
             link: 'network',
             thumbnail: 'PXL_20240122_092227937_1.jpg',
-            components: []
+            components: [
+                {
+                    type: 'text',
+                    text: 'description',
+                    title: false,
+                },
+            ]
         },
         {
             id: 6,
             tags: [{name: 'tags.web'}, {name: 'tags.creativeCoding'}, {name: 'tags.mind'}],
             link: 'cycling',
             thumbnail: 'thumbnail.png',
-            components: []
+            components: [
+                {
+                    type: 'text',
+                    text: 'description',
+                    title: false,
+                },
+            ]
         },
         {
             id: 7,
             tags: [{name: 'tags.print'}, {name: 'tags.mind'}],
             link: 'twice-burned-library',
             thumbnail: 'PXL_20240122_092939181_1.jpg',
-            components: []
+            components: [
+                {
+                    type: 'text',
+                    text: 'description',
+                    title: false,
+                },
+            ]
+        },
+        {
+            id: 8,
+            tags: [{name: 'tags.creativeCoding'}, {name: 'tags.mind'}],
+            link: 'pixels',
+            thumbnail: 'PXL_20240122_092939181_1.jpg',
+            components: [
+                {
+                    type: 'text',
+                    text: 'description',
+                    title: false,
+                },
+            ]
         }
     ])
 

@@ -7,7 +7,7 @@ export const woodwork = {
             'Hout vol kleur, geur en nerven\n' +
             'Een oude draaibank van een grootvader\n' +
             'Fascinatie voor vaar- en voertuigen\n' +
-            'Uitgepuurde vormen\n' +
+            'Uitgepuurde vormen\n\n' +
             'Eigenwijs hand-werk\n' +
             'Eigenwijs speel-goed\n'
     }

@@ -1,14 +1,13 @@
 export const summitingSuccess = {
-    title: 'Summiting success',
-    subtitle: 'De dominantie van een Tour de France winnaar op een overzichtelijke manier bekijken.',
+    title: 'Succesvol over de top',
+    subtitle: 'Wielerhelden vergelijken is kinderspel',
     text: {
-        description: 'Een oude draaibank van een grootvader.\n' +
-            'Technisch advies van familie.\n' +
-            'Hout vol kleur, geur en nerven.\n' +
-            'Een idee wordt een schets, krijgt vorm.\n' +
-            'Speelse vormentaal.\n' +
-            'De kracht van eenvoud.\n' +
-            'Proberen, durven, maken.\n' +
-            'Houten voorwerpen in beweging.'
+        description:
+            'Meet en weet, wik en weeg\n' +
+            'hoe wielrenners hoge toppen scheren,\n' +
+            'hogere toppen dan hun tegenstanders\n\n' +
+            'Vergelijk als virtuele toeschouwer\n' +
+            'de prestaties van je oude helden\n' +
+            'grafisch in beeld gebracht\n'
     }
 }
