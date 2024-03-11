@@ -1,9 +1,35 @@
 <script lang="ts" setup>
 import PixelImage from "~/components/pixel-image.vue";
 import {usePixelsStore} from "~/stores/pixels";
-import {convertRemToPixels} from "~/utils/number-utils";
+import type {Ref} from "vue";
+import {useProjectsStore} from "~/stores/projects";
+import transitionConfig from "~/helpers/transition-config";
+import middleware from "~/helpers/middleware";
+import {toCamelCase} from "~/utils/string-utils";
+import ProjectContent from "~/components/project/project-content.vue";
 
 const pixelsStore = usePixelsStore();
+
+const pixelColor: Ref<String> = ref('#151413');
+const backgroundColor: Ref<String> = ref('');
+const pixelColorOpen: Ref<Boolean> = ref(true);
+const backgroundColorOpen: Ref<Boolean> = ref(true);
+
+const {t} = useI18n();
+
+const projectsStore = useProjectsStore();
+const {findProjectByLink} = projectsStore;
+
+const project = findProjectByLink('pixels')
+console.log(project)
+if (project) useHead({
+  title: `Herman Verhelst | ${t(`projects.${toCamelCase(project.link)}.title`)}`
+})
+
+definePageMeta({
+  pageTransition: transitionConfig,
+  middleware: middleware,
+})
 
 function handleDetailChange(value: number) {
   pixelsStore.setDetail(value);
@@ -13,101 +39,82 @@ function handleResolutionChange(value: number) {
   pixelsStore.setResolution(value);
 }
 
-let isHueDragging: boolean = false;
-let isSBDragging: boolean = false;
-const hue = ref<HTMLDivElement | null>(null)
-const huePicker = ref<HTMLDivElement | null>(null)
-const sb = ref<HTMLDivElement | null>(null)
-const sbPicker = ref<HTMLDivElement | null>(null)
-
-let pixelC = {
-  h: 0,
-  s: 100,
-  b: 100,
+function toggleOpen(block: string) {
+  if (block === 'pixel') pixelColorOpen.value = !pixelColorOpen.value
+  else backgroundColorOpen.value = !backgroundColorOpen.value
 }
 
-let backgroundC = {
-  h: 0,
-  s: 100,
-  b: 100,
+function syncColors(value: boolean) {
+  pixelsStore.setSync(value);
 }
 
-function startHueDrag(event: MouseEvent) {
-  isHueDragging = true;
-  onDrag(event);
-}
+watch(() => pixelsStore.pixelColor, (value) => {
+  pixelColor.value = value;
+})
 
-function startSBDrag(event: MouseEvent) {
-  isSBDragging = true;
-  onDrag(event);
-}
+watch(() => pixelsStore.backgroundColor, (value) => {
+  backgroundColor.value = value;
+})
 
-function onDrag(event: MouseEvent) {
-  if (!huePicker.value || !hue.value || !sb.value || !sbPicker.value) return;
-
-  if (isHueDragging) {
-    const hueRect = hue.value.getBoundingClientRect();
-    const huePickerRect = huePicker.value.getBoundingClientRect();
-    const x = Math.max(huePickerRect.width / 2, Math.min(event.clientX - hueRect.left, hueRect.width - huePickerRect.width / 2 - convertRemToPixels(.25)));
-    const percentage = Math.floor(Math.max(0, Math.min((event.clientX - hueRect.left) / hueRect.width * 360, 360)));
-    huePicker.value.style.left = `${x - huePickerRect.width / 2}px`;
-    pixelC.h = percentage;
-    sb.value.style.background =
-        `linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%), linear-gradient(to right, rgba(0, 0, 0, 0) 0%,  hsl(${percentage}, 100%, 50%) 100%)`
-    pixelsStore.setPixelColor(pixelC);
-    sbPicker.value.style.background = `${convertHSBToRGB(pixelC.h, pixelC.s, pixelC.b)}`
-
-  } else if (isSBDragging) {
-    const sbRect = sb.value.getBoundingClientRect();
-    const sbPickerRect = sbPicker.value.getBoundingClientRect();
-    const x = Math.max(0, Math.min(event.clientX - sbRect.left, sbRect.width));
-    const y = Math.max(0, Math.min(event.clientY - sbRect.top, sbRect.height));
-    pixelC.s = x / sbRect.width * 100
-    pixelC.b = 100 - (y / sbRect.height * 100)
-
-    sbPicker.value.style.left = `${x - sbPickerRect.width / 2}px`;
-    sbPicker.value.style.top = `${y - sbPickerRect.height / 2}px`;
-    pixelsStore.setPixelColor(pixelC);
-    sbPicker.value.style.background = `${convertHSBToRGB(pixelC.h, pixelC.s, pixelC.b)}`
-  }
-}
-
-function stopDrag() {
-  isHueDragging = false;
-  isSBDragging = false;
-}
 </script>
 
 <template>
-  <main @mousemove="onDrag" @mouseup="stopDrag">
-    <div class="page pixels">
-      <pixel-image
-          :is-full-page="true"
-          canvas-id="project"
-          class="pixels__canvas"
-      ></pixel-image>
-      <div class="pixels__controls">
-        <div class="pixels__controls__group">
-          <h3>Kleur</h3>
-          <toggle label="Synchroniseer kleur"></toggle>
-          <div class="color__container">
-            <div class="color-picker">
-              <div ref="hue" class="hue" @mousedown="startHueDrag">
-                <div ref="huePicker" class="picker"></div>
+  <main>
+    <div class="page">
+      <div class="pixels">
+        <pixel-image
+            :is-full-page="true"
+            canvas-id="project"
+            class="pixels__canvas"
+        ></pixel-image>
+        <div class="pixels__controls">
+          <div class="pixels__controls__group">
+            <h3>Kleur</h3>
+            <toggle label="Synchroniseer kleur" @value-change="syncColors"></toggle>
+            <color-picker type="sync"></color-picker>
+
+            <div class="color__container">
+              <div :aria-expanded="pixelColorOpen" class="color-picker__container">
+                <div class="color-picker__label">
+                  <label>Pixels</label>
+                  <button :style="{backgroundColor: pixelColor}" class="button button--icon-small"
+                          @click="toggleOpen('pixel')">
+                    <svg viewBox="0 0 48 48">
+                      <path
+                          d="m30.23,19.65l-6.23,6.23-6.23-6.23c-.2-.2-.51-.2-.71,0l-.71.71c-.2.2-.2.51,0,.71l7.29,7.29c.2.2.51.2.71,0l7.29-7.29c.2-.2.2-.51,0-.71l-.71-.71c-.2-.2-.51-.2-.71,0Z"/>
+                    </svg>
+                  </button>
+                </div>
+                <color-picker :initial-b=".1" :initial-h="30" :initial-s=".08" type="pixelColor"></color-picker>
               </div>
-              <div ref="sb" class="saturation-brightness" @mousedown="startSBDrag">
-                <div ref="sbPicker" class="picker"></div>
+              <div :aria-expanded="backgroundColorOpen" class="color-picker__container">
+                <div class="color-picker__label">
+                  <label>Achtergrond</label>
+                  <button :style="{backgroundColor: backgroundColor}" class="button button--icon-small"
+                          @click="toggleOpen('background')">
+                    <svg viewBox="0 0 48 48">
+                      <path
+                          d="m30.23,19.65l-6.23,6.23-6.23-6.23c-.2-.2-.51-.2-.71,0l-.71.71c-.2.2-.2.51,0,.71l7.29,7.29c.2.2.51.2.71,0l7.29-7.29c.2-.2.2-.51,0-.71l-.71-.71c-.2-.2-.51-.2-.71,0Z"/>
+                    </svg>
+                  </button>
+                </div>
+                <color-picker type="backgroundColor"></color-picker>
               </div>
             </div>
           </div>
-        </div>
-        <div class="pixels__controls__group">
-          <h3>Pixelinstellingen</h3>
-          <slider :initial="2" :max="10" :min="1" label="Detail" @value-change="handleDetailChange"></slider>
-          <slider :initial=".3" :max="1" :min="0" label="Resolutie" @value-change="handleResolutionChange"></slider>
+          <div class="pixels__controls__group">
+            <h3>Pixelinstellingen</h3>
+            <slider :initial="0" :max="10" :min="1" label="Detail" @value-change="handleDetailChange"></slider>
+            <slider :initial=".1" :max="1" :min="0" label="Resolutie" @value-change="handleResolutionChange"></slider>
+          </div>
         </div>
       </div>
+      <project-hero :project="project"></project-hero>
+      <project-content :project="project"></project-content>
+      <project-discover :current-project="project"></project-discover>
     </div>
+
+    <footer-comp :footer-color="`footer--bg-${project.id}`"></footer-comp>
   </main>
 </template>
 

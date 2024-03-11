@@ -7,17 +7,17 @@ const props = defineProps({
     type: String
   },
   initial: {
-    type: Number,
-    default: .5
+    type: Boolean,
+    default: false
   },
 });
 
 const emit = defineEmits<{
-  (e: 'valueChange', value: number): void
+  (e: 'valueChange', value: boolean): void
 }>()
 
 let id: Ref<string> = ref(uuid())
-let value: Ref<number> = ref(props.initial);
+let value: Ref<boolean> = ref(props.initial);
 
 function valueChange() {
   emit('valueChange', value.value)
@@ -28,7 +28,8 @@ function valueChange() {
   <label v-cursor :for="id" class="switch">
     <input :id="id"
            type="checkbox"
-           @input="valueChange">
+           v-model="value"
+           @change="valueChange">
     <span class="toggle"></span>
     <span v-if="label">{{ label }}</span>
   </label>
