@@ -3,9 +3,7 @@ import {Pixel} from "~/utils/models/pixel";
 import '~/assets/styles/components/pixel-image.scss'
 import {Shape} from "~/utils/models/shape";
 import {useTransitionComposable} from "~/composables/transition-composable";
-import {computed} from "vue";
 import {usePixelsStore} from "~/stores/pixels";
-import {convertHSBToHex} from "~/utils/color-utils";
 import {storeToRefs} from "pinia";
 
 const {transitionState} = useTransitionComposable();
@@ -37,7 +35,12 @@ let streaming: boolean = true;
 watch(
     () => transitionState.transitionComplete,
     (newValue) => {
-      const {resolution, detail, pixelColor: statePixelColor} = storeToRefs(pixelsStore)
+      const {
+        resolution,
+        detail,
+        pixelColor: statePixelColor,
+        backgroundColor: stateBackgroundColor
+      } = storeToRefs(pixelsStore)
 
       if (!newValue) return;
       const
@@ -72,30 +75,34 @@ watch(
           shapes: Shape[] = [],
           cameraAllowed: boolean = false;
 
-      console.log(canvasMargin)
-
       if (props.darkBg) pixelColor = getComputedStyle(document.body).getPropertyValue('--bg-color') as string ?? '#1a1a1a'
 
-      watch(() => detail, (value) => {
-        pixelDetail = value.value
-      }, {deep: true});
+      if (props.isFullPage) {
+        watch(() => detail, (value) => {
+          pixelDetail = value.value
+        }, {deep: true});
 
-      watch(() => statePixelColor, (value) => {
-        pixelColor = value.value;
-        bgContext.clearRect(0, 0, bgCanvas.offsetWidth, bgCanvas.offsetHeight);
-        setupPreviousValuesAndColors();
-      }, {deep: true})
+        watch(() => statePixelColor, (value) => {
+          pixelColor = value.value;
+          bgContext.clearRect(0, 0, bgCanvas.offsetWidth, bgCanvas.offsetHeight);
+          setupPreviousValuesAndColors();
+        }, {deep: true})
 
-      watch(() => resolution, (value) => {
-        width = Math.round(mapNumRange(Math.pow(parseFloat(`${value.value}`), 2), 8, 256))
-        height = bgCanvas.height / (bgCanvas.width / width);
+        watch(() => stateBackgroundColor, (value) => {
+          bgCanvas.style.background = value.value;
+        }, {deep: true})
 
-        bgContext.clearRect(0, 0, bgCanvas.offsetWidth, bgCanvas.offsetHeight);
-        videoCanvas.setAttribute("width", `${width}`);
-        videoCanvas.setAttribute("height", `${height}`);
+        watch(() => resolution, (value) => {
+          width = Math.round(mapNumRange(Math.pow(parseFloat(`${value.value}`), 2), 8, 92))
+          height = bgCanvas.height / (bgCanvas.width / width);
 
-        calculatePixelWidth();
-      }, {deep: true});
+          bgContext.clearRect(0, 0, bgCanvas.offsetWidth, bgCanvas.offsetHeight);
+          videoCanvas.setAttribute("width", `${width}`);
+          videoCanvas.setAttribute("height", `${height}`);
+
+          calculatePixelWidth();
+        }, {deep: true});
+      }
 
       function mapNumRange(number: number, min: number, max: number): number {
         return number * (max - min) + min;
@@ -120,7 +127,7 @@ watch(
           canvasMargin = 0;
           height = props.numberOfRows;
           width = bgCanvas.offsetWidth / (bgCanvas.offsetHeight / height)
-        }  else {
+        } else {
           height = bgCanvas.height / (bgCanvas.width / width);
         }
 

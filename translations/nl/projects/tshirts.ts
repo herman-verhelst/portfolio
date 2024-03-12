@@ -1,6 +1,6 @@
 export const tshirts = {
     title: 'Groot(s) gezien',
-    subtitle: 'Een dataverhaal voor en over groot zijn',
+    subtitle: 'Dataverhaal voor en over groot zijn',
     text: {
         description:
             'Knipoog op maximale ooghoogte\n' +

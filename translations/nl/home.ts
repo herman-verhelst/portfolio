@@ -2,13 +2,15 @@ export const home = {
     wood: 'hout',
     information: 'informatie',
     designer: 'Designer',
-    text: 'Durven denken\n' +
+    text:
         'Een idee \n' +
         'Een boodschap\n' +
         'Materiaal Kleur Vorm\n' +
         'Vormentaal\n' +
         '\n' +
+        'Durven denken\n' +
         'Durven maken\n' +
+        '\n' +
         'Potlood en papier\n' +
         'Web\n' +
         'Hout\n' +
