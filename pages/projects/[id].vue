@@ -4,6 +4,7 @@ import transitionConfig from "~/helpers/transition-config";
 import {useProjectsStore} from "~/stores/projects";
 import middleware from "~/helpers/middleware";
 import {toCamelCase} from "~/utils/string-utils";
+import ProjectContent from "~/components/project/project-content.vue";
 
 const {t} = useI18n();
 
@@ -11,6 +12,8 @@ const projectsStore = useProjectsStore();
 const {findProjectByLink} = projectsStore;
 
 const route = useRoute()
+console.log(route.params)
+
 
 const project = findProjectByLink(route.params.id as string)
 
@@ -29,36 +32,7 @@ if (project) useHead({
   <main>
     <div class="page">
       <project-hero :project="project"></project-hero>
-
-      <div class="project__content">
-        <template v-for="component of project.components">
-          <project-images
-              v-if="component.type === 'images'"
-              :images="component.images"
-              :small="component.small"
-              :page="route.params.id">
-          </project-images>
-          <project-text
-              v-if="component.type === 'text'"
-              :title="component.title"
-              :text="component.text"
-              :page="route.params.id">
-          </project-text>
-          <project-image-full-screen
-              v-if="component.type === 'image-full-screen'"
-              :image="component.image"
-              :page="route.params.id">
-          </project-image-full-screen>
-          <project-link
-              v-if="component.type === 'link'"
-              :image="component.image"
-              :link="component.link"
-              :project-id="project.id"
-              :page="route.params.id">
-          </project-link>
-        </template>
-      </div>
-
+      <project-content :project="project"></project-content>
       <project-discover :current-project="project"></project-discover>
     </div>
 

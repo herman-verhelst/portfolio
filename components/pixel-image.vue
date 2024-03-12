@@ -37,7 +37,7 @@ let streaming: boolean = true;
 watch(
     () => transitionState.transitionComplete,
     (newValue) => {
-      const {resolution, detail, pixelColor: statePixelColor} = storeToRefs(pixelsStore)
+      const {resolution, detail, pixelColor: statePixelColor, backgroundColor: stateBackgroundColor} = storeToRefs(pixelsStore)
 
       if (!newValue) return;
       const
@@ -50,9 +50,10 @@ watch(
           bgContext = bgCanvas.getContext('2d') as CanvasRenderingContext2D,
           accentColors = getAllAccentColors();
 
+
       let
           pixelColor = getComputedStyle(document.body).getPropertyValue('--text-color') as string ?? '#1a1a1a',
-          pixelDetail = getComputedStyle(document.body).getPropertyValue('--pi-pixelDetail') ? parseInt(getComputedStyle(document.body).getPropertyValue('--pi-pixelDetail') as string) : 3,
+          pixelDetail = getComputedStyle(document.body).getPropertyValue('--pi-detail') ? parseInt(getComputedStyle(document.body).getPropertyValue('--pi-detail') as string) : 3,
           canvasMargin = getComputedStyle(document.body).getPropertyValue('--pi-canvas-margin') ? parseInt(getComputedStyle(document.body).getPropertyValue('--pi-canvas-margin') as string) : 100,
           pixels: Pixel[][] = [],
           previousValues: number[][] = [],
@@ -71,9 +72,6 @@ watch(
           valueUpdated: boolean = false,
           shapes: Shape[] = [],
           cameraAllowed: boolean = false;
-
-      console.log(canvasMargin)
-
       if (props.darkBg) pixelColor = getComputedStyle(document.body).getPropertyValue('--bg-color') as string ?? '#1a1a1a'
 
       watch(() => detail, (value) => {
@@ -86,8 +84,12 @@ watch(
         setupPreviousValuesAndColors();
       }, {deep: true})
 
+      watch(() => stateBackgroundColor, (value) => {
+        bgCanvas.style.background = value.value;
+      }, {deep: true})
+
       watch(() => resolution, (value) => {
-        width = Math.round(mapNumRange(Math.pow(parseFloat(`${value.value}`), 2), 8, 256))
+        width = Math.round(mapNumRange(Math.pow(parseFloat(`${value.value}`), 2), 8, 92))
         height = bgCanvas.height / (bgCanvas.width / width);
 
         bgContext.clearRect(0, 0, bgCanvas.offsetWidth, bgCanvas.offsetHeight);
