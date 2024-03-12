@@ -42,6 +42,7 @@ watch(
         backgroundColor: stateBackgroundColor
       } = storeToRefs(pixelsStore)
 
+
       if (!newValue) return;
       const
           differentColorThreshold = getComputedStyle(document.body).getPropertyValue('--pi-different-color-treshold') ? parseInt(getComputedStyle(document.body).getPropertyValue('--pi-different-color-treshold') as string) : .05,
@@ -53,9 +54,10 @@ watch(
           bgContext = bgCanvas.getContext('2d') as CanvasRenderingContext2D,
           accentColors = getAllAccentColors();
 
+
       let
           pixelColor = getComputedStyle(document.body).getPropertyValue('--text-color') as string ?? '#1a1a1a',
-          pixelDetail = getComputedStyle(document.body).getPropertyValue('--pi-pixelDetail') ? parseInt(getComputedStyle(document.body).getPropertyValue('--pi-pixelDetail') as string) : 3,
+          pixelDetail = getComputedStyle(document.body).getPropertyValue('--pi-detail') ? parseInt(getComputedStyle(document.body).getPropertyValue('--pi-detail') as string) : 3,
           canvasMargin = getComputedStyle(document.body).getPropertyValue('--pi-canvas-margin') ? parseInt(getComputedStyle(document.body).getPropertyValue('--pi-canvas-margin') as string) : 100,
           pixels: Pixel[][] = [],
           previousValues: number[][] = [],
