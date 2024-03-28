@@ -76,7 +76,7 @@ function hideNavigation() {
             <nuxt-link v-cursor :to="localePath('/contact')" class="nav__link link" @click="hideNavigation">
               {{ $t('nav.contact') }}
             </nuxt-link>
-          </li>-->
+          </li>
 
           <li class="lang-switcher__container tablet:mt-auto">
             <nuxt-link v-cursor :class="{'lang-switcher--active': $i18n.locale === 'nl'}" :to="switchLocalePath('nl')"
@@ -89,6 +89,7 @@ function hideNavigation() {
                        @click="hideNavigation">Eng
             </nuxt-link>
           </li>
+          -->
         </ul>
       </div>
 

@@ -1,5 +1,5 @@
 import {woodenBoxes} from "~/translations/nl/projects/woodenBoxes";
-import {woodwork} from "~/translations/nl/projects/woodwork";
+import {bootSchap} from "~/translations/nl/projects/boot-schap";
 import {tshirts} from "~/translations/nl/projects/tshirts";
 import {summitingSuccess} from "~/translations/nl/projects/summitingSuccess";
 import {network} from "~/translations/nl/projects/network";
@@ -13,7 +13,7 @@ export const projects = {
     other1: 'Benieuwd naar',
     other2: 'andere projecten',
     woodenBoxes: woodenBoxes,
-    woodwork: woodwork,
+    bootSchap: bootSchap,
     tShirts: tshirts,
     summitingSuccess: summitingSuccess,
     network: network,

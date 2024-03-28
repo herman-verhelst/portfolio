@@ -64,13 +64,62 @@ export const useProjectsStore = defineStore('projects', () => {
         {
             id: 2,
             tags: [{name: 'tags.wood'}, {name: 'tags.personal'}],
-            link: 'woodwork',
-            thumbnail: 'IMG_3130.jpeg',
+            link: 'boot-schap',
+            thumbnail: 'chisel.jpg',
             components: [
+                {
+                    type: 'images',
+                    small: false,
+                    images: [
+                        {
+                            src: 'overview.jpg',
+                            alt: 'Overzichtsfoto van de houten vaartuigen.'
+                        },
+                        {
+                            src: 'overview-detail.jpg',
+                            alt: 'Detailfoto van de houten driemaster met de andere vaartuigen op de achtergrond.'
+                        },
+                    ]
+                },
                 {
                     type: 'text',
                     text: 'description',
                     title: false,
+                },
+                {
+                    type: 'images',
+                    small: false,
+                    images: [
+                        {
+                            src: 'steamboat.jpg',
+                            alt: 'Foto van de houten stoomboot.'
+                        },
+                        {
+                            src: 'inland-vessel.jpg',
+                            alt: 'Foto van het houten binnenvaartschip.'
+                        },
+                    ]
+                },
+                {
+                    type: 'image-full-screen',
+                    image: {
+                        src: 'lathe.jpg',
+                        alt: 'Foto van een houten vaartuig op de draaibank.'
+                    },
+                },
+                {
+                    type: 'images',
+                    small: false,
+                    images: [
+                        {
+                            src: 'sailboat.jpg',
+                            alt: 'Foto van de houten zeilboot.'
+                        },
+                        {
+                            src: 'three-master.jpg',
+                            alt: 'Foto van de houten driemaster.'
+                        },
+                    ]
                 },
             ]
         },

@@ -56,9 +56,9 @@ useHead({
       ></project-home>
     </section>
 
-    <horizontal-scroll :width="2.5" id="home" class="mb-16">
+    <horizontal-scroll :width="1.5" id="home" class="mb-16">
       <div :id="`hs-home`" class="horizontal-scroll__container">
-        <div class="horizontal-scroll__panel w-[250vw] !pt-32">
+        <div class="horizontal-scroll__panel w-[150vw] !pt-32">
           <project-home
               class="col-span-7 row-span-3"
               :project="discoverProject2"
@@ -67,27 +67,21 @@ useHead({
           ></project-home>
 
           <project-home
-              class="col-span-6 col-start-3 row-span-2 row-start-4"
+              class="col-span-7 col-start-6 row-span-2 row-start-4"
               :project="discoverProject3"
               thumbnail-grid="5 / span 8"
               text-grid="1 / span 4"
           ></project-home>
 
-          <project-home
-              class="col-span-5 col-start-9 row-span-6 row-start-1 mb-8"
-              :project="discoverProject4"
-              thumbnail-grid="1 / span 8"
-              text-grid="span 4"
-          ></project-home>
+
         </div>
       </div>
     </horizontal-scroll>
 
     <section class="section section--last">
-
       <project-home
           data-scrolltrigger
-          :project="discoverProject1"
+          :project="discoverProject4"
           thumbnail-grid="1 / span 8"
           text-grid="span 4"
       ></project-home>
