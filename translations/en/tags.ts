@@ -1,9 +1,9 @@
 export const tags = {
     mind: 'Media & Information Design',
-    dataVis: 'Data visualisatie',
-    wood: 'Hout',
+    dataVis: 'Data visualisation',
+    wood: 'Wood',
     creativeCoding: 'Creative coding',
-    personal: 'Persoonlijk',
+    personal: 'Personal',
     web: 'Web design',
     print: 'Print',
 }

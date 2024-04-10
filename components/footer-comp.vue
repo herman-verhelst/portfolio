@@ -105,7 +105,7 @@ onUnmounted(() => {
         <div data-footertrigger="5" class="footer__small">
           <p>Herman Verhelst | 2024</p>
 
-<!--          <div class="lang-switcher__container lang-switcher__container&#45;&#45;small">
+          <div class="lang-switcher__container lang-switcher__container&#45;&#45;small">
             <nuxt-link v-cursor :class="{'lang-switcher&#45;&#45;active': $i18n.locale === 'nl'}" :to="switchLocalePath('nl')"
                        class="link nav__link lang-switcher">Nl
             </nuxt-link>
@@ -113,7 +113,7 @@ onUnmounted(() => {
             <nuxt-link v-cursor :class="{'lang-switcher&#45;&#45;active': $i18n.locale === 'en'}" :to="switchLocalePath('en')"
                        class="link nav__link lang-switcher">Eng
             </nuxt-link>
-          </div>-->
+          </div>
         </div>
 
         <pixel-image

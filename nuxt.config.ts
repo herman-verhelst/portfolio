@@ -25,6 +25,5 @@ export default defineNuxtConfig({
         locales: ['nl', 'en'],
         defaultLocale: 'nl',
         strategy: 'prefix_and_default',
-        detectBrowserLanguage: false
     }
 })

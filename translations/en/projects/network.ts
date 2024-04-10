@@ -1,14 +1,13 @@
 export const network = {
-    title: 'Bedraad',
-    subtitle: 'Een netwerk geplaatst op een houten plaat.',
+    title: 'Wired',
+    subtitle: 'Network on a wooden board',
     text: {
-        description: 'Een oude draaibank van een grootvader.\n' +
-            'Technisch advies van familie.\n' +
-            'Hout vol kleur, geur en nerven.\n' +
-            'Een idee wordt een schets, krijgt vorm.\n' +
-            'Speelse vormentaal.\n' +
-            'De kracht van eenvoud.\n' +
-            'Proberen, durven, maken.\n' +
-            'Houten voorwerpen in beweging.'
+        description:
+            'Three questions: who - where - when\n' +
+            'Many complex answers\n' +
+            'Color - symbols - size - place\n\n' +
+            'In apparent chaos they connect (life)lines\n' +
+            'Playfully untangle - clear - orderly\n' +
+            'the story behind the questions'
     }
 }

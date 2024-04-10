@@ -140,14 +140,14 @@ export const useProjectsStore = defineStore('projects', () => {
             id: 4,
             tags: [{name: 'tags.dataVis'}, {name: 'tags.creativeCoding'}, {name: 'tags.mind'}],
             link: 'summiting-success',
-            thumbnail: 'thumbnail.png',
+            thumbnail: 'thumbnail.jpg',
             components: [
                 {
                     type: 'link',
                     link: 'https://summiting-success.herman-verhelst.be',
                     image: {
-                        src: 'frontpage.png',
-                        alt: ''
+                        src: 'homepage.jpg',
+                        alt: 'Screenshot van de hoofdpagina van Summiting Success.'
                     }
                 },
                 {
@@ -155,6 +155,35 @@ export const useProjectsStore = defineStore('projects', () => {
                     text: 'description',
                     title: false,
                 },
+                {
+                    type: 'images',
+                    small: false,
+                    images: [
+                        {
+                            src: 'sorting.jpg',
+                            alt: 'Screenshot van de sorteeropties.',
+                            aspectRatio: '4 / 3'
+                        },
+                        {
+                            src: 'filters.jpg',
+                            alt: 'Screenshot van de filters.',
+                            aspectRatio: '4 / 3'
+                        },
+                        {
+                            src: 'filtered.jpg',
+                            alt: 'Screenshot van een gefilterde lijst van resultaten.',
+                            aspectRatio: '4 / 3'
+                        },
+                    ]
+                },
+                {
+                    type: 'image-full-screen',
+                    image: {
+                        autoHeight: true,
+                        src: 'homepage-extra-information.jpg',
+                        alt: 'Mockup van de hoofdpagina en de hoofdpagina waar extra informatie over de editie zichtbaar is.'
+                    },
+                }
             ]
         },
         {
@@ -174,13 +203,83 @@ export const useProjectsStore = defineStore('projects', () => {
             id: 6,
             tags: [{name: 'tags.web'}, {name: 'tags.creativeCoding'}, {name: 'tags.mind'}],
             link: 'cycling',
-            thumbnail: 'thumbnail.png',
+            thumbnail: 'thumbnail.jpg',
             components: [
+                {
+                    type: 'link',
+                    link: 'https://ciclo.herman-verhelst.be/compare',
+                    image: {
+                        autoHeight: true,
+                        src: 'mobile.jpg',
+                        alt: 'Afbeelding met overzicht van kleuren gebruikt binnen de branding en website.'
+                    },
+                },
                 {
                     type: 'text',
                     text: 'description',
                     title: false,
                 },
+                {
+                    type: 'images',
+                    small: false,
+                    images: [
+                        {
+                            src: 'compare.jpg',
+                            alt: 'Screenshot van de sorteeropties.',
+                            autoHeight: true
+                        },
+                        {
+                            src: 'your-page.jpg',
+                            alt: 'Screenshot van de filters.',
+                            autoHeight: true
+                        },
+                    ]
+                },
+                {
+                    type: 'images',
+                    small: false,
+                    images: [
+                        {
+                            src: 'races.jpg',
+                            alt: 'Screenshot van de sorteeropties.',
+                            autoHeight: true
+                        },
+                        {
+                            src: 'riders.jpg',
+                            alt: 'Screenshot van de filters.',
+                            autoHeight: true
+                        },
+                        {
+                            src: 'teams.jpg',
+                            alt: 'Screenshot van een gefilterde lijst van resultaten.',
+                            autoHeight: true
+                        },
+                    ]
+                },
+                {
+                    type: 'image-full-screen',
+                    image: {
+                        autoHeight: true,
+                        src: 'homepage-search.jpg',
+                        alt: 'Afbeelding met overzicht van de typografie gebruikt binnen de branding en website.'
+                    },
+                },
+                {
+                    type: 'image-full-screen',
+                    image: {
+                        autoHeight: true,
+                        src: 'color-palette.jpg',
+                        alt: 'Afbeelding met overzicht van kleuren gebruikt binnen de branding en website.'
+                    },
+                },
+                {
+                    type: 'image-full-screen',
+                    image: {
+                        autoHeight: true,
+                        src: 'typography.jpg',
+                        alt: 'Afbeelding met overzicht van de typografie gebruikt binnen de branding en website.'
+                    },
+                }
             ]
         },
         {

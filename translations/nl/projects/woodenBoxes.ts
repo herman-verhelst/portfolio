@@ -9,7 +9,4 @@ export const woodenBoxes = {
             'Doosjes vol kleur vullen de ruimte\n' +
             'Straatkleuren in de ruimte',
     },
-    titles: {
-        assignment: 'Opdracht'
-    }
 }

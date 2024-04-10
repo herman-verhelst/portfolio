@@ -15,6 +15,7 @@ defineProps({
       data-scrolltrigger
       :alt="image.alt"
       :src="`/images/projects/${page}/${image.src}`"
+      :style="image.autoHeight ? {'height': 'auto'} : ''"
       class="project__image-full-screen">
 </template>
 

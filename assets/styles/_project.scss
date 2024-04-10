@@ -87,6 +87,10 @@
       height: 15rem;
     }
 
+    &--fixed-ar {
+      height: auto;
+    }
+
     &-container {
       width: 100%;
 
@@ -127,12 +131,11 @@
       &:before, &:after {
         content: '';
         position: absolute;
-        bottom: -.2rem;
+        bottom: -.2rem !important;
         left: 0;
         height: 1px;
         width: 100%;
         background-color: var(--bg-dark);
-
       }
 
       &:after {

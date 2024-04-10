@@ -1,20 +1,23 @@
 import {woodenBoxes} from "~/translations/en/projects/woodenBoxes";
-import {woodwork} from "~/translations/en/projects/woodwork";
+import {bootSchap} from "~/translations/en/projects/boot-schap";
 import {tshirts} from "~/translations/en/projects/tshirts";
 import {summitingSuccess} from "~/translations/en/projects/summitingSuccess";
 import {network} from "~/translations/en/projects/network";
 import {cycling} from "~/translations/en/projects/cycling";
 import {twiceBurnedLibrary} from "~/translations/en/projects/twiceBurnedLibrary";
+import {pixels} from "~/translations/en/projects/pixels";
 
 export const projects = {
-    title1: 'Ontdek al mijn',
-    title2: 'projecten',
-    link: 'Ga zelf op ontdekkingstocht doorheen de website.',
+    title: 'Projects',
+    other1: 'Curious about',
+    other2: 'other projects',
+    link: 'Embark on a discovery journey through the website yourself.',
     woodenBoxes: woodenBoxes,
-    woodwork: woodwork,
+    bootSchap: bootSchap,
     tShirts: tshirts,
     summitingSuccess: summitingSuccess,
     network: network,
     cycling: cycling,
     twiceBurnedLibrary: twiceBurnedLibrary,
+    pixels: pixels,
 }

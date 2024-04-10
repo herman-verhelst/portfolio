@@ -1,16 +1,22 @@
 export const home = {
-    loves: 'Houdt van',
-    wood: 'hout',
-    text: 'Durven denken.\n' +
-        'Een idee. \n' +
-        'Een boodschap.\n' +
-        'Materiaal. Kleur. Vorm.\n' +
-        'Vormentaal.\n' +
+    wood: 'wood',
+    information: 'information',
+    designer: 'Designer',
+    text:
+        'An idea \n' +
+        'A message\n' +
+        'Material Color Shape\n' +
+        'Visual Language\n' +
         '\n' +
-        'Durven maken.\n' +
-        'Potlood en papier.\n' +
-        'Hout.\n' +
-        'Ambacht en digitaal.\n' +
+        'Dare to think\n' +
+        'Dare to make\n' +
         '\n' +
-        'Gemaakt om te ontdekken.'
+        'Pencil and paper\n' +
+        'Web\n' +
+        'Wood\n' +
+        'Or something completely different\n' +
+        '\n' +
+        'Craftsmanship and digital\n' +
+        '\n' +
+        'Made to discover'
 }

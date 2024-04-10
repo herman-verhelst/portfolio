@@ -69,14 +69,14 @@ watch(() => pixelsStore.backgroundColor, (value) => {
         ></pixel-image>
         <div class="pixels__controls">
           <div class="pixels__controls__group">
-            <h3>Kleur</h3>
-            <toggle label="Synchroniseer kleur" @value-change="syncColors"></toggle>
+            <h3>{{ $t('projects.pixels.color') }}</h3>
+            <toggle label="projects.pixels.sync" @value-change="syncColors"></toggle>
             <color-picker type="sync"></color-picker>
 
             <div class="color__container">
               <div :aria-expanded="pixelColorOpen" class="color-picker__container">
                 <div class="color-picker__label">
-                  <label>Pixels</label>
+                  <label>{{ $t('projects.pixels.pixels') }}</label>
                   <button :style="{backgroundColor: pixelColor}" class="button button--icon-small"
                           @click="toggleOpen('pixel')">
                     <svg viewBox="0 0 48 48">
@@ -89,7 +89,7 @@ watch(() => pixelsStore.backgroundColor, (value) => {
               </div>
               <div :aria-expanded="backgroundColorOpen" class="color-picker__container">
                 <div class="color-picker__label">
-                  <label>Achtergrond</label>
+                  <label>{{ $t('projects.pixels.background') }}</label>
                   <button :style="{backgroundColor: backgroundColor}" class="button button--icon-small"
                           @click="toggleOpen('background')">
                     <svg viewBox="0 0 48 48">
@@ -103,9 +103,9 @@ watch(() => pixelsStore.backgroundColor, (value) => {
             </div>
           </div>
           <div class="pixels__controls__group">
-            <h3>Pixelinstellingen</h3>
-            <slider :initial="0" :max="10" :min="1" label="Detail" @value-change="handleDetailChange"></slider>
-            <slider :initial=".1" :max="1" :min="0" label="Resolutie" @value-change="handleResolutionChange"></slider>
+            <h3>{{ $t('projects.pixels.settings') }}</h3>
+            <slider :initial="0" :max="10" :min="1" label="projects.pixels.detail" @value-change="handleDetailChange"></slider>
+            <slider :initial=".1" :max="1" :min="0" label="projects.pixels.resolution" @value-change="handleResolutionChange"></slider>
           </div>
         </div>
       </div>

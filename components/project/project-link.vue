@@ -24,14 +24,8 @@ defineProps({
      class="project__discover-card project__discover-card--full-height"
      data-scrolltrigger
      target="_blank">
-    <div class="project__discover-img-container">
-      <img
-          :alt="image.alt"
-          :src="`/images/projects/${page}/${image.src}`"
-          class="project__discover-img">
-    </div>
     <div class="project__discover-text">
-      <p>{{ $t('projects.link') }}</p>
+      <p class="project__discover__link">{{ $t('projects.link') }}</p>
       <button :class="`button--color-${projectId}`" class="button button--icon-small">
         <svg fill="none" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -39,6 +33,13 @@ defineProps({
               fill="#F6F2EF"/>
         </svg>
       </button>
+    </div>
+
+    <div class="project__discover-img-container">
+      <img
+          :alt="image.alt"
+          :src="`/images/projects/${page}/${image.src}`"
+          class="project__discover-img">
     </div>
   </a>
 

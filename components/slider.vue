@@ -43,7 +43,7 @@ function valueChange() {
 
 <template>
   <label class="slider" :for="id">
-    <span v-if="label">{{ label }}</span>
+    <span v-if="label">{{ $t(label) }}</span>
     <input
         :id="id"
         v-model="value"

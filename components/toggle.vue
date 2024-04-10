@@ -31,7 +31,7 @@ function valueChange() {
            v-model="value"
            @change="valueChange">
     <span class="toggle"></span>
-    <span v-if="label">{{ label }}</span>
+    <span v-if="label">{{ $t(label) }}</span>
   </label>
 </template>
 
