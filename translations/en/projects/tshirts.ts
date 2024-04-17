@@ -1,5 +1,5 @@
 export const tshirts = {
-    title: 'In a grand perspective',
+    title: 'From a high level',
     subtitle: 'Data story for and about being large',
     text: {
         description:

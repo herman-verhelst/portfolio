@@ -127,12 +127,87 @@ export const useProjectsStore = defineStore('projects', () => {
             id: 3,
             tags: [{name: 'tags.wood'}, {name: 'tags.dataVis'}, {name: 'tags.mind'}],
             link: 't-shirts',
-            thumbnail: 'PXL_20240122_094658383_1.jpg',
+            thumbnail: 'thumbnail.jpg',
             components: [
+                {
+                    type: 'images',
+                    small: false,
+                    images: [
+                        {
+                            src: 'information-board.jpg',
+                            alt: 'Foto van het informatiebord.',
+                            aspectRatio: '3 / 4'
+                        },
+                        {
+                            src: 'tag-back.jpg',
+                            alt: 'Foto van de achterkant van het kaartje.',
+                            aspectRatio: '3 / 4'
+                        },
+                        {
+                            src: 'tag-front.jpg',
+                            alt: 'Foto van de voorkant van het kaartje.',
+                            aspectRatio: '3 / 4'
+                        },
+                    ]
+                },
                 {
                     type: 'text',
                     text: 'description',
                     title: false,
+                },
+                {
+                    type: 'images',
+                    small: false,
+                    images: [
+                        {
+                            src: 't-shirts.jpg',
+                            alt: 'Foto van enkele t-shirts aan het kledingrek.',
+                            aspectRatio: '3 / 4'
+
+                        },
+                        {
+                            src: 't-shirts-closeup.jpg',
+                            alt: 'Close-up van een tekening.',
+                            aspectRatio: '3 / 4'
+
+                        },
+                    ]
+                },
+                {
+                    type: 'images',
+                    small: false,
+                    images: [
+                        {
+                            src: 'drawing-mirror.jpg',
+                            alt: 'Illustratie van de douche, opschrift: \'hoe ik mezelf in de spiegel zie\'.',
+                            autoHeight: true
+                        },
+                        {
+                            src: 'drawing-douche.jpg',
+                            alt: 'Illustratie van de douche, opschrift: \'hoe een douche mij kopzorgen geeft\'.',
+                            autoHeight: true
+                        }
+                    ]
+                }, {
+                    type: 'images',
+                    small: false,
+                    images: [
+                        {
+                            src: 'drawing-pants.jpg',
+                            alt: 'Illustratie van de broeken, opschrift: \'wanneer iedere broek een driekwartsbroek wordt\'.',
+                            autoHeight: true
+                        },
+                        {
+                            src: 'drawing-bed.jpg',
+                            alt: 'Illustratie van het bed, opschrift: \'waarom ik koudvoetig door het leven ga\'.',
+                            autoHeight: true
+                        },
+                        {
+                            src: 'drawing-bus.jpg',
+                            alt: 'Illustratie van het openbaar vervoer, opschrift: \'wanneer een beetje yoga geen kwaad kan\'.',
+                            autoHeight: true
+                        },
+                    ]
                 },
             ]
         },
