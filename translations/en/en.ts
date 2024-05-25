@@ -5,6 +5,8 @@ import {footer} from "~/translations/en/footer";
 import {projects} from "~/translations/en/projects/projects";
 import {tags} from "~/translations/en/tags";
 import {title} from "~/translations/en/title";
+import {shop} from "~/translations/en/shop";
+import {contact} from "~/translations/en/contact";
 
 export const en = {
     nav: nav,
@@ -13,5 +15,7 @@ export const en = {
     footer: footer,
     projects: projects,
     tags: tags,
-    title: title
+    title: title,
+    shop: shop,
+    contact: contact
 }

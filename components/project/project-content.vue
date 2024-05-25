@@ -20,7 +20,8 @@ defineProps({
           v-if="component.type === 'text'"
           :title="component.title"
           :text="component.text"
-          :page="project.link">
+          :page="project.link"
+          :full-width="component.fullWidth">
       </project-text>
       <project-image-full-screen
           v-if="component.type === 'image-full-screen'"
@@ -34,6 +35,12 @@ defineProps({
           :project-id="project.id"
           :page="project.link">
       </project-link>
+      <project-shop
+          v-if="component.type === 'shop'"
+          :page="project.link"
+          :products="component.products"
+          :project-id="project.id">
+      </project-shop>
     </template>
   </div>
 </template>

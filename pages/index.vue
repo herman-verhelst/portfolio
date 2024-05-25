@@ -50,7 +50,7 @@ useHead({
     <section class="section">
       <project-home
           data-scrolltrigger
-          :project="discoverProject1"
+          :project="discoverProject2"
           thumbnail-grid="1 / span 8"
           text-grid="span 4"
       ></project-home>
@@ -61,7 +61,7 @@ useHead({
         <div class="horizontal-scroll__panel w-[150vw] !pt-32">
           <project-home
               class="col-span-7 row-span-3"
-              :project="discoverProject2"
+              :project="discoverProject1"
               thumbnail-grid="1 / span 8"
               text-grid="span 4"
           ></project-home>

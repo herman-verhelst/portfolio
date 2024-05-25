@@ -12,12 +12,16 @@ defineProps({
   page: {
     type: String,
     required: true
+  },
+  fullWidth: {
+    type: Boolean,
+    default: false
   }
 })
 </script>
 
 <template>
-  <section class="project__text">
+  <section class="project__text" :class="{'project__text--full-width': fullWidth}">
     <div>
       <h2 data-scrolltrigger v-if="title">{{ $t(`projects.${toCamelCase(page)}.titles.${title}`) }}</h2>
       <p data-scrolltrigger class="proforma">{{ $t(`projects.${toCamelCase(page)}.text.${text}`) }}</p>
