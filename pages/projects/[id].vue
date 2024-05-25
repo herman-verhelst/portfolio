@@ -12,9 +12,6 @@ const projectsStore = useProjectsStore();
 const {findProjectByLink} = projectsStore;
 
 const route = useRoute()
-console.log(route.params)
-
-
 const project = findProjectByLink(route.params.id as string)
 
 definePageMeta({

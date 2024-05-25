@@ -21,7 +21,6 @@ const projectsStore = useProjectsStore();
 const {findProjectByLink} = projectsStore;
 
 const project = findProjectByLink('pixels')
-console.log(project)
 if (project) useHead({
   title: `Herman Verhelst | ${t(`projects.${toCamelCase(project.link)}.title`)}`
 })

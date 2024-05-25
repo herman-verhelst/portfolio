@@ -26,6 +26,8 @@ function createNavDrawer() {
     }
     return;
   }
+
+  if (navigationOpen.value) return;
   gsap.set('#nav-drawer', {
     y: '-100%'
   })
@@ -40,14 +42,17 @@ function createNavDrawer() {
 function toggleNavigation() {
   navigationOpen.value = !navigationOpen.value
   if (navigationOpen.value) {
-    tl.restart()
+    tl.restart();
+    document.body.style.overflow = 'hidden';
     return;
   }
   tl.reverse();
+  document.body.style.overflow = '';
 }
 
 function hideNavigation() {
   navigationOpen.value = false
+  document.body.style.overflow = '';
   setTimeout(() => tl.revert(), 200)
 }
 
@@ -69,17 +74,12 @@ function hideNavigation() {
               {{ $t('nav.projects') }}
             </nuxt-link>
           </li>
-          <!--
-          <li>
-            <nuxt-link v-cursor class="nav__link link" to="#" @click="hideNavigation">{{ $t('nav.about') }}</nuxt-link>
-          </li>
           <li>
             <nuxt-link v-cursor :to="localePath('/contact')" class="nav__link link" @click="hideNavigation">
               {{ $t('nav.contact') }}
             </nuxt-link>
           </li>
-          -->
-          <li class="lang-switcher__container tablet:mt-auto">
+          <li class="lang-switcher__container">
             <nuxt-link v-cursor :class="{'lang-switcher--active': $i18n.locale === 'nl'}" :to="switchLocalePath('nl')"
                        class="nav__link lang-switcher link"
                        @click="hideNavigation">Nl

@@ -68,6 +68,35 @@ export const useProjectsStore = defineStore('projects', () => {
             thumbnail: 'chisel.jpg',
             components: [
                 {
+                    type: 'shop',
+                    products: [
+                        {
+                            product: 'sailboat',
+                            price: '€29',
+                            dimensions: '±15cm × ±5cm × ±15cm ',
+                            image: 'sailboat.svg'
+                        },
+                        {
+                            product: 'inlandVessel',
+                            price: '€24',
+                            dimensions: '±20cm × ±5cm × ±7cm ',
+                            image: 'inland-vessel.svg'
+                        },
+                        {
+                            product: 'containerShip',
+                            price: '€24',
+                            dimensions: '±15cm × ±7cm × ±10cm ',
+                            image: 'container-ship.svg'
+                        },
+                        {
+                            product: 'speedboat',
+                            price: '€19',
+                            dimensions: '±10cm × ±5cm × ±7cm ',
+                            image: 'speedboat.svg'
+                        }
+                    ]
+                },
+                {
                     type: 'images',
                     small: false,
                     images: [
@@ -374,12 +403,26 @@ export const useProjectsStore = defineStore('projects', () => {
             id: 8,
             tags: [{name: 'tags.creativeCoding'}, {name: 'tags.mind'}],
             link: 'pixels',
-            thumbnail: 'PXL_20240122_092939181_1.jpg',
+            thumbnail: 'thumbnail.jpg',
             components: [
                 {
                     type: 'text',
                     text: 'description',
                     title: false,
+                },
+                {
+                    type: 'images',
+                    small: false,
+                    images: [
+                        {
+                            src: 'patterns-red.jpg',
+                            alt: 'Foto van patronenspel in het SCL.',
+                        },
+                        {
+                            src: 'patterns-white.jpg',
+                            alt: 'Foto van patronenspel in het SCL.',
+                        },
+                    ]
                 },
             ]
         }
