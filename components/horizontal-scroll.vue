@@ -23,6 +23,7 @@ watch(
       let sections = gsap.utils.toArray(".horizontal-scroll__panel");
       let container = document.getElementById(`hs-${props.id}`);
 
+      console.log(-100 + (100 / props.width), props.width)
       gsap.to(sections, {
         xPercent: -100 + (100 / props.width),
         ease: "none",

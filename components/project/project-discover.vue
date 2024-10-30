@@ -30,13 +30,13 @@ if (project.id !== 1 && project.id !== 2) {
 
 <template>
   <section class="project__discover">
-    <h2>{{$t('projects.other1')}}<br/>
+    <h2 class="font-light" data-scrolltrigger="0">{{$t('projects.other1')}}
       <nuxt-link class="project__discover__link" v-cursor :to="localePath('/projects')">{{$t('projects.other2')}}</nuxt-link>
     </h2>
 
     <div class="project__discover-projects">
-      <project-card data-scrolltrigger="0" :project="discoverProject1"></project-card>
-      <project-card data-scrolltrigger="1" :project="discoverProject2"></project-card>
+      <project-home2 data-scrolltrigger="1" :project="discoverProject1"></project-home2>
+      <project-home2 data-scrolltrigger="2" :project="discoverProject2"></project-home2>
     </div>
   </section>
 </template>

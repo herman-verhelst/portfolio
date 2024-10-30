@@ -75,8 +75,8 @@ function hideNavigation() {
             </nuxt-link>
           </li>
           <li>
-            <nuxt-link v-cursor :to="localePath('/contact')" class="nav__link link" @click="hideNavigation">
-              {{ $t('nav.contact') }}
+            <nuxt-link v-cursor :to="localePath('/about')" class="nav__link link" @click="hideNavigation">
+              {{ $t('nav.about') }}
             </nuxt-link>
           </li>
           <li class="lang-switcher__container">

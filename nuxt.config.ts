@@ -9,6 +9,9 @@ export default defineNuxtConfig({
     plugins: [
         '~/plugins/directives.ts',
     ],
+    routeRules: {
+        'contact': {redirect: 'about'}
+    },
     css: ['~/assets/styles/styles.scss'],
     app: {
         head: {

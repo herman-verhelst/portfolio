@@ -292,33 +292,11 @@ export const useProjectsStore = defineStore('projects', () => {
         },
         {
             id: 5,
-            tags: [{name: 'tags.wood'}, {name: 'tags.dataVis'}, {name: 'tags.mind'}],
-            link: 'network',
-            thumbnail: 'PXL_20240122_092227937_1.jpg',
-            components: [
-                {
-                    type: 'text',
-                    text: 'description',
-                    title: false,
-                },
-            ]
-        },
-        {
-            id: 6,
-            tags: [{name: 'tags.web'}, {name: 'tags.creativeCoding'}, {name: 'tags.mind'}],
-            link: 'cycling',
+            tags: [{name: 'tags.dataVis'}, {name: 'tags.mind'}],
+            link: 'moving-water',
             thumbnail: 'thumbnail.jpg',
             components: [
                 {
-                    type: 'link',
-                    link: 'https://ciclo.herman-verhelst.be/compare',
-                    image: {
-                        autoHeight: true,
-                        src: 'mobile.jpg',
-                        alt: 'Afbeelding met overzicht van kleuren gebruikt binnen de branding en website.'
-                    },
-                },
-                {
                     type: 'text',
                     text: 'description',
                     title: false,
@@ -328,14 +306,19 @@ export const useProjectsStore = defineStore('projects', () => {
                     small: false,
                     images: [
                         {
-                            src: 'compare.jpg',
-                            alt: 'Screenshot van de sorteeropties.',
-                            autoHeight: true
+                            src: 'help-touch.jpg',
+                            alt: 'Screenshot van de helpfunctie',
+                            aspectRatio: '4 / 3'
                         },
                         {
-                            src: 'your-page.jpg',
-                            alt: 'Screenshot van de filters.',
-                            autoHeight: true
+                            src: 'help-swipe.jpg',
+                            alt: 'Screenshot van de helpfunctie',
+                            aspectRatio: '4 / 3'
+                        },
+                        {
+                            src: 'help-tap.jpg',
+                            alt: 'Screenshot van de helpfunctie',
+                            aspectRatio: '4 / 3'
                         },
                     ]
                 },
@@ -344,58 +327,35 @@ export const useProjectsStore = defineStore('projects', () => {
                     small: false,
                     images: [
                         {
-                            src: 'races.jpg',
-                            alt: 'Screenshot van de sorteeropties.',
-                            autoHeight: true
+                            src: 'info.jpg',
+                            alt: 'Screenshot van een informatiescherm',
+                            aspectRatio: '4 / 3'
                         },
                         {
-                            src: 'riders.jpg',
-                            alt: 'Screenshot van de filters.',
-                            autoHeight: true
+                            src: 'simple.jpg',
+                            alt: 'Screenshot van een informatiescherm',
+                            aspectRatio: '4 / 3'
                         },
                         {
-                            src: 'teams.jpg',
-                            alt: 'Screenshot van een gefilterde lijst van resultaten.',
-                            autoHeight: true
+                            src: 'minimap.jpg',
+                            alt: 'Screenshot van een informatiescherm',
+                            aspectRatio: '4 / 3'
                         },
                     ]
                 },
                 {
-                    type: 'image-full-screen',
-                    image: {
-                        autoHeight: true,
-                        src: 'homepage-search.jpg',
-                        alt: 'Afbeelding met overzicht van de typografie gebruikt binnen de branding en website.'
-                    },
-                },
-                {
-                    type: 'image-full-screen',
-                    image: {
-                        autoHeight: true,
-                        src: 'color-palette.jpg',
-                        alt: 'Afbeelding met overzicht van kleuren gebruikt binnen de branding en website.'
-                    },
-                },
-                {
-                    type: 'image-full-screen',
-                    image: {
-                        autoHeight: true,
-                        src: 'typography.jpg',
-                        alt: 'Afbeelding met overzicht van de typografie gebruikt binnen de branding en website.'
-                    },
-                }
-            ]
-        },
-        {
-            id: 7,
-            tags: [{name: 'tags.print'}, {name: 'tags.mind'}],
-            link: 'twice-burned-library',
-            thumbnail: 'PXL_20240122_092939181_1.jpg',
-            components: [
-                {
-                    type: 'text',
-                    text: 'description',
-                    title: false,
+                    type: 'videos',
+                    videos: [
+                        {
+                            src: 'dam.mp4',
+                        },
+                        {
+                            src: 'hydro.mp4',
+                        },
+                        {
+                            src: 'lock.mp4',
+                        },
+                    ]
                 },
             ]
         },

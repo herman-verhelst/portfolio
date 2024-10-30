@@ -6,6 +6,7 @@ import {network} from "~/translations/en/projects/network";
 import {cycling} from "~/translations/en/projects/cycling";
 import {twiceBurnedLibrary} from "~/translations/en/projects/twiceBurnedLibrary";
 import {pixels} from "~/translations/en/projects/pixels";
+import {movingWater} from "~/translations/en/projects/moving-water";
 
 export const projects = {
     title: 'Projects',
@@ -20,4 +21,5 @@ export const projects = {
     cycling: cycling,
     twiceBurnedLibrary: twiceBurnedLibrary,
     pixels: pixels,
+    movingWater: movingWater
 }

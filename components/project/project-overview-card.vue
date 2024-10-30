@@ -35,8 +35,8 @@ onMounted(() => {
   <nuxt-link :id="`project-card-${project.id}`" :to="localePath(`/projects/${project.link}?id=${project.id}`)" class="project-card">
     <div class="project-card__information">
       <div class="w-full">
-        <h2 class="project-card__title">{{ $t(`projects.${toCamelCase(project.link)}.title`) }}</h2>
-        <p class="project-card__subtitle proforma">{{ $t(`projects.${toCamelCase(project.link)}.subtitle`) }}</p>
+        <h3 class="project-card__title">{{ $t(`projects.${toCamelCase(project.link)}.title`) }}</h3>
+        <p class="project-card__subtitle">{{ $t(`projects.${toCamelCase(project.link)}.subtitle`) }}</p>
       </div>
       <project-tag-container class="h-fit" :tags="project.tags"></project-tag-container>
     </div>

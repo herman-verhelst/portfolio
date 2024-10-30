@@ -41,6 +41,12 @@ defineProps({
           :products="component.products"
           :project-id="project.id">
       </project-shop>
+      <project-videos
+          v-if="component.type==='videos'"
+          :page="project.link"
+          :videos="component.videos"
+      >
+      </project-videos>
     </template>
   </div>
 </template>

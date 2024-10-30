@@ -1,0 +1,7 @@
+export const about = {
+    title: 'Who am I?',
+    paragraph1: 'Fascinated by human interaction and the interplay between language and drawing or image, I seek the best image, the ideal form, the perfect \'translation\' of a message. Refined simplicity, aesthetic clarity, and color are the foundation of my \'language\' tailored to the target audience.',
+    paragraph2: 'Fueled by new challenges, I explore the world. I find inspiration in a vibrant city, a serene icy mountain peak, winding bike paths over hills and valleys, the movements of passing strangers, and the presence of family and friends.',
+    paragraph3: 'In my work, I combine hands-on craftsmanship with technology. For each project, I explore a different approach, a new perspective, or an uncharted technique to achieve the result that best serves as a medium for the message, tailored to a specific audience.',
+    paragraph4: 'As an information designer, I focus on clear, effective communication. From a concise manual, storytelling through unconventional media (like t-shirts), to complex data visualizations or a simple invitation, I enjoy diverse projects. Thanks to my education in Media & Information Design, Media & Interaction Design, and Applied Informatics, I am well-versed in the possibilities of new technology, combined with the experience of a hands-on approach, pushing my limits on an old lathe that once belonged to my grandfather.'
+}

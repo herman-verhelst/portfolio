@@ -27,7 +27,7 @@ if (project) useHead({
 
 <template>
   <main>
-    <div class="page">
+    <div class="page page--large-gap">
       <project-hero :project="project"></project-hero>
       <project-content :project="project"></project-content>
       <project-discover :current-project="project"></project-discover>

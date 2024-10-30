@@ -34,7 +34,7 @@ defineProps({
           </svg>
         </button>
       </div>
-      <p class="proforma mr-8">
+      <p class="mr-8">
         {{ $t(`projects.${toCamelCase(project.link)}.subtitle`) }}</p>
 
       <project-tag-container class="mt-8 mobile:mt-4" :tags="project.tags"></project-tag-container>

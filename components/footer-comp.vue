@@ -93,13 +93,13 @@ onUnmounted(() => {
         <div data-footertrigger="3" class="footer__links">
 
           <div>
-            <h3 class="proforma">{{ $t('footer.navigation') }}</h3>
+            <h3>{{ $t('footer.navigation') }}</h3>
             <ul>
               <li class="footer__link">
                 <nuxt-link :to="localePath('/projects')" class="link" v-cursor>{{ $t('nav.projects') }}</nuxt-link>
               </li>
               <li class="footer__link">
-                <nuxt-link :to="localePath('/contact')" class="link" v-cursor>{{ $t('nav.contact') }}</nuxt-link>
+                <nuxt-link :to="localePath('/about')" class="link" v-cursor>{{ $t('nav.about') }}</nuxt-link>
               </li>
             </ul>
           </div>
@@ -132,9 +132,9 @@ onUnmounted(() => {
       </div>
       <div>
         <div data-footertrigger="5" class="footer__small">
-          <p>Herman Verhelst | 2024</p>
+          <p class="text--small">Herman Verhelst | 2024</p>
 
-          <div class="lang-switcher__container lang-switcher__container&#45;&#45;small">
+          <div class="text--small lang-switcher__container lang-switcher__container&#45;&#45;small">
             <nuxt-link v-cursor :class="{'lang-switcher&#45;&#45;active': $i18n.locale === 'nl'}"
                        :to="switchLocalePath('nl')"
                        class="link nav__link lang-switcher">Nl
