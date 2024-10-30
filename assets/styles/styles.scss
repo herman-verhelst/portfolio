@@ -33,7 +33,7 @@
   --accent-project2: #254f75;
   --accent-project3: #85102f;
   --accent-project4: #7e7a6c;
-  --accent-project5: #3a7e69;
+  --accent-project5: #057b9f;
   --accent-project6: #b05a71;
   --accent-project7: #e5a00c;
   --accent-project8: #0c6f78;
@@ -55,13 +55,13 @@ html {
   font-size: 16px;
   min-height: 100%;
   color: var(--text-color);
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'Archivo-Variable', sans-serif;
 }
 
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'Archivo-Variable', sans-serif;
 }
 
 @media (max-width: 600px) {

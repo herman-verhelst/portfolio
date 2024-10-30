@@ -5,10 +5,14 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 8rem;
+  gap: 4rem;
 
   &--large-top-padding {
     padding-top: 12rem !important;
+  }
+
+  &--large-gap {
+    gap: 8rem;
   }
 }
 

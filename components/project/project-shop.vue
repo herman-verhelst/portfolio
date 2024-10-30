@@ -19,7 +19,7 @@ const props = defineProps({
 <template>
   <section>
     <h2 class="mb-4" data-scrolltrigger>{{ $t(`projects.${toCamelCase(page)}.titles.shop`) }}</h2>
-    <p data-scrolltrigger class="proforma">{{ $t(`projects.${toCamelCase(page)}.text.shop1`) }}
+    <p data-scrolltrigger>{{ $t(`projects.${toCamelCase(page)}.text.shop1`) }}
       <a v-cursor class="project__discover__link" href="mailto:mail@herman-verhelst.be">mail@herman-verhelst.be</a>
       {{ $t(`projects.${toCamelCase(page)}.text.shop2`) }}
     </p>

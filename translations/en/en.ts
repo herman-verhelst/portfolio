@@ -7,6 +7,7 @@ import {tags} from "~/translations/en/tags";
 import {title} from "~/translations/en/title";
 import {shop} from "~/translations/en/shop";
 import {contact} from "~/translations/en/contact";
+import {about} from "~/translations/en/about";
 
 export const en = {
     nav: nav,
@@ -17,5 +18,6 @@ export const en = {
     tags: tags,
     title: title,
     shop: shop,
-    contact: contact
+    contact: contact,
+    about: about
 }

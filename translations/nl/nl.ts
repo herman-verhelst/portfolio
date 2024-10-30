@@ -7,6 +7,7 @@ import {tags} from "~/translations/nl/tags";
 import {title} from "~/translations/nl/title";
 import {shop} from "~/translations/nl/shop";
 import {contact} from "~/translations/nl/contact";
+import {about} from "~/translations/nl/about";
 
 export const nl = {
     nav: nav,
@@ -17,5 +18,6 @@ export const nl = {
     tags: tags,
     title: title,
     shop: shop,
-    contact: contact
+    contact: contact,
+    about: about
 }

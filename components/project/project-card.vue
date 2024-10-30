@@ -12,7 +12,10 @@ defineProps({
 </script>
 
 <template>
-  <nuxt-link v-cursor v-if="project" :to="localePath(`/projects/${project.link}?id=${project.id}`)" class="project__discover-card">
+  <nuxt-link
+      v-cursor
+      v-if="project"
+      :to="localePath(`/projects/${project.link}?id=${project.id}`)" class="project__discover-card">
     <div class="project__discover-img-container">
       <img class="project__discover-img" :src="`/images/projects/${project.link}/${project.thumbnail}`" alt="">
     </div>

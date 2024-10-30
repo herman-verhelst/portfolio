@@ -3,7 +3,7 @@
 .project {
   &-card {
     border-bottom: 1px solid var(--logo-grey);
-    padding: 2rem 0.5rem 1rem 0.5rem;
+    padding: 1rem 0.5rem .5rem 0.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,7 +28,7 @@
   }
 
   &__title {
-    font-weight: 700;
+    font-weight: 600;
 
     &-container {
       margin-bottom: .5rem;
@@ -39,9 +39,9 @@
   }
 
   &__subtitle {
-    font-family: 'proforma', serif;
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
+    font-size: 24px;
+    line-height: 24px;
+    margin-top: .5rem;
 
     @for $i from 1 through $number-of-projects {
       &--color-#{$i} {
@@ -58,10 +58,25 @@
   &__hero {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 3rem;
+
+    &-info {
+      margin: 30vh 1rem 0;
+
+      &__text {
+        display: flex;
+        align-items: flex-end;
+        gap: 2rem;
+        width: 100%;
+
+        & > div {
+          width: 100%;
+        }
+      }
+    }
 
     &-text {
-      margin: 0 1rem;
+      text-align: right;
     }
 
     &-graphic {
@@ -108,7 +123,7 @@
     margin: 8rem 0;
 
     div {
-      grid-column: 2 / span 5;
+      grid-column: 2 / span 7;
       display: flex;
       flex-direction: column;
       gap: 1rem;
@@ -135,12 +150,12 @@
     gap: 2rem;
 
     &__link {
-      font-weight: 700;
+      font-weight: 600;
 
       &:before, &:after {
         content: '';
         position: absolute;
-        bottom: -.2rem !important;
+        bottom: 0;
         left: 0;
         height: 1px;
         width: 100%;
@@ -159,10 +174,6 @@
           transform: scaleX(100%);
         }
       }
-    }
-
-    h2 {
-      font-weight: 400;
     }
 
     &-card {
@@ -275,6 +286,78 @@
     }
   }
 
+  &__home-2 {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: .25rem;
+
+    &:hover {
+      .project__home-2__info {
+        opacity: 1;
+      }
+
+      .project__home-2__img {
+        scale: 1.075;
+      }
+    }
+
+    &__info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem;
+      color: var(--bg-color);
+      opacity: 0;
+      transition: opacity .2s ease-in-out;
+
+      h2 {
+        font-size: 1rem;
+      }
+    }
+
+    &__text {
+      &-shadow {
+        color: var(--text-color);
+        position: absolute;
+        top: 0;
+        z-index: -1;
+        filter: blur(.5rem);
+      }
+
+      &-container {
+        position: relative;
+        isolation: isolate;
+      }
+    }
+
+    &__img {
+      height: 100%;
+      transition: .2s ease-in-out all;
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__container {
+      display: flex;
+      gap: .5rem
+    }
+
+    &__column {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      width: 100%;
+    }
+  }
+
   &__product {
     &__container {
       display: grid;
@@ -338,11 +421,27 @@
 @media (max-width: 600px) {
   .project {
 
+    &__home-2 {
+      height: 20rem !important;
+
+      &__container {
+        flex-direction: column;
+      }
+    }
+
     &__hero {
-      gap: 1rem;
+      gap: 2rem;
+
+      &-info {
+        margin: 0 .5rem;
+
+        &__text {
+          flex-direction: column;
+        }
+      }
 
       &-text {
-        margin: 0 .5rem;
+        text-align: initial;
       }
 
       &-graphic {
@@ -395,6 +494,17 @@
         height: fit-content;
         padding: 1rem .5rem;
         margin: 0
+      }
+    }
+  }
+}
+
+
+@media (hover: none) {
+  .project {
+    &__home-2 {
+      &__info {
+        transform: initial;
       }
     }
   }
