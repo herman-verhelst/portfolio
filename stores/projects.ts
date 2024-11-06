@@ -294,12 +294,26 @@ export const useProjectsStore = defineStore('projects', () => {
             id: 5,
             tags: [{name: 'tags.dataVis'}, {name: 'tags.mind'}],
             link: 'moving-water',
-            thumbnail: 'thumbnail.jpg',
+            thumbnail: 'thumbnail.png',
             components: [
                 {
                     type: 'text',
                     text: 'description',
                     title: false,
+                },
+                {
+                    type: 'videos',
+                    videos: [
+                        {
+                            src: 'dam.mp4',
+                        },
+                        {
+                            src: 'hydro.mp4',
+                        },
+                        {
+                            src: 'lock.mp4',
+                        },
+                    ]
                 },
                 {
                     type: 'images',
@@ -340,20 +354,6 @@ export const useProjectsStore = defineStore('projects', () => {
                             src: 'minimap.jpg',
                             alt: 'Screenshot van een informatiescherm',
                             aspectRatio: '4 / 3'
-                        },
-                    ]
-                },
-                {
-                    type: 'videos',
-                    videos: [
-                        {
-                            src: 'dam.mp4',
-                        },
-                        {
-                            src: 'hydro.mp4',
-                        },
-                        {
-                            src: 'lock.mp4',
                         },
                     ]
                 },
