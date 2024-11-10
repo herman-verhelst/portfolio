@@ -15,7 +15,8 @@ const discoverProject2 = findProjectById(2)
 const discoverProject3 = findProjectById(3)
 const discoverProject4 = findProjectById(4)
 const discoverProject5 = findProjectById(5)
-const discoverProject6 = findProjectById(8)
+const discoverProject6 = findProjectById(6)
+const discoverProject8 = findProjectById(8)
 
 definePageMeta({
   pageTransition: transitionConfig,
@@ -78,8 +79,13 @@ useHead({
           ></project-home-2>
           <project-home-2
               data-scrolltrigger
-              :project="discoverProject6"
+              :project="discoverProject8"
               :height="'30rem'"
+          ></project-home-2>
+          <project-home-2
+              data-scrolltrigger
+              :project="discoverProject6"
+              :height="'20rem'"
           ></project-home-2>
         </div>
 

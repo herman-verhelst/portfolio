@@ -1,5 +1,5 @@
 export const summitingSuccess = {
-    title: 'Successfully over the top',
+    title: 'Successfully over \nthe top',
     subtitle: 'Comparing cycling heroes is child\'s play',
     heroText:
         'Measure and know, ponder\n' +

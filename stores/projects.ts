@@ -101,19 +101,29 @@ export const useProjectsStore = defineStore('projects', () => {
                     small: false,
                     images: [
                         {
-                            src: 'overview.jpg',
-                            alt: 'Overzichtsfoto van de houten vaartuigen.'
+                            src: 'big-doubleSideFront-1.jpg',
+                            alt: 'Foto van een houten zeilboot.',
+                            aspectRatio: '3 / 4'
                         },
                         {
-                            src: 'overview-detail.jpg',
-                            alt: 'Detailfoto van de houten driemaster met de andere vaartuigen op de achtergrond.'
+                            src: 'big-singleSideTop-1.jpg',
+                            alt: 'Foto van een houten zeilboot.',
+                            aspectRatio: '3 / 4'
                         },
                     ]
                 },
+
                 {
                     type: 'text',
                     text: 'description',
                     title: false,
+                },
+                {
+                    type: 'image-full-screen',
+                    image: {
+                        src: 'big-both.jpg',
+                        alt: 'Foto van twee grote houten zeilboten.'
+                    },
                 },
                 {
                     type: 'images',
@@ -136,6 +146,21 @@ export const useProjectsStore = defineStore('projects', () => {
                         alt: 'Foto van een houten vaartuig op de draaibank.'
                     },
                 },
+                {
+                    type: 'images',
+                    small: false,
+                    images: [
+                        {
+                            src: 'overview.jpg',
+                            alt: 'Overzichtsfoto van de houten vaartuigen.'
+                        },
+                        {
+                            src: 'overview-detail.jpg',
+                            alt: 'Detailfoto van de houten driemaster met de andere vaartuigen op de achtergrond.'
+                        },
+                    ]
+                },
+
                 {
                     type: 'images',
                     small: false,
@@ -354,6 +379,58 @@ export const useProjectsStore = defineStore('projects', () => {
                             src: 'minimap.jpg',
                             alt: 'Screenshot van een informatiescherm',
                             aspectRatio: '4 / 3'
+                        },
+                    ]
+                },
+            ]
+        },
+        {
+            id: 6,
+            tags: [{name: 'tags.print'}, {name: 'tags.mind'}],
+            link: 'twice-burned-library',
+            thumbnail: 'thumbnail.jpg',
+            components: [
+                {
+                    type: 'text',
+                    text: 'description',
+                    title: false,
+                },
+                {
+                    type: 'image-full-screen',
+                    image: {
+                        src: 'cover.jpg',
+                        alt: 'Cover boek Twice Burned Library'
+                    }
+                },
+                {
+                    type: 'images',
+                    small: false,
+                    images: [
+                        {
+                            src: 'detail-1.jpg',
+                            alt: 'Detailfoto',
+                            width: '33%',
+                            aspectRatio: '3 / 4'
+                        },
+                        {
+                            src: 'page-3.jpg',
+                            alt: 'Detailfoto',
+                            width: '66%',
+                            aspectRatio: '4 / 3'
+                        },
+                    ]
+                },
+                {
+                    type: 'images',
+                    small: false,
+                    images: [
+                        {
+                            src: 'spread-1.jpg',
+                            alt: 'Spread',
+                        },
+                        {
+                            src: 'spread-2.jpg',
+                            alt: 'Spread',
                         },
                     ]
                 },

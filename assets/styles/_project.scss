@@ -463,6 +463,10 @@
     &__images {
       flex-direction: column;
       height: fit-content;
+
+      &-container {
+        width: 100% !important;
+      }
     }
 
     &__text {
