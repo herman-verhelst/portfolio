@@ -72,25 +72,45 @@ export const useProjectsStore = defineStore('projects', () => {
                     products: [
                         {
                             product: 'sailboat',
-                            price: '€29',
-                            dimensions: '±15cm × ±5cm × ±15cm ',
+                            options: [
+                                {
+                                    price: '€70',
+                                    size: 'Groot',
+                                    dimensions: '±30cm × ±15cm × ±30cm ',
+                                },
+                                {
+                                    price: '€50',
+                                    size: 'Medium',
+                                    dimensions: '±20cm × ±10cm × ±20cm ',
+                                },
+                                {
+                                    price: '€30',
+                                    size: 'Klein',
+                                    dimensions: '±15cm × ±5cm × ±15cm ',
+                                },
+                            ],
                             image: 'sailboat.svg'
                         },
                         {
                             product: 'inlandVessel',
-                            price: '€24',
-                            dimensions: '±20cm × ±5cm × ±7cm ',
+                            options: [
+                                {
+                                    price: '€25',
+                                    size: 'Klein',
+                                    dimensions: '±20cm × ±5cm × ±7cm ',
+                                },
+                            ],
                             image: 'inland-vessel.svg'
                         },
                         {
                             product: 'containerShip',
-                            price: '€24',
+                            price: '€25',
                             dimensions: '±15cm × ±7cm × ±10cm ',
                             image: 'container-ship.svg'
                         },
                         {
                             product: 'speedboat',
-                            price: '€19',
+                            price: '€20',
                             dimensions: '±10cm × ±5cm × ±7cm ',
                             image: 'speedboat.svg'
                         }

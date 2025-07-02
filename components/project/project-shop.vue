@@ -32,11 +32,18 @@ const props = defineProps({
         <div :data-scrolltrigger="index % 2" class="project__product__info">
           <div class="project__product__text">
             <h3>{{ $t(`projects.${toCamelCase(page)}.shop.${product.product}`) }}</h3>
-            <p class="project__product__dimensions">{{ $t('shop.dimensions') }}: {{ product.dimensions }}</p>
-            <p class="project__product__price">{{ product.price }}</p>
+            <div v-if="!product.options" class="project__product__details">
+              <p class="project__product__dimensions">{{ product.dimensions }}</p>
+              <p class="project__product__price">{{ product.price }}</p>
+            </div>
+            <div v-else v-for="option in product.options" class="project__product__details project__product__details--multiple">
+              <div>
+                <p class="project__product__size">{{ option.size }}</p>
+                <p class="project__product__dimensions">{{ option.dimensions }}</p>
+              </div>
+              <p class="project__product__price">{{ option.price }}</p>
+            </div>
           </div>
-
-          <div class="project__product__graphic" :class="`project__hero-graphic--color-${projectId}`"></div>
         </div>
       </div>
     </div>
